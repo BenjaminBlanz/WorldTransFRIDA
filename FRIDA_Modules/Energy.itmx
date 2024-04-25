@@ -1160,7 +1160,7 @@ coupling_factor_of_fossil_fuels_and_N2O_emissions[Gas]</eqn>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="12" isee:page_rows="7" isee:scroll_x="50" isee:scroll_y="150" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="12" isee:page_rows="7" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1389,10 +1389,10 @@ coupling_factor_of_fossil_fuels_and_N2O_emissions[Gas]</eqn>
 				<stacked_container uid="553" x="272" y="1318.57">
 					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
-							<entity name="energy_demand.demand_for_energy[1]"/>
+							<entity name="energy_demand.demand_for_energy[*]"/>
 						</plot>
 						<plot color="red" pen_style="dot_dashed" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
-							<entity name="energy_supply.Total_Energy_Output[1]"/>
+							<entity name="energy_supply.Total_Energy_Output[*]"/>
 						</plot>
 					</graph>
 				</stacked_container>
@@ -1425,7 +1425,7 @@ Energy Balance</text_box>
 							<entity name="Energy_Balance_Target"/>
 						</plot>
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
-							<entity name="energy_supply_vs_demand.Energy_Balance[1]"/>
+							<entity name="energy_supply_vs_demand.Energy_Balance[*]"/>
 						</plot>
 					</graph>
 				</stacked_container>
@@ -1434,7 +1434,7 @@ Energy Balance</text_box>
 				<stacked_container uid="783" x="864" y="1060.24" width="350" height="383.333">
 					<graph width="350" height="383.333" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="false" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
-							<entity name="energy_supply_vs_demand.Energy_Balance[1]"/>
+							<entity name="energy_supply_vs_demand.Energy_Balance[*]"/>
 						</plot>
 					</graph>
 				</stacked_container>
@@ -3464,7 +3464,10 @@ Investments_in_Fossil_Energy_Capital_1</eqn>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>SMTH3(raw_adaptive_change_in_investments, smoothing_time)</eqn>
+				<eqn>IF use_adaptive_energy_controls=1 THEN
+SMTH3(raw_adaptive_change_in_investments, smoothing_time)
+ELSE
+1</eqn>
 				<units>dmnl</units>
 			</aux>
 			<aux name="smoothing time">
@@ -3475,7 +3478,7 @@ Investments_in_Fossil_Energy_Capital_1</eqn>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>IF use_adaptive_energy_controls=1 AND TIME &gt;= Policy_Start_Year THEN
+				<eqn>IF TIME &gt;= Policy_Start_Year THEN
 MAX(0, 
 1+
 adaptive_energy_investments_proportional_factor*
@@ -3535,7 +3538,7 @@ ELSE
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="4" isee:page_rows="3" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="4" isee:page_rows="3" isee:scroll_x="2.85714" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -3951,7 +3954,7 @@ ELSE
 					<from>share_of_GDP_invested_in_fossil_energy</from>
 					<to>&quot;share_of_GDP_invested_in_Energy_w/o_fuel&quot;</to>
 				</connector>
-				<aux font_style="italic" font_weight="bold" x="156.25" y="281.334" name="Relative Energy Supply Missmatch"/>
+				<aux font_style="italic" font_weight="bold" x="154.821" y="281.334" name="Relative Energy Supply Missmatch"/>
 				<aux x="463.5" y="215.429" name="adaptive energy\ninvestments integrating factor"/>
 				<aux x="298.5" y="210.429" name="adaptive energy\ninvestments differntiating factor"/>
 				<stock font_style="italic" font_weight="bold" label_side="bottom" x="463.5" y="276.334" name="Cumulative Relative Energy Supply Missmatch"/>
@@ -4176,9 +4179,9 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 					<from>adaptive_change_in_investments</from>
 					<to>energy_investments_gas</to>
 				</connector>
-				<connector uid="318" angle="248.303">
+				<connector uid="318" angle="270.345">
 					<from>use_adaptive_energy_controls</from>
-					<to>raw_adaptive_change_in_investments</to>
+					<to>adaptive_change_in_investments</to>
 				</connector>
 				<connector uid="320" angle="288.224">
 					<from>adaptive_energy_investments_proportional_factor</from>
