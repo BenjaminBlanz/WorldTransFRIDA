@@ -2381,7 +2381,7 @@ ELSE
 				<units>B$</units>
 			</aux>
 			<aux name="SWITCH couple energy and economy" access="output" isee:autocreated="true">
-				<eqn>1</eqn>
+				<eqn>0</eqn>
 				<format precision="1"/>
 				<range min="0" max="1"/>
 			</aux>

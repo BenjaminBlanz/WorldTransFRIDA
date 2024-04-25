@@ -427,7 +427,7 @@ coupling_factor_of_fossil_fuels_and_N2O_emissions[Gas]</eqn>
 			<aux name="Greenness of Policy" access="output" isee:autocreated="true">
 				<doc>${Policy}
 </doc>
-				<eqn>0.5 {1.0 0.35}</eqn>
+				<eqn>0 {1.0 0.35}</eqn>
 				<range min="0" max="1"/>
 				<units>dmnl</units>
 			</aux>
@@ -654,6 +654,8 @@ coupling_factor_of_fossil_fuels_and_N2O_emissions[Gas]</eqn>
 				<connect2 to="energy_supply_vs_demand.demand_for_energy" from="energy_demand.demand_for_energy"/>
 				<connect to="Energy.demand_for_energy" from="energy_demand.demand_for_energy"/>
 				<connect2 to="demand_for_energy" from="energy_demand.demand_for_energy"/>
+				<connect to="energy_demand.Energy_Balance" from="energy_supply_vs_demand.Energy_Balance"/>
+				<connect2 to="energy_demand.Energy_Balance" from="energy_supply_vs_demand.Energy_Balance"/>
 				<connect to="energy_demand.GDP_per_person" from="Population.GDP_per_person"/>
 				<connect2 to="energy_demand.GDP_per_person" from="Population.GDP_per_person"/>
 				<connect to="energy_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
@@ -853,12 +855,16 @@ coupling_factor_of_fossil_fuels_and_N2O_emissions[Gas]</eqn>
 				<format scale_by="auto"/>
 				<connect to="energy_investments.Cumulative_Relative_Energy_Supply_Missmatch" from="energy_supply_vs_demand.Cumulative_Relative_Energy_Supply_Missmatch"/>
 				<connect2 to="energy_investments.Cumulative_Relative_Energy_Supply_Missmatch" from="energy_supply_vs_demand.Cumulative_Relative_Energy_Supply_Missmatch"/>
+				<connect to="energy_demand.Energy_Balance" from="energy_supply_vs_demand.Energy_Balance"/>
+				<connect2 to="energy_demand.Energy_Balance" from="energy_supply_vs_demand.Energy_Balance"/>
 				<connect to="Finance.Energy_Balance" from="energy_supply_vs_demand.Energy_Balance"/>
 				<connect2 to="Finance.Energy_Balance" from="energy_supply_vs_demand.Energy_Balance"/>
 				<connect to="energy_investments.Relative_Energy_Supply_Missmatch" from="energy_supply_vs_demand.Relative_Energy_Supply_Missmatch"/>
 				<connect2 to="energy_investments.Relative_Energy_Supply_Missmatch" from="energy_supply_vs_demand.Relative_Energy_Supply_Missmatch"/>
 				<connect to="energy_supply_vs_demand.demand_for_energy" from="energy_demand.demand_for_energy"/>
 				<connect2 to="energy_supply_vs_demand.demand_for_energy" from="energy_demand.demand_for_energy"/>
+				<connect to="energy_supply_vs_demand.Greenness_of_Policy" from="Energy.Greenness_of_Policy"/>
+				<connect2 to="energy_supply_vs_demand.Greenness_of_Policy" from="Greenness_of_Policy"/>
 				<connect to="energy_supply_vs_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
 				<connect2 to="energy_supply_vs_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
 				<connect to="energy_supply_vs_demand.Total_Energy_Output" from="energy_supply.Total_Energy_Output"/>
@@ -1160,7 +1166,7 @@ coupling_factor_of_fossil_fuels_and_N2O_emissions[Gas]</eqn>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="12" isee:page_rows="7" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="12" isee:page_rows="7" zoom="200" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1943,6 +1949,14 @@ GREEN: Cost and Emissions minimal provision of energy demanded </text_box>
 					<to>use_adaptive_energy_controls</to>
 				</connector>
 				<aux font_style="italic" font_weight="bold" x="1026.67" y="50.5417" name="SWITCH couple energy and economy"/>
+				<connector uid="1280" isee:thickness="2" angle="295" isee:autocreated="true">
+					<from>energy_supply_vs_demand</from>
+					<to>energy_demand</to>
+				</connector>
+				<connector uid="1281" angle="313.053" isee:autocreated="true">
+					<from>Greenness_of_Policy</from>
+					<to>energy_supply_vs_demand</to>
+				</connector>
 				<alias color="blue" background="white" font_style="italic" uid="782" x="138.5" y="1501" width="18" height="18">
 					<shape type="circle" radius="18"/>
 					<of>Greenness_of_Policy</of>
@@ -2050,7 +2064,7 @@ GREEN: Cost and Emissions minimal provision of energy demanded </text_box>
 					<dim name="Run"/>
 				</dimensions>
 				<eqn>IF(switch_energy_demand_policy= 0 OR TIME &lt; Policy_Start_Year) THEN
-normal_per_person_use_of_energy*effect_of_GDP_per_person_on_per_person_use_of_energy
+normal_per_person_use_of_energy*effect_of_GDP_per_person_on_per_person_use_of_energy*effect_of_technology_on_change_in_energy_demand * Test
 ELSE
 per_person_use_of_energy_policy</eqn>
 				<units>MWh/(p*year)</units>
@@ -2067,13 +2081,13 @@ per_person_use_of_energy_policy</eqn>
 			<aux name="effect of GDP on\nper person\nuse of energy intercept">
 				<doc>${Calibration Parameter}
 Calibration Parameter: demand for electricity</doc>
-				<eqn>0.829769500368091</eqn>
+				<eqn>0.819116113691427</eqn>
 				<units>dmnl</units>
 			</aux>
 			<aux name="effect of GDP on\nper person\nuse of energy slope">
 				<doc>${Calibration Parameter}
 Calibration Parameter: demand for electricity</doc>
-				<eqn>0.141420725537008</eqn>
+				<eqn>0.153336153339913</eqn>
 				<units>dmnl</units>
 			</aux>
 			<aux name="effect of GDP per person on\nper person use of energy">
@@ -2081,7 +2095,9 @@ Calibration Parameter: demand for electricity</doc>
 					<dim name="Run"/>
 				</dimensions>
 				<eqn>effect_of_GDP_on_per_person_use_of_energy_slope*
-LN(relative_GDP_per_person) + effect_of_GDP_on_per_person_use_of_energy_intercept</eqn>
+LN(relative_GDP_per_person) + effect_of_GDP_on_per_person_use_of_energy_intercept
+{effect_of_GDP_on_per_person_use_of_energy_slope*
+relative_GDP_per_person^effect_of_GDP_on_per_person_use_of_energy_exponent + effect_of_GDP_on_per_person_use_of_energy_intercept}</eqn>
 				<units>dmnl</units>
 			</aux>
 			<aux name="normal per person use of energy">
@@ -2104,7 +2120,7 @@ Calibration Parameter: demand for electricity</doc>
 					<dim name="Run"/>
 				</dimensions>
 				<element subscript="1">
-					<eqn>0.117062052391379</eqn>
+					<eqn>0.0972698867804189</eqn>
 				</element>
 				<units>1</units>
 			</aux>
@@ -2176,6 +2192,36 @@ https://ourworldindata.org/grapher/fossil-fuel-primary-energy?tab=chart&amp;coun
 				<eqn>1</eqn>
 				<units>dmnl</units>
 			</aux>
+			<aux name="rate of change\nin energy demand">
+				<eqn>0</eqn>
+				<units>1/year</units>
+			</aux>
+			<aux name="effect of technology\non change in energy demand">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>EXP(-(rate_of_change_in_energy_demand)*(TIME-1980))</eqn>
+				<units>1</units>
+			</aux>
+			<aux name="Energy Balance" access="input">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>{Enter equation for use when not hooked up to other models}</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="effect of GDP on per person use of energy exponent">
+				<eqn>0.5</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="Test">
+				<eqn>TIME</eqn>
+				<gf>
+					<xscale min="2020" max="2025"/>
+					<yscale min="0.9" max="1"/>
+					<ypts>1,0.9998,0.9996,0.9993,0.9989,0.9985,0.9979,0.9973,0.9964,0.9954,0.9942,0.9927,0.991,0.9888,0.9863,0.9833,0.9798,0.9759,0.9714,0.9665,0.9612,0.9557,0.95,0.9443,0.9388,0.9335,0.9286,0.9241,0.9202,0.9167,0.9137,0.9112,0.909,0.9073,0.9058,0.9046,0.9036,0.9027,0.9021,0.9015,0.9011,0.9007,0.9004,0.9002,0.9</ypts>
+				</gf>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -2225,7 +2271,7 @@ https://ourworldindata.org/grapher/fossil-fuel-primary-energy?tab=chart&amp;coun
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:page_rows="3" isee:scroll_x="7.22222" zoom="180" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:page_rows="3" isee:scroll_x="6.66667" zoom="180" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -2350,6 +2396,23 @@ https://ourworldindata.org/grapher/fossil-fuel-primary-energy?tab=chart&amp;coun
 					<from>switch_only_economy_energy_damage</from>
 					<to>effect_of_surface_temperature_anomaly_on_per_person_use_of_energy</to>
 				</connector>
+				<aux background="white" label_side="bottom" x="362.617" y="527.694" name="rate of change\nin energy demand"/>
+				<aux label_side="bottom" x="180.084" y="484.914" name="effect of technology\non change in energy demand"/>
+				<connector uid="25" angle="166.81">
+					<from>rate_of_change_in_energy_demand</from>
+					<to>effect_of_technology_on_change_in_energy_demand</to>
+				</connector>
+				<connector uid="27" angle="49.6685">
+					<from>effect_of_technology_on_change_in_energy_demand</from>
+					<to>per_person_use_of_energy</to>
+				</connector>
+				<aux font_style="italic" font_weight="bold" x="538" y="605.556" name="Energy Balance"/>
+				<aux x="198.084" y="276.83" name="effect of GDP on per person use of energy exponent"/>
+				<aux x="448.25" y="458.889" name="Test"/>
+				<connector uid="29" angle="74.5028">
+					<from>Test</from>
+					<to>per_person_use_of_energy</to>
+				</connector>
 			</view>
 		</views>
 	</model>
@@ -2363,7 +2426,7 @@ https://ourworldindata.org/grapher/fossil-fuel-primary-energy?tab=chart&amp;coun
 			<aux name="use adaptive energy controls" access="output" isee:autocreated="true">
 				<doc>${Policy}
 </doc>
-				<eqn>1</eqn>
+				<eqn>0</eqn>
 				<format precision="1"/>
 				<range min="0" max="1"/>
 				<units>dmnl</units>
@@ -4219,6 +4282,35 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 					<from>smoothing_time</from>
 					<to>adaptive_change_in_investments</to>
 				</connector>
+				<stacked_container uid="329" x="114.382" y="1297.96" width="864.281" height="767.749">
+					<graph width="864.281" height="767.749" comparative="true" type="bar" isee:stacked_bar="true" isee:stacked_bar_label="" isee:sum_stacked_legend="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="red" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="energy_investments_oil.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<plot color="fuchsia" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="energy_investments_gas.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name="energy_investments_coal.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<isee:time_points>
+							<isee:time_point>1011</isee:time_point>
+							<isee:time_point>2010</isee:time_point>
+							<isee:time_point>2012</isee:time_point>
+							<isee:time_point>2013</isee:time_point>
+							<isee:time_point>2014</isee:time_point>
+							<isee:time_point>2015</isee:time_point>
+							<isee:time_point>2016</isee:time_point>
+							<isee:time_point>2017</isee:time_point>
+							<isee:time_point>2018</isee:time_point>
+							<isee:time_point>2019</isee:time_point>
+							<isee:time_point>2020</isee:time_point>
+							<isee:time_point>2021</isee:time_point>
+							<isee:time_point>2022</isee:time_point>
+							<isee:time_point>2023</isee:time_point>
+						</isee:time_points>
+					</graph>
+				</stacked_container>
 				<alias color="blue" background="white" font_style="italic" uid="154" x="1832.2" y="963.263" width="18" height="18">
 					<shape type="circle" radius="18"/>
 					<of>Greenness_of_Policy</of>
@@ -6870,7 +6962,7 @@ This is total energy production of both fossil and renewable</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="3" isee:page_rows="3" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="3" isee:page_rows="3" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -7637,7 +7729,7 @@ Depreciation_of_Fuel_Extraction_Capital
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="116.429" isee:scroll_y="26.4286" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="94.2857" isee:scroll_y="26.4286" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -9828,7 +9920,7 @@ World Bank  2020 Minerals for climate action: The mineral intensity of the clean
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="576" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -11459,6 +11551,10 @@ ELSE
 				<eqn>2024</eqn>
 				<units>Year</units>
 			</aux>
+			<aux name="Greenness of Policy" access="input">
+				<eqn>1 {1.0 0.35}</eqn>
+				<units>dmnl</units>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -11508,7 +11604,7 @@ ELSE
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" zoom="300" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:scroll_y="20" zoom="300" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -11609,6 +11705,21 @@ ELSE
 					<from>Policy_Start_Year</from>
 					<to>Acc_Cum_Rel_En_Sup_Missmatch</to>
 				</connector>
+				<stacked_container uid="15" x="139.353" y="74.5553" width="745" height="550">
+					<graph width="745" height="550" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="energy_supply.Total_Energy_Output[1]"/>
+						</plot>
+						<plot color="red" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="energy_demand.demand_for_energy[1]"/>
+						</plot>
+						<plot color="fuchsia" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name="energy_supply.Total_Energy_Output[1]"/>
+							<isee:data name="Calibration Data"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<aux font_style="italic" font_weight="bold" x="62" y="338.667" name="Greenness of Policy"/>
 			</view>
 		</views>
 	</model>
