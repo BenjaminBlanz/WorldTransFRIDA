@@ -5,7 +5,7 @@
 		<name>Energy</name>
 		<uuid>c7b91481-7c9c-44f5-8c0c-0a36df03c770</uuid>
 		<vendor>isee systems, inc.</vendor>
-		<product version="3.6.1" isee:build_number="3275" isee:saved_by_v1="true" lang="en">Stella_Architect</product>
+		<product version="3.7" isee:build_number="3335" isee:saved_by_v1="true" lang="en">Stella Architect</product>
 	</header>
 	<sim_specs isee:sim_duration="1.5" isee:run_prefix="Run" isee:simulation_delay="0.125" isee:restore_on_start="false" isee:save_interval="2" method="Euler" time_units="Months" isee:instantaneous_flows="false" isee:ignore_module_errors="false" isee:strict_units="false" isee:loop_scores="true" isee:loop_exhaustive_allowed="1000">
 		<start>0</start>
@@ -45,11 +45,6 @@
 	<isee:number_format_extenders/>
 	<default_format scale_by="1"/>
 	<model_units>
-		<unit name="Years">
-			<eqn/>
-			<alias>yr</alias>
-			<alias>year</alias>
-		</unit>
 		<unit name="G$">
 			<eqn>Giga*$</eqn>
 		</unit>
@@ -132,11 +127,6 @@
 			<eqn>kW</eqn>
 			<alias>kilowatt</alias>
 		</unit>
-		<unit name="Dollar">
-			<eqn>$</eqn>
-			<alias>Dollars</alias>
-			<alias>$s</alias>
-		</unit>
 		<unit name="Hour">
 			<eqn/>
 			<alias>Hours</alias>
@@ -201,6 +191,18 @@
 		</unit>
 		<unit name="euros per year per person">
 			<eqn>EUR/(person-year)</eqn>
+		</unit>
+		<unit name="G">
+			<eqn>Giga</eqn>
+		</unit>
+		<unit name="GtCO2">
+			<eqn>Giga*tCO2</eqn>
+		</unit>
+		<unit name="GtCH4">
+			<eqn>Giga*tCH4</eqn>
+		</unit>
+		<unit name="GtN2O">
+			<eqn>Giga*tN2O</eqn>
 		</unit>
 	</model_units>
 	<model name="Energy">
@@ -878,7 +880,289 @@
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="12" isee:page_rows="7" isee:scroll_y="200" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#66CC66" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<numeric_input color="black" background="white" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#66CC66" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<numeric_input color="black" background="white" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#66CC66" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<numeric_input color="black" background="white" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#66CC66" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<numeric_input color="black" background="white" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#66CC66" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<numeric_input color="black" background="white" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#66CC66" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<numeric_input color="black" background="white" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="12" isee:page_rows="7" isee:scroll_y="103.75" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1044,9 +1328,9 @@
 					<graph width="350" height="250" comparative="true" type="time_series" isee:points_only="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
 				</stacked_container>
 				<text_box font_size="36pt" uid="507" x="7026.1" y="368.403" width="309.583" height="79.25">Hydropower energy investment</text_box>
-				<text_box font_size="72pt" uid="552" x="110.27" y="991.987" width="691.667" height="99.6667">Supply and Demand</text_box>
-				<stacked_container uid="553" x="272" y="1318.57">
-					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+				<text_box font_size="72pt" uid="552" x="283.667" y="1040.32" width="771.667" height="90.5">Energy Supply Balance</text_box>
+				<stacked_container uid="553" x="85.6667" y="1139.99" width="563" height="314.048">
+					<graph width="563" height="314.048" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="energy_demand.demand_for_energy[*]"/>
 						</plot>
@@ -1055,7 +1339,7 @@
 						</plot>
 					</graph>
 				</stacked_container>
-				<text_box font_size="72pt" uid="560" x="315.27" y="1469.58" width="841.667" height="99.6667">Investments And Shares</text_box>
+				<text_box font_size="72pt" uid="560" x="262.77" y="1458.5" width="841.667" height="99.6667">Investments And Shares</text_box>
 				<text_box border_color="lime" border_width="thick" border_style="solid" uid="587" x="18.1467" y="15.6366" width="233.571" height="72.5406">Inputs
 GDP per person
 Population
@@ -1067,22 +1351,24 @@ SO2 Emissions
 N2O Emissions
 CH4 Emissions
 Energy Balance</text_box>
-				<stacked_container uid="704" x="662" y="1318.57">
-					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
-						<plot color="red" pen_style="dot_dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+				<stacked_container uid="704" x="660.333" y="1139.99" width="557" height="314.048">
+					<graph width="557" height="314.048" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="red" pen_style="dot_dashed" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Energy_Balance_Target"/>
+							<scale min="0.7" max="1.3"/>
 						</plot>
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
 							<entity name="energy_supply_vs_demand.Energy_Balance[*]"/>
 						</plot>
 					</graph>
 				</stacked_container>
-				<aux x="662" y="1153.5" name="Energy Balance Target"/>
+				<aux x="1110.33" y="1079.33" name="Energy Balance Target"/>
 				<aux x="1215.83" y="48.2775" name="Greenness of Policy"/>
-				<stacked_container uid="783" x="864" y="1060.24" width="350" height="383.333">
-					<graph width="350" height="383.333" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="false" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+				<stacked_container uid="783" x="1234" y="1139.98" width="554.666" height="314.054">
+					<graph width="554.666" height="314.054" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="false" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
 							<entity name="energy_supply_vs_demand.Energy_Balance[*]"/>
+							<scale min="0.7" max="1.3"/>
 						</plot>
 					</graph>
 				</stacked_container>
@@ -1120,39 +1406,39 @@ GREEN: Cost and Emissions minimal provision of energy demanded </text_box>
 				<stacked_container uid="869" x="6035.18" y="683.792">
 					<graph width="350" height="250" comparative="true" type="time_series" isee:points_only="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
 				</stacked_container>
-				<stacked_container uid="871" x="812.42" y="1661.65" width="350" height="347.875">
-					<graph width="350" height="347.875" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
-				</stacked_container>
-				<stacked_container uid="872" x="98" y="1659.34" width="350" height="348.5">
-					<graph width="350" height="348.5" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
-						<plot color="fuchsia" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+				<stacked_container uid="872" x="87.1667" y="1564.34" width="560" height="617.667">
+					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="black" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="energy_investments_coal.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="energy_investments_coal.Investments_in_Fossil_Energy_Capital[1]"/>
+						</plot>
+						<plot color="#552B00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name="energy_investments_oil.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<plot color="#552B00" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name="energy_investments_oil.Investments_in_Fossil_Energy_Capital[1]"/>
+						</plot>
+						<plot color="#9C4E00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name="energy_investments_gas.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<plot color="#9C4E00" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name="energy_investments_gas.Investments_in_Fossil_Energy_Capital[1]"/>
+						</plot>
+						<plot color="#FFE54F" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
 							<entity name="energy_investments.Investments_in_Solar_and_Wind_Energy_Capacity[1]"/>
 						</plot>
-						<plot color="#008F44" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+						<plot color="#00AAFF" isee:keep_zero_visible="true" pen_width="1" index="7" show_y_axis="true">
 							<entity name="energy_investments.Investments_in_Hydropower_Energy_Capcity[1]"/>
 						</plot>
-						<plot color="#FF7F00" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
-							<entity name="energy_investments.Investments_in_Other_Capacity[1]"/>
-						</plot>
-						<plot color="#7F00FF" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+						<plot color="#FF55FF" isee:keep_zero_visible="true" pen_width="1" index="8" show_y_axis="true">
 							<entity name="energy_investments.Investments_in_Nuclear_Capacity[1]"/>
 						</plot>
+						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="9" show_y_axis="true">
+							<entity name="energy_investments.Investments_in_Other_Capacity[1]"/>
+						</plot>
 					</graph>
-				</stacked_container>
-				<stacked_container uid="873" x="370" y="2009.53" width="350" height="344.5">
-					<graph width="350" height="344.5" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="5000000000000" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
-				</stacked_container>
-				<stacked_container uid="874" x="812.42" y="2007.84" width="350" height="347.875">
-					<graph width="350" height="347.875" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="200000" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
-				</stacked_container>
-				<stacked_container uid="875" x="452" y="1659.34" width="350" height="348.5">
-					<graph width="350" height="348.5" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
-				</stacked_container>
-				<stacked_container uid="876" x="1269.25" y="2033.57" width="415" height="328.333">
-					<graph width="415" height="328.333" comparative="true" type="time_series" isee:points_only="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
-				</stacked_container>
-				<stacked_container uid="877" x="1269.25" y="1660.17" width="415" height="346.84">
-					<graph width="415" height="346.84" type="time_series" isee:points_only="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
 				</stacked_container>
 				<module x="1087.88" y="750.615" name="energy demand"/>
 				<module x="1087.88" y="400" name="energy investments"/>
@@ -1487,6 +1773,91 @@ GREEN: Cost and Emissions minimal provision of energy demanded </text_box>
 				</connector>
 				<text_box uid="1283" x="885.833" y="19.2775" width="78.3333" height="19.2222">for debugging</text_box>
 				<text_box uid="1284" x="1154.17" y="12.5417" width="123.333" height="20">environmental policy</text_box>
+				<stacked_container uid="1285" x="658.833" y="1564.34" width="560" height="617.667">
+					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="black" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name='energy_investments."Share_of_Energy_Expenditure_invested_in_fuel_extraction,_coal"[1]'/>
+						</plot>
+						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name='energy_investments."Share_of_Energy_Expenditure_invested_in_fossil_energy,_coal"[1]'/>
+						</plot>
+						<plot color="#552B00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name='energy_investments."Share_of_Energy_Expenditure_invested_in_fuel_extraction,_oil"[1]'/>
+						</plot>
+						<plot color="#552B00" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name='energy_investments."Share_of_Energy_Expenditure_invested_in_fossil_energy,_oil"[1]'/>
+						</plot>
+						<plot color="#9C4E00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name='energy_investments."Share_of_Energy_Expenditure_invested_in_fuel_extraction,_gas"[1]'/>
+						</plot>
+						<plot color="#9C4E00" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name='energy_investments."Share_of_Energy_Expenditure_invested_in_fossil_energy,_gas"[1]'/>
+						</plot>
+						<plot color="#FFE54F" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
+							<entity name="energy_investments.Share_of_Energy_Expenditure_invested_in_Solar_and_Wind[1]"/>
+						</plot>
+						<plot color="#00AAFF" isee:keep_zero_visible="true" pen_width="1" index="7" show_y_axis="true">
+							<entity name="energy_investments.Share_of_Energy_Expenditure_invested_in_hydropower[1]"/>
+						</plot>
+						<plot color="#FF55FF" isee:keep_zero_visible="true" pen_width="1" index="8" show_y_axis="true">
+							<entity name="energy_investments.Share_of_Energy_Expenditure_invested_in_nuclear_energy[1]"/>
+						</plot>
+						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="9" show_y_axis="true">
+							<entity name="energy_investments.Share_of_Energy_Expenditure_invested_in_other_energy[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<text_box font_size="72pt" uid="1286" x="1532" y="1458.5" width="475" height="99.6667">Energy Output</text_box>
+				<stacked_container uid="1287" x="1231.33" y="1563.17" width="560" height="617.667">
+					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="fossil_energy_coal.Secondary_Fossil_Energy_Output[1]"/>
+						</plot>
+						<plot color="#552B00" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="fossil_energy_oil.Secondary_Fossil_Energy_Output[1]"/>
+						</plot>
+						<plot color="#9C4E00" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name="fossil_energy_gas.Secondary_Fossil_Energy_Output[1]"/>
+						</plot>
+						<plot color="#FFE54F" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name="wind_and_solar_energy.Wind_and_Solar_Energy_Output[1]"/>
+						</plot>
+						<plot color="#00AAFF" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name="hydropower_energy.Hydropower_Energy_Output[1]"/>
+						</plot>
+						<plot color="#FF55FF" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name="nuclear_energy.Nuclear_Energy_Output[1]"/>
+						</plot>
+						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
+							<entity name="other_energy.Other_Energy_Output[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="1288" x="1809.67" y="1563.17" width="560" height="617.667">
+					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name='energy_supply."Fossil_Energy_Output_Share,_coal"[1]'/>
+						</plot>
+						<plot color="#552B00" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name='energy_supply."Fossil_Energy_Output_Share,_oil"[1]'/>
+						</plot>
+						<plot color="#9C4E00" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name='energy_supply."Fossil_Energy_Output_Share,_gas"[1]'/>
+						</plot>
+						<plot color="#FFE54F" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name="energy_supply.Solar_and_Wind_Output_Share[1]"/>
+						</plot>
+						<plot color="#00AAFF" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name="energy_supply.Hydropower_Output_Share[1]"/>
+						</plot>
+						<plot color="#FF55FF" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name="energy_supply.Nuclear_Energy_Output_Share[1]"/>
+						</plot>
+						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
+							<entity name="energy_supply.Other_Energy_Output_Share[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
 				<alias color="blue" background="white" font_style="italic" uid="782" x="138.5" y="1501" width="18" height="18">
 					<shape type="circle" radius="18"/>
 					<of>Greenness_of_Policy</of>
@@ -2938,7 +3309,7 @@ All_Energy_Investments*EXP(-Social_Discount_Rate*(TIME-Policy_Start_Year_1))</eq
 				<eqn>{Enter equation for use when not hooked up to other models}</eqn>
 				<units>$/Year</units>
 			</aux>
-			<aux name="Share of Energy Expenditure\ninvested in fuel extraction, coal">
+			<aux name="Share of Energy Expenditure\ninvested in fuel\nextraction, coal">
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
@@ -3095,7 +3466,7 @@ ELSE
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="4" isee:page_rows="3" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="4" isee:page_rows="3" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -3558,7 +3929,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 					<from>energy_investments_gas</from>
 					<to>Investments_in_Fossil_Fuel_Extraction_Capital_2</to>
 				</connector>
-				<aux x="450.144" y="732.667" name="Share of Energy Expenditure\ninvested in fuel extraction, coal"/>
+				<aux x="450.144" y="732.667" name="Share of Energy Expenditure\ninvested in fuel\nextraction, coal"/>
 				<aux x="450.144" y="804.953" name="Share of Energy Expenditure\ninvested in fossil energy, coal"/>
 				<aux x="441.429" y="929.011" name="Share of Energy Expenditure\ninvested in fuel extraction, oil"/>
 				<aux x="441.429" y="994.469" name="Share of Energy Expenditure\ninvested in fossil energy, oil"/>
@@ -3805,6 +4176,156 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 					<from>SWITCH_use_adaptive_energy_controls</from>
 					<to>adaptive_change_in_investments</to>
 				</connector>
+				<text_box font_size="72pt" uid="331" x="1272.67" y="1123.32" width="771.667" height="90.5">Energy Supply Balance</text_box>
+				<stacked_container uid="332" x="1074.67" y="1222.99" width="563" height="314.048">
+					<graph width="563" height="314.048" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="energy_demand.demand_for_energy[*]"/>
+						</plot>
+						<plot color="red" pen_style="dot_dashed" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="energy_supply.Total_Energy_Output[*]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<text_box font_size="72pt" uid="333" x="1251.77" y="1541.5" width="841.667" height="99.6667">Investments And Shares</text_box>
+				<stacked_container uid="334" x="1649.33" y="1222.99" width="557" height="314.048">
+					<graph width="557" height="314.048" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="red" pen_style="dot_dashed" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Energy.Energy_Balance_Target"/>
+							<scale min="0.7" max="1.3"/>
+						</plot>
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="energy_supply_vs_demand.Energy_Balance[*]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="335" x="2223" y="1222.98" width="554.666" height="314.054">
+					<graph width="554.666" height="314.054" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="false" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
+							<entity name="energy_supply_vs_demand.Energy_Balance[*]"/>
+							<scale min="0.7" max="1.3"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="336" x="1076.17" y="1647.34" width="560" height="617.667">
+					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="black" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="energy_investments_coal.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="energy_investments_coal.Investments_in_Fossil_Energy_Capital[1]"/>
+						</plot>
+						<plot color="#552B00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name="energy_investments_oil.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<plot color="#552B00" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name="energy_investments_oil.Investments_in_Fossil_Energy_Capital[1]"/>
+						</plot>
+						<plot color="#9C4E00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name="energy_investments_gas.Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+						<plot color="#9C4E00" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name="energy_investments_gas.Investments_in_Fossil_Energy_Capital[1]"/>
+						</plot>
+						<plot color="#FFE54F" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
+							<entity name="Investments_in_Solar_and_Wind_Energy_Capacity[1]"/>
+						</plot>
+						<plot color="#00AAFF" isee:keep_zero_visible="true" pen_width="1" index="7" show_y_axis="true">
+							<entity name="Investments_in_Hydropower_Energy_Capcity[1]"/>
+						</plot>
+						<plot color="#FF55FF" isee:keep_zero_visible="true" pen_width="1" index="8" show_y_axis="true">
+							<entity name="Investments_in_Nuclear_Capacity[1]"/>
+						</plot>
+						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="9" show_y_axis="true">
+							<entity name="Investments_in_Other_Capacity[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="337" x="1647.83" y="1647.34" width="560" height="617.667">
+					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="black" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name='"Share_of_Energy_Expenditure_invested_in_fuel_extraction,_coal"[1]'/>
+						</plot>
+						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name='"Share_of_Energy_Expenditure_invested_in_fossil_energy,_coal"[1]'/>
+						</plot>
+						<plot color="#552B00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name='"Share_of_Energy_Expenditure_invested_in_fuel_extraction,_oil"[1]'/>
+						</plot>
+						<plot color="#552B00" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name='"Share_of_Energy_Expenditure_invested_in_fossil_energy,_oil"[1]'/>
+						</plot>
+						<plot color="#9C4E00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name='"Share_of_Energy_Expenditure_invested_in_fuel_extraction,_gas"[1]'/>
+						</plot>
+						<plot color="#9C4E00" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name='"Share_of_Energy_Expenditure_invested_in_fossil_energy,_gas"[1]'/>
+						</plot>
+						<plot color="#FFE54F" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
+							<entity name="Share_of_Energy_Expenditure_invested_in_Solar_and_Wind[1]"/>
+						</plot>
+						<plot color="#00AAFF" isee:keep_zero_visible="true" pen_width="1" index="7" show_y_axis="true">
+							<entity name="Share_of_Energy_Expenditure_invested_in_hydropower[1]"/>
+						</plot>
+						<plot color="#FF55FF" isee:keep_zero_visible="true" pen_width="1" index="8" show_y_axis="true">
+							<entity name="Share_of_Energy_Expenditure_invested_in_nuclear_energy[1]"/>
+						</plot>
+						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="9" show_y_axis="true">
+							<entity name="Share_of_Energy_Expenditure_invested_in_other_energy[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<text_box font_size="72pt" uid="338" x="2521" y="1541.5" width="475" height="99.6667">Energy Output</text_box>
+				<stacked_container uid="339" x="2220.33" y="1646.17" width="560" height="617.667">
+					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="fossil_energy_coal.Secondary_Fossil_Energy_Output[1]"/>
+						</plot>
+						<plot color="#552B00" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="fossil_energy_oil.Secondary_Fossil_Energy_Output[1]"/>
+						</plot>
+						<plot color="#9C4E00" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name="fossil_energy_gas.Secondary_Fossil_Energy_Output[1]"/>
+						</plot>
+						<plot color="#FFE54F" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name="wind_and_solar_energy.Wind_and_Solar_Energy_Output[1]"/>
+						</plot>
+						<plot color="#00AAFF" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name="hydropower_energy.Hydropower_Energy_Output[1]"/>
+						</plot>
+						<plot color="#FF55FF" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name="nuclear_energy.Nuclear_Energy_Output[1]"/>
+						</plot>
+						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
+							<entity name="other_energy.Other_Energy_Output[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="340" x="2798.67" y="1646.17" width="560" height="617.667">
+					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name='energy_supply."Fossil_Energy_Output_Share,_coal"[1]'/>
+						</plot>
+						<plot color="#552B00" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name='energy_supply."Fossil_Energy_Output_Share,_oil"[1]'/>
+						</plot>
+						<plot color="#9C4E00" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name='energy_supply."Fossil_Energy_Output_Share,_gas"[1]'/>
+						</plot>
+						<plot color="#FFE54F" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name="energy_supply.Solar_and_Wind_Output_Share[1]"/>
+						</plot>
+						<plot color="#00AAFF" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name="energy_supply.Hydropower_Output_Share[1]"/>
+						</plot>
+						<plot color="#FF55FF" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name="energy_supply.Nuclear_Energy_Output_Share[1]"/>
+						</plot>
+						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
+							<entity name="energy_supply.Other_Energy_Output_Share[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
 				<alias color="blue" background="white" font_style="italic" uid="154" x="1832.2" y="963.263" width="18" height="18">
 					<shape type="circle" radius="18"/>
 					<of>Greenness_of_Policy</of>
@@ -5678,6 +6199,8 @@ The stock is the currently employed capital.</text_box>
 				<connect2 to="Emissions.Fossil_Energy_Extraction_1" from="fossil_energy_coal.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to="energy_investments_coal.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_coal.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
 				<connect2 to="energy_investments_coal.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_coal.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
+				<connect to="energy_supply.Secondary_Fossil_Energy_Output_1" from="fossil_energy_coal.Secondary_Fossil_Energy_Output"/>
+				<connect2 to="Secondary_Fossil_Energy_Output_1" from="fossil_energy_coal.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy_coal.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
 				<connect2 to="fossil_energy_coal.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
 				<connect to="fossil_energy_coal.Greenness_of_Policy" from="Energy.Greenness_of_Policy"/>
@@ -5692,6 +6215,8 @@ The stock is the currently employed capital.</text_box>
 				<connect2 to="energy_investments_gas.Fossil_Fuel_Extraction_Capital_Damaged_due_to_STA" from="fossil_energy_gas.Fossil_Fuel_Extraction_Capital_Damaged_due_to_STA"/>
 				<connect to="energy_investments_gas.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_gas.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
 				<connect2 to="energy_investments_gas.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_gas.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
+				<connect to="energy_supply.Secondary_Fossil_Energy_Output_3" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
+				<connect2 to="Secondary_Fossil_Energy_Output_3" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy_gas.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
 				<connect2 to="fossil_energy_gas.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
 				<connect to="fossil_energy_gas.Greenness_of_Policy" from="Energy.Greenness_of_Policy"/>
@@ -5706,6 +6231,8 @@ The stock is the currently employed capital.</text_box>
 				<connect2 to="energy_investments_oil.Fossil_Fuel_Extraction_Capital_Damaged_due_to_STA" from="fossil_energy_oil.Fossil_Fuel_Extraction_Capital_Damaged_due_to_STA"/>
 				<connect to="energy_investments_oil.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_oil.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
 				<connect2 to="energy_investments_oil.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_oil.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
+				<connect to="energy_supply.Secondary_Fossil_Energy_Output_2" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
+				<connect2 to="Secondary_Fossil_Energy_Output_2" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy_oil.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
 				<connect2 to="fossil_energy_oil.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
 				<connect to="fossil_energy_oil.Greenness_of_Policy" from="Energy.Greenness_of_Policy"/>
@@ -5842,6 +6369,48 @@ This is total energy production of both fossil and renewable</doc>
 				<eqn>{Enter equation for use when not hooked up to other models}</eqn>
 				<units>zJ/Year</units>
 			</aux>
+			<aux name="Secondary Fossil Energy Output 1" access="input">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>{Enter equation for use when not hooked up to other models}</eqn>
+				<units>TWh/Year</units>
+			</aux>
+			<aux name="Secondary Fossil Energy Output 2" access="input">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>{Enter equation for use when not hooked up to other models}</eqn>
+				<units>TWh/Year</units>
+			</aux>
+			<aux name="Secondary Fossil Energy Output 3" access="input">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>{Enter equation for use when not hooked up to other models}</eqn>
+				<units>TWh/Year</units>
+			</aux>
+			<aux name="Fossil Energy Output Share, coal">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>Secondary_Fossil_Energy_Output_1/Total_Energy_Output</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="Fossil Energy Output\nShare, oil">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>Secondary_Fossil_Energy_Output_2/Total_Energy_Output</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="Fossil Energy Output\nShare, gas">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>Secondary_Fossil_Energy_Output_3/Total_Energy_Output</eqn>
+				<units>dmnl</units>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -5891,7 +6460,7 @@ This is total energy production of both fossil and renewable</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:page_rows="2" isee:scroll_y="201" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="2" isee:page_rows="2" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -6058,6 +6627,48 @@ This is total energy production of both fossil and renewable</doc>
 				<connector uid="56" angle="13.7024" isee:autocreated="true">
 					<from>fossil_energy</from>
 					<to>&quot;Primary_Fossil_Energy_(FUEL)&quot;</to>
+				</connector>
+				<aux font_style="italic" font_weight="bold" x="140" y="696" name="Secondary Fossil Energy Output 1"/>
+				<connector uid="57" angle="254.098" isee:autocreated="true">
+					<from>fossil_energy</from>
+					<to>Secondary_Fossil_Energy_Output_1</to>
+				</connector>
+				<aux font_style="italic" font_weight="bold" x="140" y="767" name="Secondary Fossil Energy Output 2"/>
+				<connector uid="58" angle="261.206" isee:autocreated="true">
+					<from>fossil_energy</from>
+					<to>Secondary_Fossil_Energy_Output_2</to>
+				</connector>
+				<aux font_style="italic" font_weight="bold" x="140" y="841" name="Secondary Fossil Energy Output 3"/>
+				<connector uid="59" angle="267.79" isee:autocreated="true">
+					<from>fossil_energy</from>
+					<to>Secondary_Fossil_Energy_Output_3</to>
+				</connector>
+				<aux x="305.64" y="696" name="Fossil Energy Output Share, coal"/>
+				<connector uid="60" angle="0">
+					<from>Secondary_Fossil_Energy_Output_1</from>
+					<to>&quot;Fossil_Energy_Output_Share,_coal&quot;</to>
+				</connector>
+				<connector uid="61" angle="173.048">
+					<from>Total_Energy_Output</from>
+					<to>&quot;Fossil_Energy_Output_Share,_coal&quot;</to>
+				</connector>
+				<aux x="305.64" y="767" name="Fossil Energy Output\nShare, oil"/>
+				<aux x="305.64" y="841" name="Fossil Energy Output\nShare, gas"/>
+				<connector uid="62" angle="8.36589">
+					<from>Secondary_Fossil_Energy_Output_2</from>
+					<to>&quot;Fossil_Energy_Output_Share,_oil&quot;</to>
+				</connector>
+				<connector uid="63" angle="8.61565">
+					<from>Secondary_Fossil_Energy_Output_3</from>
+					<to>&quot;Fossil_Energy_Output_Share,_gas&quot;</to>
+				</connector>
+				<connector uid="64" angle="187.765">
+					<from>Total_Energy_Output</from>
+					<to>&quot;Fossil_Energy_Output_Share,_oil&quot;</to>
+				</connector>
+				<connector uid="65" angle="201.048">
+					<from>Total_Energy_Output</from>
+					<to>&quot;Fossil_Energy_Output_Share,_gas&quot;</to>
 				</connector>
 			</view>
 		</views>
@@ -6245,6 +6856,8 @@ This is total energy production of both fossil and renewable</doc>
 				<connect2 to='"Primary_Fossil_Energy_(FUEL)_3"' from="fossil_energy_coal.Primary_Fossil_Energy_FUEL"/>
 				<connect to="energy_investments_coal.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_coal.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
 				<connect2 to="energy_investments_coal.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_coal.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
+				<connect to="energy_supply.Secondary_Fossil_Energy_Output_1" from="fossil_energy_coal.Secondary_Fossil_Energy_Output"/>
+				<connect2 to="energy_supply.Secondary_Fossil_Energy_Output_1" from="fossil_energy_coal.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy.Secondary_Fossil_Energy_Output_3" from="fossil_energy_coal.Secondary_Fossil_Energy_Output"/>
 				<connect2 to="Secondary_Fossil_Energy_Output_3" from="fossil_energy_coal.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy_coal.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
@@ -6268,6 +6881,8 @@ This is total energy production of both fossil and renewable</doc>
 				<connect2 to='"Primary_Fossil_Energy_(FUEL)_1"' from="fossil_energy_oil.Primary_Fossil_Energy_FUEL"/>
 				<connect to="energy_investments_oil.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_oil.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
 				<connect2 to="energy_investments_oil.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_oil.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
+				<connect to="energy_supply.Secondary_Fossil_Energy_Output_2" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
+				<connect2 to="energy_supply.Secondary_Fossil_Energy_Output_2" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy.Secondary_Fossil_Energy_Output_1" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
 				<connect2 to="Secondary_Fossil_Energy_Output_1" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy_oil.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
@@ -6291,6 +6906,8 @@ This is total energy production of both fossil and renewable</doc>
 				<connect2 to='"Primary_Fossil_Energy_(FUEL)_2"' from="fossil_energy_gas.Primary_Fossil_Energy_FUEL"/>
 				<connect to="energy_investments_gas.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_gas.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
 				<connect2 to="energy_investments_gas.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA" from="fossil_energy_gas.Secondary_Fossil_Energy_Capital_Damaged_due_to_STA"/>
+				<connect to="energy_supply.Secondary_Fossil_Energy_Output_3" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
+				<connect2 to="energy_supply.Secondary_Fossil_Energy_Output_3" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy.Secondary_Fossil_Energy_Output_2" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
 				<connect2 to="Secondary_Fossil_Energy_Output_2" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy_gas.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
@@ -6456,7 +7073,7 @@ This is total energy production of both fossil and renewable</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="3" isee:page_rows="3" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="3" isee:page_rows="3" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -7226,7 +7843,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="277.143" isee:scroll_y="230" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="2" isee:page_rows="2" isee:scroll_y="151.429" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -9770,7 +10387,7 @@ Calibrate to energy provision from renewable sources</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:scroll_x="150" zoom="160" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="2" isee:scroll_x="75" zoom="160" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -10784,7 +11401,7 @@ Wind_and_Solar_Energy_Capacity * gWh_to_TWh</eqn>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:page_rows="2" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="2" isee:page_rows="2" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
