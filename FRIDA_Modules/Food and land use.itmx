@@ -4176,7 +4176,10 @@ Calibration Parameter: forest land &amp; CO2 emissions from land cover change &a
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>climate_response_1980+(1-INIT(Surface_Temperature_Anomaly)/Surface_Temperature_Anomaly)*climate_response_sensitivity</eqn>
+				<eqn>MAX(0, 
+climate_response_1980+(1-INIT(Surface_Temperature_Anomaly)/
+Surface_Temperature_Anomaly)*climate_response_sensitivity
+)</eqn>
 				<units>dmnl</units>
 			</aux>
 			<stock name="fast soil carbon cropland">
