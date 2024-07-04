@@ -457,12 +457,12 @@
 				<connect2 to="Investments_in_Solar_and_Wind_Energy_Capacity" from="energy_investments.Investments_in_Solar_and_Wind_Energy_Capacity"/>
 				<connect to="wind_and_solar_energy.Investments_in_Solar_and_Wind_Energy_Capacity" from="energy_investments.Investments_in_Solar_and_Wind_Energy_Capacity"/>
 				<connect2 to="wind_and_solar_energy.Investments_in_Solar_and_Wind_Energy_Capacity" from="energy_investments.Investments_in_Solar_and_Wind_Energy_Capacity"/>
+				<connect to="Energy.Investments_in_Fossil_Energy_Capital" from="energy_investments.Investments_in_Fossil_Energy_Capital"/>
+				<connect2 to="Investments_in_Fossil_Energy_Capital" from="energy_investments.Investments_in_Fossil_Energy_Capital"/>
 				<connect to="fossil_energy.Investments_in_Fossil_Energy_Capital_oil_and_gas" from="energy_investments.Investments_in_Fossil_Energy_Capital_oil_and_gas"/>
 				<connect2 to="fossil_energy.Investments_in_Fossil_Energy_Capital_oil_and_gas" from="energy_investments.Investments_in_Fossil_Energy_Capital_oil_and_gas"/>
 				<connect to="Energy.Investments_in_Fossil_Fuel_Extraction_Capital" from="energy_investments.Investments_in_Fossil_Fuel_Extraction_Capital"/>
 				<connect2 to="Investments_in_Fossil_Fuel_Extraction_Capital" from="energy_investments.Investments_in_Fossil_Fuel_Extraction_Capital"/>
-				<connect to="Energy.Investments_in_Fossil_Energy_Capital" from="energy_investments.Investments_in_Fossil_Energy_Capital"/>
-				<connect2 to="Investments_in_Fossil_Energy_Capital" from="energy_investments.Investments_in_Fossil_Energy_Capital"/>
 				<connect to="Energy.Investments_in_Renewables" from="energy_investments.Investments_in_Renewables"/>
 				<connect2 to="Investments_in_Renewables" from="energy_investments.Investments_in_Renewables"/>
 				<connect to="fossil_energy_oil.Investments_in_Fossil_Energy_Capital" from="energy_investments.Oil_Investments_in_Fossil_Energy_Capital"/>
@@ -542,8 +542,8 @@
 				<connect2 to="energy_investments.Cost_of_Extra_Energy_Output_through_Capital_per_Unit_1" from="fossil_energy_gas.Cost_of_Extra_Energy_Output_through_Capital_per_Unit"/>
 				<connect to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_1" from="fossil_energy_gas.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
 				<connect2 to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_1" from="fossil_energy_gas.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to="fossil_energy_gas.Greenness_of_Policy" from="Energy.Greenness_of_Policy"/>
 				<connect2 to="fossil_energy_gas.Greenness_of_Policy" from="Greenness_of_Policy"/>
 				<connect to="fossil_energy_gas.Investments_in_Fossil_Energy_Capital" from="energy_investments.Gas_Investments_in_Fossil_Energy_Capital"/>
@@ -554,8 +554,8 @@
 				<connect2 to="energy_investments.Cost_of_Extra_Energy_Output_through_Capital_per_Unit_2" from="fossil_energy_oil.Cost_of_Extra_Energy_Output_through_Capital_per_Unit"/>
 				<connect to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_2" from="fossil_energy_oil.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
 				<connect2 to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_2" from="fossil_energy_oil.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to="fossil_energy_oil.Greenness_of_Policy" from="Energy.Greenness_of_Policy"/>
 				<connect2 to="fossil_energy_oil.Greenness_of_Policy" from="Greenness_of_Policy"/>
 				<connect to="fossil_energy_oil.Investments_in_Fossil_Energy_Capital" from="energy_investments.Oil_Investments_in_Fossil_Energy_Capital"/>
@@ -877,7 +877,7 @@
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="12" isee:page_rows="7" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="12" isee:page_rows="7" isee:scroll_y="75" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -2366,7 +2366,7 @@ All_Energy_Investments*EXP(-Social_Discount_Rate*(TIME-Policy_Start_Year_1))</eq
 				<eqn>Coal_Investments_in_Fossil_Fuel_Extraction_Capital+Oil_Investments_in_Fossil_Fuel_Extraction_Capital+Gas_Investments_in_Fossil_Fuel_Extraction_Capital</eqn>
 				<units>$/Year</units>
 			</aux>
-			<aux name="Investments in Fossil Energy Capital" access="output" isee:autocreated="true">
+			<aux name="Investments in Fossil\nEnergy Capital" access="output" isee:autocreated="true">
 				<doc>${Calibrated}
 </doc>
 				<dimensions>
@@ -2463,6 +2463,7 @@ adaptive_energy_investments_differntiating_factor * Differentiating_Relative_Ene
 			</aux>
 			<aux name="priority spread">
 				<eqn>40</eqn>
+				<range min="0" max="41"/>
 				<units>kWh/($*Years)</units>
 			</aux>
 			<aux name="shape">
@@ -2704,7 +2705,7 @@ adaptive_energy_investments_differntiating_factor * Differentiating_Relative_Ene
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="7" isee:page_rows="4" isee:scroll_x="1620" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="7" isee:page_rows="6" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -2939,7 +2940,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 				<aux x="801.787" y="960.692" name="Share of Energy Expenditure\ninvested in fuel extraction, gas"/>
 				<aux x="918.215" y="921.901" name="Share of Energy Expenditure\ninvested in fossil energy, gas"/>
 				<aux background="#FFAAFF" x="477.358" y="540.852" name="Investments in Fossil\nFuel Extraction Capital"/>
-				<aux background="#FFAAFF" x="570.821" y="476.394" name="Investments in Fossil Energy Capital"/>
+				<aux background="#FFAAFF" x="570.821" y="476.394" name="Investments in Fossil\nEnergy Capital"/>
 				<connector uid="301" angle="270">
 					<from>Investments_in_Fossil_Fuel_Extraction_Capital</from>
 					<to>Share_of_Energy_Expenditure_invested_in_fuel_extraction</to>
@@ -3001,8 +3002,8 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 					<from>SWITCH_use_adaptive_energy_controls</from>
 					<to>adaptive_change_in_investments</to>
 				</connector>
-				<text_box font_size="72pt" uid="331" x="2140.58" y="57.59" width="771.667" height="90.5">Energy Supply Balance</text_box>
-				<stacked_container uid="332" x="2074.67" y="164.42" width="563" height="314.048">
+				<text_box font_size="72pt" uid="331" x="153.913" y="2400.92" width="771.667" height="90.5">Energy Supply Balance</text_box>
+				<stacked_container uid="332" x="88.0033" y="2507.75" width="563" height="314.048">
 					<graph width="563" height="314.048" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="energy_demand.demand_for_energy[*]"/>
@@ -3012,8 +3013,8 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 						</plot>
 					</graph>
 				</stacked_container>
-				<text_box font_size="72pt" uid="333" x="2857.77" y="490.93" width="841.667" height="99.6667">Investments And Shares</text_box>
-				<stacked_container uid="334" x="2649.33" y="164.42" width="557" height="314.048">
+				<text_box font_size="72pt" uid="333" x="871.103" y="2834.26" width="841.667" height="99.6667">Investments And Shares</text_box>
+				<stacked_container uid="334" x="662.663" y="2507.75" width="557" height="314.048">
 					<graph width="557" height="314.048" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="red" pen_style="dot_dashed" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Energy.Energy_Balance_Target"/>
@@ -3024,7 +3025,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 						</plot>
 					</graph>
 				</stacked_container>
-				<stacked_container uid="335" x="3223" y="164.41" width="554.666" height="314.054">
+				<stacked_container uid="335" x="1236.33" y="2507.74" width="554.666" height="314.054">
 					<graph width="554.666" height="314.054" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="false" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
 							<entity name="energy_supply_vs_demand.Energy_Balance[*]"/>
@@ -3032,7 +3033,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 						</plot>
 					</graph>
 				</stacked_container>
-				<stacked_container uid="336" x="2682.17" y="596.77" width="560" height="617.667">
+				<stacked_container uid="336" x="695.503" y="2940.1" width="560" height="617.667">
 					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="black" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Coal_Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
@@ -3066,7 +3067,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 						</plot>
 					</graph>
 				</stacked_container>
-				<stacked_container uid="337" x="3253.83" y="596.77" width="560" height="617.667">
+				<stacked_container uid="337" x="1267.16" y="2940.1" width="560" height="617.667">
 					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="black" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name='"Share_of_Energy_Expenditure_invested_in_fuel_extraction,_coal"[1]'/>
@@ -3100,8 +3101,8 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 						</plot>
 					</graph>
 				</stacked_container>
-				<text_box font_size="72pt" uid="338" x="3157" y="1271.93" width="475" height="99.6667">Energy Output</text_box>
-				<stacked_container uid="339" x="2856.33" y="1376.6" width="560" height="617.667">
+				<text_box font_size="72pt" uid="338" x="1170.33" y="3615.26" width="475" height="99.6667">Energy Output</text_box>
+				<stacked_container uid="339" x="869.663" y="3719.93" width="560" height="617.667">
 					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="fossil_energy_coal.Secondary_Fossil_Energy_Output[1]"/>
@@ -3126,7 +3127,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 						</plot>
 					</graph>
 				</stacked_container>
-				<stacked_container uid="340" x="3434.67" y="1376.6" width="560" height="617.667">
+				<stacked_container uid="340" x="1448" y="3719.93" width="560" height="617.667">
 					<graph width="560" height="617.667" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:stacked_area_max="1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="black" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name='energy_supply."Fossil_Energy_Output_Share,_coal"[1]'/>
@@ -3227,7 +3228,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 					<from>Cost_of_Extra_Energy_Output_through_Capital_per_Unit_6</from>
 					<to>cost_to_build_per_unit</to>
 				</connector>
-				<stacked_container uid="359" x="2092.5" y="594.148" width="553.333" height="618.698">
+				<stacked_container uid="359" x="105.833" y="2937.48" width="553.333" height="618.698">
 					<graph width="553.333" height="618.698" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="black" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="investment_by_source[1, Coal_fuel_extraction]"/>
@@ -3261,7 +3262,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 						</plot>
 					</graph>
 				</stacked_container>
-				<stacked_container uid="361" x="2130" y="1409.76" width="622.5" height="580">
+				<stacked_container uid="361" x="143.333" y="3753.1" width="622.5" height="580">
 					<graph width="622.5" height="580" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="black" pen_style="dashed" isee:keep_zero_visible="true" pen_width="2" index="0" show_y_axis="true">
 							<entity name="fossil_energy_coal.cost_of_extra_energy_output_through_fuel_extraction_per_unit[1]"/>
@@ -3463,7 +3464,7 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 					<from>investment_by_source</from>
 					<to>Investments_in_Nuclear_Capacity</to>
 				</connector>
-				<text_box font_size="72pt" uid="449" x="2181.77" y="1300.93" width="493.667" height="99.6667">Marginal Costs</text_box>
+				<text_box font_size="72pt" uid="449" x="195.103" y="3644.26" width="493.667" height="99.6667">Marginal Costs</text_box>
 				<stacked_container uid="450" x="305.93" y="1301">
 					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
@@ -3534,6 +3535,104 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 				</connector>
 				<aux x="144.286" y="1696.43" name="initial relative supply missmatch"/>
 				<aux x="190.613" y="1111.43" name="value 1"/>
+				<stacked_container uid="460" x="2234.25" y="433.28">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="share_of_GDP_invested_in_fuel_extraction[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="461" x="2170.25" y="1344.25">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Coal_Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="462" x="2618.5" y="1353">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Oil_Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="463" x="2996.5" y="1353">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Gas_Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="464" x="2234.25" y="1063.14">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Coal_Investments_in_Fossil_Energy_Capital[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="467" x="2839.25" y="1063.86">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Investments_in_Fossil_Energy_Capital_oil_and_gas[*]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="468" x="2368.75" y="740.638">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Investments_in_Fossil_Fuel_Extraction_Capital[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="470" x="2780" y="744.138">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Investments_in_Fossil_Energy_Capital[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="469" x="3391.25" y="1025.19">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Investments_in_Solar_and_Wind_Energy_Capacity[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="471" x="3798.75" y="740.638">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Investments_in_Other_Capacity[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="472" x="3813.75" y="1031.9">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Investments_in_Nuclear_Capacity[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="473" x="3402.5" y="748.858">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Investments_in_Hydropower_Energy_Capcity[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="474" x="3267.5" y="445.715">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Investments_in_Renewables[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="475" x="2685" y="433.28">
+					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="red" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="share_of_GDP_invested_in_fossil_energy[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
 			</view>
 		</views>
 	</model>
@@ -3667,8 +3766,8 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 				<connect2 to="energy_investments.Cost_of_Extra_Energy_Output_through_Capital_per_Unit_1" from="fossil_energy_gas.Cost_of_Extra_Energy_Output_through_Capital_per_Unit"/>
 				<connect to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_1" from="fossil_energy_gas.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
 				<connect2 to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_1" from="fossil_energy_gas.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to="energy_supply.Secondary_Fossil_Energy_Output_3" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
 				<connect2 to="Secondary_Fossil_Energy_Output_3" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy_gas.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
@@ -3685,8 +3784,8 @@ https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_c
 				<connect2 to="energy_investments.Cost_of_Extra_Energy_Output_through_Capital_per_Unit_2" from="fossil_energy_oil.Cost_of_Extra_Energy_Output_through_Capital_per_Unit"/>
 				<connect to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_2" from="fossil_energy_oil.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
 				<connect2 to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_2" from="fossil_energy_oil.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to="energy_supply.Secondary_Fossil_Energy_Output_2" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
 				<connect2 to="Secondary_Fossil_Energy_Output_2" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
 				<connect to="fossil_energy_oil.damage_rate_of_energy_capital_from_STA" from="Damages.damage_rate_of_energy_capital_from_STA"/>
@@ -4356,8 +4455,8 @@ This is total energy production of both fossil and renewable</doc>
 				<connect2 to="energy_investments.Cost_of_Extra_Energy_Output_through_Capital_per_Unit_2" from="fossil_energy_oil.Cost_of_Extra_Energy_Output_through_Capital_per_Unit"/>
 				<connect to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_2" from="fossil_energy_oil.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
 				<connect2 to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_2" from="fossil_energy_oil.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to='fossil_energy."Primary_Fossil_Energy_(FUEL)_1"' from="fossil_energy_oil.Primary_Fossil_Energy_FUEL"/>
 				<connect2 to='"Primary_Fossil_Energy_(FUEL)_1"' from="fossil_energy_oil.Primary_Fossil_Energy_FUEL"/>
 				<connect to="energy_supply.Secondary_Fossil_Energy_Output_2" from="fossil_energy_oil.Secondary_Fossil_Energy_Output"/>
@@ -4383,8 +4482,8 @@ This is total energy production of both fossil and renewable</doc>
 				<connect2 to="energy_investments.Cost_of_Extra_Energy_Output_through_Capital_per_Unit_1" from="fossil_energy_gas.Cost_of_Extra_Energy_Output_through_Capital_per_Unit"/>
 				<connect to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_1" from="fossil_energy_gas.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
 				<connect2 to="energy_investments.cost_of_extra_energy_output_through_fuel_extraction_per_unit_1" from="fossil_energy_gas.cost_of_extra_energy_output_through_fuel_extraction_per_unit"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to='fossil_energy."Primary_Fossil_Energy_(FUEL)_2"' from="fossil_energy_gas.Primary_Fossil_Energy_FUEL"/>
 				<connect2 to='"Primary_Fossil_Energy_(FUEL)_2"' from="fossil_energy_gas.Primary_Fossil_Energy_FUEL"/>
 				<connect to="energy_supply.Secondary_Fossil_Energy_Output_3" from="fossil_energy_gas.Secondary_Fossil_Energy_Output"/>
@@ -4556,7 +4655,7 @@ This is total energy production of both fossil and renewable</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="3" isee:page_rows="3" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="3" isee:page_rows="3" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -4735,14 +4834,14 @@ This is total energy production of both fossil and renewable</doc>
 				<stacked_container uid="87" x="920" y="1371">
 					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
-							<entity name="fossil_energy_oil.Fossil_Energy_Extraction_Carbon[*]"/>
+							<entity name="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon[*]"/>
 						</plot>
 					</graph>
 				</stacked_container>
 				<stacked_container uid="88" x="1298" y="1371">
 					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
-							<entity name="fossil_energy_gas.Fossil_Energy_Extraction_Carbon[*]"/>
+							<entity name="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon[*]"/>
 						</plot>
 					</graph>
 				</stacked_container>
@@ -5947,11 +6046,11 @@ value in MIND 0.5</doc>
 					<dim name="Run"/>
 				</dimensions>
 				<eqn>cumulative_extracted_fossil_fuels_in_1980</eqn>
-				<inflow>Fossil_Energy_Extraction_Carbon</inflow>
+				<inflow>Fossil_Fuel_Extraction_Carbon</inflow>
 				<non_negative/>
 				<units>GtC</units>
 			</stock>
-			<flow name="Fossil Energy Extraction Carbon" access="output" isee:autocreated="true">
+			<flow name="Fossil Fuel Extraction Carbon" access="output" isee:autocreated="true">
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
@@ -5967,7 +6066,7 @@ https://ourworldindata.org/grapher/fossil-fuel-production</doc>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>MAX(1e-10, Fossil_Energy_Extraction_Carbon/Carbon_Intensity)</eqn>
+				<eqn>MAX(1e-10, Fossil_Fuel_Extraction_Carbon/Carbon_Intensity)</eqn>
 				<units>zJ/Year</units>
 			</aux>
 			<aux name="Primary Fossil Energy\nScaling Parameter">
@@ -6068,7 +6167,7 @@ maximum_increase_of_capital_coefficient_in_fossil_resource_sector
 (maximum_increase_of_capital_coefficient_in_fossil_resource_sector - Fossil_Extraction_Accumulated_Knowledge) 
 *
 (
-(Fossil_Energy_Extraction_Carbon/INIT(Fossil_Energy_Extraction_Carbon))^learning_elasticity_of_the_resource_sector - 1
+(Fossil_Fuel_Extraction_Carbon/INIT(Fossil_Fuel_Extraction_Carbon))^learning_elasticity_of_the_resource_sector - 1
 )</eqn>
 				<units>extractionknowledge/Year</units>
 			</flow>
@@ -6532,7 +6631,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				<aux color="blue" x="1245.96" y="641.307" name="Total Factor Productivity\nFossil Energy"/>
 				<aux color="black" font_color="black" x="1366.54" y="795.827" name="share of primary energy\nin fossil energy"/>
 				<stock x="761.39" y="753.627" name="Extracted Carbon in Fossil\nEnergy Resources"/>
-				<flow label_side="bottom" x="681.889" y="753.627" name="Fossil Energy Extraction Carbon">
+				<flow label_side="bottom" x="681.889" y="753.627" name="Fossil Fuel Extraction Carbon">
 					<pts>
 						<pt x="624.887" y="753.627"/>
 						<pt x="738.89" y="753.627"/>
@@ -6540,7 +6639,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				</flow>
 				<aux background="#FFAAFF" label_side="right" label_angle="315" x="952.33" y="621.067" name="Primary Fossil Energy FUEL"/>
 				<connector uid="1" angle="47.1157">
-					<from>Fossil_Energy_Extraction_Carbon</from>
+					<from>Fossil_Fuel_Extraction_Carbon</from>
 					<to>Primary_Fossil_Energy_FUEL</to>
 				</connector>
 				<connector uid="3" angle="342.271">
@@ -6570,7 +6669,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				<aux background="#55FFFF" label_side="top" x="652.49" y="841.227" name="Fossil Fuel Extraction\nProductivity"/>
 				<connector uid="8" angle="71.4483">
 					<from>Fossil_Fuel_Extraction_Productivity</from>
-					<to>Fossil_Energy_Extraction_Carbon</to>
+					<to>Fossil_Fuel_Extraction_Carbon</to>
 				</connector>
 				<aux color="black" background="white" font_color="black" label_side="bottom" x="820.31" y="1071.35" name="Initial extraction\ncosts"/>
 				<aux background="white" x="914.85" y="1035.35" name="Marginal Extraction Costs"/>
@@ -6661,7 +6760,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				</connector>
 				<aux background="white" x="1345.75" y="524.767" name="initial fossil energy capital"/>
 				<connector uid="22" angle="220.399">
-					<from>Fossil_Energy_Extraction_Carbon</from>
+					<from>Fossil_Fuel_Extraction_Carbon</from>
 					<to>Change_in_Fossil_Learning_by_Doing_Effect</to>
 				</connector>
 				<aux color="black" font_color="black" label_side="bottom" x="465.167" y="1033.18" name="initial fossil\nextraction knowledge"/>
@@ -6681,7 +6780,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				</connector>
 				<connector uid="26" angle="269.395">
 					<from>Fossil_Fuel_Extraction_Capital</from>
-					<to>Fossil_Energy_Extraction_Carbon</to>
+					<to>Fossil_Fuel_Extraction_Carbon</to>
 				</connector>
 				<stock x="1350.21" y="493.817" name="Fossil Energy Capital"/>
 				<connector uid="27" angle="23.0731">
@@ -7022,11 +7121,11 @@ value in MIND 0.5</doc>
 					<dim name="Run"/>
 				</dimensions>
 				<eqn>cumulative_extracted_fossil_fuels_in_1980</eqn>
-				<inflow>Fossil_Energy_Extraction_Carbon</inflow>
+				<inflow>Fossil_Fuel_Extraction_Carbon</inflow>
 				<non_negative/>
 				<units>GtC</units>
 			</stock>
-			<flow name="Fossil Energy Extraction Carbon" access="output" isee:autocreated="true">
+			<flow name="Fossil Fuel Extraction Carbon" access="output" isee:autocreated="true">
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
@@ -7042,7 +7141,7 @@ https://ourworldindata.org/grapher/fossil-fuel-production</doc>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>MAX(1e-10, Fossil_Energy_Extraction_Carbon/Carbon_Intensity)</eqn>
+				<eqn>MAX(1e-10, Fossil_Fuel_Extraction_Carbon/Carbon_Intensity)</eqn>
 				<units>zJ/Year</units>
 			</aux>
 			<aux name="Primary Fossil Energy\nScaling Parameter">
@@ -7143,7 +7242,7 @@ maximum_increase_of_capital_coefficient_in_fossil_resource_sector
 (maximum_increase_of_capital_coefficient_in_fossil_resource_sector - Fossil_Extraction_Accumulated_Knowledge) 
 *
 (
-(Fossil_Energy_Extraction_Carbon/INIT(Fossil_Energy_Extraction_Carbon))^learning_elasticity_of_the_resource_sector - 1
+(Fossil_Fuel_Extraction_Carbon/INIT(Fossil_Fuel_Extraction_Carbon))^learning_elasticity_of_the_resource_sector - 1
 )</eqn>
 				<units>extractionknowledge/Year</units>
 			</flow>
@@ -7607,7 +7706,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				<aux color="blue" x="1245.96" y="641.307" name="Total Factor Productivity\nFossil Energy"/>
 				<aux color="black" font_color="black" x="1366.54" y="795.827" name="share of primary energy\nin fossil energy"/>
 				<stock x="761.39" y="753.627" name="Extracted Carbon in Fossil\nEnergy Resources"/>
-				<flow label_side="bottom" x="681.889" y="753.627" name="Fossil Energy Extraction Carbon">
+				<flow label_side="bottom" x="681.889" y="753.627" name="Fossil Fuel Extraction Carbon">
 					<pts>
 						<pt x="624.887" y="753.627"/>
 						<pt x="738.89" y="753.627"/>
@@ -7615,7 +7714,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				</flow>
 				<aux background="#FFAAFF" x="952.33" y="621.067" name="Primary Fossil Energy FUEL"/>
 				<connector uid="1" angle="47.1157">
-					<from>Fossil_Energy_Extraction_Carbon</from>
+					<from>Fossil_Fuel_Extraction_Carbon</from>
 					<to>Primary_Fossil_Energy_FUEL</to>
 				</connector>
 				<connector uid="3" angle="342.271">
@@ -7645,7 +7744,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				<aux background="#55FFFF" label_side="top" x="652.49" y="841.227" name="Fossil Fuel Extraction\nProductivity"/>
 				<connector uid="8" angle="71.4483">
 					<from>Fossil_Fuel_Extraction_Productivity</from>
-					<to>Fossil_Energy_Extraction_Carbon</to>
+					<to>Fossil_Fuel_Extraction_Carbon</to>
 				</connector>
 				<aux color="black" background="white" font_color="black" label_side="bottom" x="820.31" y="1071.35" name="Initial extraction\ncosts"/>
 				<aux background="white" x="914.85" y="1035.35" name="Marginal Extraction Costs"/>
@@ -7736,7 +7835,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				</connector>
 				<aux background="white" x="1345.75" y="524.767" name="initial fossil energy capital"/>
 				<connector uid="22" angle="220.399">
-					<from>Fossil_Energy_Extraction_Carbon</from>
+					<from>Fossil_Fuel_Extraction_Carbon</from>
 					<to>Change_in_Fossil_Learning_by_Doing_Effect</to>
 				</connector>
 				<aux color="black" font_color="black" label_side="bottom" x="465.167" y="1033.18" name="initial fossil\nextraction knowledge"/>
@@ -7756,7 +7855,7 @@ https://en.wikipedia.org/wiki/British_thermal_unit</doc>
 				</connector>
 				<connector uid="26" angle="269.395">
 					<from>Fossil_Fuel_Extraction_Capital</from>
-					<to>Fossil_Energy_Extraction_Carbon</to>
+					<to>Fossil_Fuel_Extraction_Carbon</to>
 				</connector>
 				<stock x="1350.21" y="493.817" name="Fossil Energy Capital"/>
 				<connector uid="27" angle="23.0731">
