@@ -99,7 +99,7 @@
 			<isee:threshold payoff="Full Payoff" val="70"/>
 		</isee:sensi_specs>
 	</isee:sensi_specs_list>
-	<isee:optimizer_specs_list active_index="0">
+	<isee:optimizer_specs_list active_index="10">
 		<isee:optimizer_specs name="Population Calibration" method="Powell" use_additional_starts_file="false" additional_starts="0" report_interval="1" confidence_range="0" maxiter="0">
 			<isee:parameter name="Population.Slope_of_Population_Damage_Function[1]" min="0" max="1" scaling="100"/>
 			<isee:parameter name="Population.infant_mortality_alpha" min="0" max="2" scaling="100000"/>
@@ -230,18 +230,6 @@
 			<isee:payoff name="HFC134a emissions" action="min"/>
 		</isee:optimizer_specs>
 		<isee:optimizer_specs name="Energy Fossil Fuels Optimization" method="Powell" use_additional_starts_file="false" additional_starts="0" report_interval="1" confidence_range="0" maxiter="0">
-			<isee:parameter name="energy_investments_coal.Investment_in_fuel_extraction_in_1980" min="70000000000" max="300000000000" scaling="1e-10"/>
-			<isee:parameter name='energy_investments_coal."Change_in_investments_in_fuel_extraction_per_decade_1980_-_2020"[*]' min="-100000000000" max="100000000000" scaling="1e-9"/>
-			<isee:parameter name="energy_investments_coal.Investment_in_fossil_energy_production_in_1980" min="20000000000" max="100000000000" scaling="1e-9"/>
-			<isee:parameter name='energy_investments_coal."Change_in_investments_in_fossil_energy_production_per_decade_1980_-_2020"[*]' min="-100000000000" max="100000000000" scaling="1e-8"/>
-			<isee:parameter name="energy_investments_oil.Investment_in_fuel_extraction_in_1980" min="50000000000" max="300000000000" scaling="1e-9"/>
-			<isee:parameter name='energy_investments_oil."Change_in_investments_in_fuel_extraction_per_decade_1980_-_2020"[*]' min="-100000000000" max="100000000000" scaling="1e-9"/>
-			<isee:parameter name="energy_investments_oil.Investment_in_fossil_energy_production_in_1980" min="20000000000" max="100000000000" scaling="1e-9"/>
-			<isee:parameter name='energy_investments_oil."Change_in_investments_in_fossil_energy_production_per_decade_1980_-_2020"[*]' min="-100000000000" max="100000000000" scaling="1e-8"/>
-			<isee:parameter name="energy_investments_gas.Investment_in_fuel_extraction_in_1980" min="50000000000" max="300000000000" scaling="1e-9"/>
-			<isee:parameter name='energy_investments_gas."Change_in_investments_in_fuel_extraction_per_decade_1980_-_2020"[*]' min="-10000000000" max="10000000000" scaling="1e-9"/>
-			<isee:parameter name="energy_investments_gas.Investment_in_fossil_energy_production_in_1980" min="20000000000" max="100000000000" scaling="1e-9"/>
-			<isee:parameter name='energy_investments_gas."Change_in_investments_in_fossil_energy_production_per_decade_1980_-_2020"[*]' min="-100000000000" max="100000000000" scaling="1e-8"/>
 			<isee:parameter name="fossil_energy_coal.Resource_base" min="0" max="5000" scaling="0.1"/>
 			<isee:parameter name="fossil_energy_coal.Primary_Fossil_Energy_Scaling_Parameter" min="0.1" max="2" scaling="100"/>
 			<isee:parameter name="fossil_energy_coal.Total_Factor_Productivity_Fossil_Energy" min="0.1" max="0.6" scaling="1000"/>
@@ -269,6 +257,13 @@
 			<isee:payoff name="Energy Demand Payoff" action="min"/>
 		</isee:optimizer_specs>
 		<isee:optimizer_specs name="Energy Non CO2 emissions Optimization" method="Powell" use_additional_starts_file="false" additional_starts="0" report_interval="1" confidence_range="0" maxiter="0"/>
+		<isee:optimizer_specs name="Energy Supply Demand" method="Powell" use_additional_starts_file="false" additional_starts="0" report_interval="1" confidence_range="0">
+			<isee:parameter name="energy_investments.adaptive_energy_investments_proportional_factor" min="-100" max="10"/>
+			<isee:parameter name="energy_investments.adaptive_energy_investments_integrating_factor" min="-0.1" max="0.1" scaling="1000"/>
+			<isee:parameter name="energy_investments.baseline_energy_investments" min="10000000000" max="10000000000000" scaling="1e-10"/>
+			<isee:parameter name="energy_investments.initial_relative_supply_missmatch" min="-10" max="10" scaling="100"/>
+			<isee:payoff name="Energy Balance" action="max"/>
+		</isee:optimizer_specs>
 	</isee:optimizer_specs_list>
 	<isee:payoff_specs_list>
 		<isee:payoff_specs name="Full Payoff" calibration="true" recompute_weights="true" compare_tolerance="0" compare_type="ls" compare_run="-1">
@@ -531,27 +526,27 @@
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
 		</isee:payoff_specs>
-		<isee:payoff_specs name="Population Payoff" calibration="true" recompute_weights="true" compare_tolerance="0" compare_type="ls" compare_run="Calibration Data">
-			<isee:payoff_element name="Population.Population[1]" weight="0.000184938" compare_name="Population.Population[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.Aged_0_years[1]" weight="0.0850104" compare_name="Population.Aged_0_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.Aged_1_to_20_years[1]" weight="0.00038463" compare_name="Population.Aged_1_to_20_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.Aged_20_to_40_years[1]" weight="0.000845244" compare_name="Population.Aged_1_to_20_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.Aged_40_to_60_years[1]" weight="0.0401819" compare_name="Population.Aged_1_to_20_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.Aged_60_to_80_years[1]" weight="0.0334776" compare_name="Population.Aged_1_to_20_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.Aged_Over_80_years[1]" weight="0.0376383" compare_name="Population.Aged_1_to_20_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.deaths_0_years[1]" weight="1.42674" compare_name="Population.deaths_0_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.deaths_1_to_20_years[1]" weight="0.804447" compare_name="Population.deaths_1_to_20_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.deaths_20_to_40_years[1]" weight="3.62262" compare_name="Population.deaths_20_to_40_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.deaths_40_to_60_years[1]" weight="4.04135" compare_name="Population.deaths_40_to_60_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.deaths_60_to_80_years[1]" weight="0.548282" compare_name="Population.deaths_60_to_80_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.deaths_Over_80_years[1]" weight="2.36339" compare_name="Population.deaths_Over_80_years[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.Births[1]" weight="0.0887249" compare_name="Population.Births[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
-			<isee:payoff_element name="Population.total_deaths[1]" weight="0.0817509" compare_name="Population.total_deaths[1]" compare_run="Calibration Data" tolerance="0" type="ls"/>
+		<isee:payoff_specs name="Population Payoff" calibration="true" recompute_weights="true" compare_tolerance="0" compare_type="ls" compare_run="-1">
+			<isee:payoff_element name="Population.Population[1]" weight="0.000184938" compare_name="Population.Population[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.Aged_0_years[1]" weight="0.0850104" compare_name="Population.Aged_0_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.Aged_1_to_20_years[1]" weight="0.00038463" compare_name="Population.Aged_1_to_20_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.Aged_20_to_40_years[1]" weight="0.000845244" compare_name="Population.Aged_1_to_20_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.Aged_40_to_60_years[1]" weight="0.0401819" compare_name="Population.Aged_1_to_20_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.Aged_60_to_80_years[1]" weight="0.0334776" compare_name="Population.Aged_1_to_20_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.Aged_Over_80_years[1]" weight="0.0376383" compare_name="Population.Aged_1_to_20_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.deaths_0_years[1]" weight="1.42674" compare_name="Population.deaths_0_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.deaths_1_to_20_years[1]" weight="0.804447" compare_name="Population.deaths_1_to_20_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.deaths_20_to_40_years[1]" weight="3.62262" compare_name="Population.deaths_20_to_40_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.deaths_40_to_60_years[1]" weight="4.04135" compare_name="Population.deaths_40_to_60_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.deaths_60_to_80_years[1]" weight="0.548282" compare_name="Population.deaths_60_to_80_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.deaths_Over_80_years[1]" weight="2.36339" compare_name="Population.deaths_Over_80_years[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.Births[1]" weight="0.0887249" compare_name="Population.Births[1]" compare_run="-1" tolerance="0" type="ls"/>
+			<isee:payoff_element name="Population.total_deaths[1]" weight="0.0817509" compare_name="Population.total_deaths[1]" compare_run="-1" tolerance="0" type="ls"/>
 			<isee:payoff_element name="Population.female_population_literacy_percentage[1]" weight="0.592842">
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
 		</isee:payoff_specs>
-		<isee:payoff_specs name="Food and Land Use Payoff" calibration="true" recompute_weights="true" compare_tolerance="0" compare_type="ls" compare_run="Calibration Data">
+		<isee:payoff_specs name="Food and Land Use Payoff" calibration="true" recompute_weights="true" compare_tolerance="0" compare_type="ls" compare_run="-1">
 			<isee:payoff_element name="Land_Use.Forest_Land[1]" weight="0.029267">
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
@@ -661,7 +656,7 @@
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
 		</isee:payoff_specs>
-		<isee:payoff_specs name="HFC134a emissions" calibration="true" recompute_weights="true" compare_tolerance="0" compare_type="ls" compare_run="Calibration Data">
+		<isee:payoff_specs name="HFC134a emissions" calibration="true" recompute_weights="true" compare_tolerance="0" compare_type="ls" compare_run="-1">
 			<isee:payoff_element name="Emissions.HFC134a_emissions[1]" weight="3.23303e-7">
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
@@ -674,18 +669,6 @@
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
 			<isee:payoff_element name="energy_investments.Investments_in_Fossil_Energy_Capital_oil_and_gas[1]" weight="5.24003e-21">
-				<isee:time_range type="terminal_value"/>
-			</isee:payoff_element>
-			<isee:payoff_element name="energy_investments_coal.Investments_in_Fossil_Fuel_Extraction_Capital[1]" weight="7.66488e-22">
-				<isee:time_range type="terminal_value"/>
-			</isee:payoff_element>
-			<isee:payoff_element name="energy_investments_coal.Investments_in_Fossil_Energy_Capital[1]" weight="4.21307e-19">
-				<isee:time_range type="terminal_value"/>
-			</isee:payoff_element>
-			<isee:payoff_element name="energy_investments_oil.Investments_in_Fossil_Fuel_Extraction_Capital[1]" weight="8.36097e-23">
-				<isee:time_range type="terminal_value"/>
-			</isee:payoff_element>
-			<isee:payoff_element name="energy_investments_gas.Investments_in_Fossil_Fuel_Extraction_Capital[1]" weight="4.65898e-22">
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
 			<isee:payoff_element name="fossil_energy.conversion_efficiency_of_fossil_fuels_to_secondary_fossil_energy[1]" weight="13693">
@@ -712,15 +695,20 @@
 			<isee:payoff_element name="fossil_energy_coal.Fossil_Fuel_Extraction_Carbon[1]" weight="23.4122">
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
-			<isee:payoff_element name="fossil_energy_oil.Fossil_Energy_Extraction_Carbon[1]" weight="30.154">
+			<isee:payoff_element name="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon[1]" weight="30.154">
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
-			<isee:payoff_element name="fossil_energy_gas.Fossil_Energy_Extraction_Carbon[1]" weight="82.4797">
+			<isee:payoff_element name="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon[1]" weight="82.4797">
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
 		</isee:payoff_specs>
 		<isee:payoff_specs name="Energy Demand Payoff" calibration="true" recompute_weights="true" compare_tolerance="0" compare_type="ls" compare_run="-1">
 			<isee:payoff_element name="energy_demand.demand_for_energy[1]" weight="4.24714e-7">
+				<isee:time_range type="terminal_value"/>
+			</isee:payoff_element>
+		</isee:payoff_specs>
+		<isee:payoff_specs name="Energy Balance">
+			<isee:payoff_element name="energy_investments.cumulative_squared_relative_energy_supply_missmatch[*]" weight="-1">
 				<isee:time_range type="terminal_value"/>
 			</isee:payoff_element>
 		</isee:payoff_specs>
@@ -872,7 +860,12 @@
 			<eqn>1</eqn>
 			<alias>dmnl</alias>
 			<alias>unitless</alias>
-			<alias>fraction</alias>
+		</unit>
+		<unit name="MWh">
+			<eqn>MW * hour</eqn>
+		</unit>
+		<unit name="TW">
+			<eqn>Million*MW</eqn>
 		</unit>
 	</model_units>
 	<model>
@@ -883,6 +876,8 @@
 				<connect2 to="Greenness_of_Policy" from="Energy.Greenness_of_Policy"/>
 				<connect to="Finance.share_of_GDP_invested_in_Energy_1" from="Energy.share_of_GDP_invested_in_Energy"/>
 				<connect2 to="Finance.share_of_GDP_invested_in_Energy_1" from="Energy.share_of_GDP_invested_in_Energy"/>
+				<connect to="Emissions.SWITCH_couple_energy_and_climate" from="Energy.SWITCH_couple_energy_and_climate"/>
+				<connect2 to="Emissions.SWITCH_couple_energy_and_climate" from="Energy.SWITCH_couple_energy_and_climate"/>
 				<connect to="energy_demand.GDP_per_person" from="Population.GDP_per_person"/>
 				<connect2 to="energy_demand.GDP_per_person" from="Population.GDP_per_person"/>
 				<connect to="energy_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
@@ -897,8 +892,6 @@
 				<connect2 to="energy_demand.switch_only_economy_energy_damage" from="Society.switch_only_economy_energy_damage"/>
 				<connect to="energy_investments.GDP" from="GDP.GDP"/>
 				<connect2 to="energy_investments.GDP" from="GDP.GDP"/>
-				<connect to="energy_investments.Policy_Start_Year" from="Society.Policy_Start_Year"/>
-				<connect2 to="energy_investments.Policy_Start_Year" from="Society.Policy_Start_Year"/>
 				<connect to="energy_investments.Policy_Start_Year_1" from="Society.Policy_Start_Year"/>
 				<connect2 to="energy_investments.Policy_Start_Year_1" from="Society.Policy_Start_Year"/>
 				<connect to="energy_supply.Surface_Temperature_Anomaly" from="Temperature.Surface_Temperature_Anomaly"/>
@@ -909,16 +902,14 @@
 				<connect2 to="Damages.switch_only_economy_energy_damage" from="Society.switch_only_economy_energy_damage"/>
 				<connect to="Emissions.Fossil_Energy_Extraction_1" from="fossil_energy_coal.Fossil_Fuel_Extraction_Carbon"/>
 				<connect2 to="Emissions.Fossil_Energy_Extraction_1" from="fossil_energy_coal.Fossil_Fuel_Extraction_Carbon"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to="Finance.Energy_Balance" from="energy_supply_vs_demand.Energy_Balance"/>
 				<connect2 to="Finance.Energy_Balance" from="energy_supply_vs_demand.Energy_Balance"/>
 				<connect to="Emissions.Total_Energy_Output" from="energy_supply_vs_demand.Total_Energy_Output"/>
 				<connect2 to="Emissions.Total_Energy_Output" from="energy_supply_vs_demand.Total_Energy_Output"/>
-				<connect to="energy_supply_vs_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
-				<connect2 to="energy_supply_vs_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
 			</module>
 			<module name="Economy" isee:label="" url="r../FRIDA_Modules/Economy.itmx">
 				<format scale_by="auto"/>
@@ -959,14 +950,16 @@
 				<connect2 to="Population.Surface_Temperature_Anomaly" from="Temperature.Surface_Temperature_Anomaly"/>
 				<connect to="Emissions.Fossil_Energy_Extraction_1" from="fossil_energy_coal.Fossil_Fuel_Extraction_Carbon"/>
 				<connect2 to="Emissions.Fossil_Energy_Extraction_1" from="fossil_energy_coal.Fossil_Fuel_Extraction_Carbon"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to="Emissions.GDP_per_person" from="Population.GDP_per_person"/>
 				<connect2 to="Emissions.GDP_per_person" from="Population.GDP_per_person"/>
 				<connect to="Emissions.Population" from="Population.Population"/>
 				<connect2 to="Emissions.Population" from="Population.Population"/>
+				<connect to="Emissions.SWITCH_couple_energy_and_climate" from="Energy.SWITCH_couple_energy_and_climate"/>
+				<connect2 to="Emissions.SWITCH_couple_energy_and_climate" from="Energy.SWITCH_couple_energy_and_climate"/>
 				<connect to="Emissions.Total_Energy_Output" from="energy_supply_vs_demand.Total_Energy_Output"/>
 				<connect2 to="Emissions.Total_Energy_Output" from="energy_supply_vs_demand.Total_Energy_Output"/>
 				<connect to="Finance.crop_balance_1" from="Crop.crop_balance"/>
@@ -994,12 +987,8 @@
 				<format scale_by="auto"/>
 				<connect to="energy_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
 				<connect2 to="energy_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
-				<connect to="energy_investments.Policy_Start_Year" from="Society.Policy_Start_Year"/>
-				<connect2 to="energy_investments.Policy_Start_Year" from="Society.Policy_Start_Year"/>
 				<connect to="energy_investments.Policy_Start_Year_1" from="Society.Policy_Start_Year"/>
 				<connect2 to="energy_investments.Policy_Start_Year_1" from="Society.Policy_Start_Year"/>
-				<connect to="energy_supply_vs_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
-				<connect2 to="energy_supply_vs_demand.Policy_Start_Year" from="Society.Policy_Start_Year"/>
 				<connect to="Food_Demand.policy_start_year" from="Society.Policy_Start_Year"/>
 				<connect2 to="Food_Demand.policy_start_year" from="Society.Policy_Start_Year"/>
 				<connect to="Land_Use.Policy_Start_Year" from="Society.Policy_Start_Year"/>
@@ -1042,7 +1031,7 @@
 				<connect2 to="Population.Surface_Temperature_Anomaly" from="Temperature.Surface_Temperature_Anomaly"/>
 			</module>
 			<isee:placeholder name="Calibrated Variables">
-				<eqn>GDP.GDP[1] + Government.government_consumption[1] + Finance.total_investment[1] + Circular_Flow.private_consumption[1] + Population.GDP_per_person[1] + Population.Aged_0_years[1] + Population.Aged_1_to_20_years[1] + Population.Aged_20_to_40_years[1] + Population.Aged_40_to_60_years[1] + Population.Aged_60_to_80_years[1] + Population.Aged_Over_80_years[1] + Population.deaths_0_years[1] + Population.deaths_1_to_20_years[1] + Population.deaths_20_to_40_years[1] + Population.deaths_40_to_60_years[1] + Population.deaths_60_to_80_years[1] + Population.deaths_Over_80_years[1] + Population.Population[1] + Population.fertility[1] + Population.female_population_literacy_percentage[1] + Population.Births[1] + Population.total_deaths[1] + Energy_Balance_Model.Surface_Temperature_Anomaly[1] + CO2_Forcing.CO2_Effective_Radiative_Forcing[1] + CH4_Forcing.CH4_Effective_Radiative_Forcing[1] + N2O_Forcing.N2O_Effective_Radiative_Forcing[1] + CO2_Forcing.Atmospheric_CO2_Concentration[1] + N2O_Forcing.Atmospheric_N2O_Concentration[1] + CH4_Forcing.Atmospheric_CH4_Concentration[1] + Emissions.Total_CH4_Emissions[1] + Emissions.Total_CO2_Emissions[1] + Emissions.Total_SO2_Emissions[1] + Emissions.Total_N2O_Emissions[1] + Emissions.N2O_Emissions_from_Food_and_Land_Use[1] + Emissions.CO2_emissions_from_Food_and_Land_Use[1] + Emissions.CH4_Emissions_from_Food_and_Land_Use[1] + Emissions.SO2_Emissions_from_Food_and_Land_Use[1] + Emissions.CO2_emissions_from_Energy[1] + Emissions.CH4_emissions_from_Energy[1] + Emissions.N2O_emissions_from_Energy[1] + Emissions.SO2_emissions_from_Energy[1] + Emissions.N2O_emissions_from_Other[1] + Emissions.CO2_Emissions_from_Other[1] + Emissions.CH4_emissions_from_Other[1] + Land_Use.Forest_Land[1] + Crop.crop_production[1] + Land_Use.Cropland[1] + Freshwater.total_water_withdrawal[1] + Livestock.livestock_production[1] + Freshwater.fraction_of_water_withdrawal_for_agriculture[1] + Food_Demand.fraction_of_crops_for_livestock[1] + Freshwater.available_water_supply[1] + Land_Nutrients.man_made_fertilizer_use[1] + Land_Nutrients.manure_fertilizer_use[1] + Land_Nutrients.fertilizer_use[1] + Soil.soil_carbon_loss_cropland[1] + fossil_energy_coal.Secondary_Fossil_Energy_Output[1] + renewable_energy.Renewable_Energy_Output[1] + wind_and_solar_energy.Wind_and_Solar_Energy_Output[1] + hydropower_energy.Hydropower_Energy_Output[1] + nuclear_energy.Nuclear_Energy_Output[1] + other_energy.Other_Energy_Output[1] + energy_supply.Total_Energy_Output[1] + renewable_energy.Total_Renewable_Energy_Capacity[1] + wind_and_solar_energy.Wind_and_Solar_Energy_Capacity[1] + hydropower_energy.Hydropower_Energy_Capacity[1] + other_energy.Other_Energy_Capacity[1] + nuclear_energy.Nuclear_Energy_Capacity[1] + fossil_energy_coal.Primary_Fossil_Energy_FUEL[1] + energy_demand.demand_for_energy[1] + energy_investments_coal.Investments_in_Fossil_Fuel_Extraction_Capital[1] + energy_investments_coal.Investments_in_Fossil_Energy_Capital[1] + energy_investments.Investments_in_Solar_and_Wind_Energy_Capacity[1] + energy_investments.Investments_in_Renewables[1] + energy_investments.Investments_in_Hydropower_Energy_Capcity[1] + energy_investments.Investments_in_Nuclear_Capacity[1] + energy_investments.Investments_in_Other_Capacity[1] + wind_and_solar_energy.&quot;Installation_Cost_of_S&amp;W_capacity&quot;[1] + energy_investments.share_of_GDP_invested_in_fuel_extraction[1] + energy_investments.&quot;share_of_GDP_invested_in_Energy_w/o_fuel&quot;[1] + fossil_energy_coal.conversion_efficiency_of_fossil_fuels_to_secondary_fossil_energy[1] + Sea_Level.SLR_thermosteric[1] + Sea_Level.SLR_from_mountain_glaciers[1] + Sea_Level.SLR_from_Greenland_Ice_Sheet[1] + Sea_Level.SLR_from_Antarctic_Ice_Sheet[1] + Sea_Level.SLR_from_LWS[1] + Sea_Level.global_SLR[1] + Emissions.HFC134a_emissions[1]</eqn>
+				<eqn>GDP.GDP[1] + Government.government_consumption[1] + Finance.total_investment[1] + Circular_Flow.private_consumption[1] + Population.GDP_per_person[1] + Population.Aged_0_years[1] + Population.Aged_1_to_20_years[1] + Population.Aged_20_to_40_years[1] + Population.Aged_40_to_60_years[1] + Population.Aged_60_to_80_years[1] + Population.Aged_Over_80_years[1] + Population.deaths_0_years[1] + Population.deaths_1_to_20_years[1] + Population.deaths_20_to_40_years[1] + Population.deaths_40_to_60_years[1] + Population.deaths_60_to_80_years[1] + Population.deaths_Over_80_years[1] + Population.Population[1] + Population.fertility[1] + Population.female_population_literacy_percentage[1] + Population.Births[1] + Population.total_deaths[1] + Energy_Balance_Model.Surface_Temperature_Anomaly[1] + CO2_Forcing.CO2_Effective_Radiative_Forcing[1] + CH4_Forcing.CH4_Effective_Radiative_Forcing[1] + N2O_Forcing.N2O_Effective_Radiative_Forcing[1] + CO2_Forcing.Atmospheric_CO2_Concentration[1] + N2O_Forcing.Atmospheric_N2O_Concentration[1] + CH4_Forcing.Atmospheric_CH4_Concentration[1] + Emissions.Total_CH4_Emissions[1] + Emissions.Total_CO2_Emissions[1] + Emissions.Total_SO2_Emissions[1] + Emissions.Total_N2O_Emissions[1] + Emissions.N2O_Emissions_from_Food_and_Land_Use[1] + Emissions.CO2_emissions_from_Food_and_Land_Use[1] + Emissions.CH4_Emissions_from_Food_and_Land_Use[1] + Emissions.SO2_Emissions_from_Food_and_Land_Use[1] + Emissions.CO2_emissions_from_Energy[1] + Emissions.CH4_emissions_from_Energy[1] + Emissions.N2O_emissions_from_Energy[1] + Emissions.SO2_emissions_from_Energy[1] + Emissions.N2O_emissions_from_Other[1] + Emissions.CO2_Emissions_from_Other[1] + Emissions.CH4_emissions_from_Other[1] + Land_Use.Forest_Land[1] + Crop.crop_production[1] + Land_Use.Cropland[1] + Freshwater.total_water_withdrawal[1] + Livestock.livestock_production[1] + Freshwater.fraction_of_water_withdrawal_for_agriculture[1] + Food_Demand.fraction_of_crops_for_livestock[1] + Freshwater.available_water_supply[1] + Land_Nutrients.man_made_fertilizer_use[1] + Land_Nutrients.manure_fertilizer_use[1] + Land_Nutrients.fertilizer_use[1] + Soil.soil_carbon_loss_cropland[1] + fossil_energy_coal.Secondary_Fossil_Energy_Output[1] + renewable_energy.Renewable_Energy_Output[1] + wind_and_solar_energy.Wind_and_Solar_Energy_Output[1] + hydropower_energy.Hydropower_Energy_Output[1] + nuclear_energy.Nuclear_Energy_Output[1] + other_energy.Other_Energy_Output[1] + energy_supply.Total_Energy_Output[1] + renewable_energy.Total_Renewable_Energy_Capacity[1] + wind_and_solar_energy.Wind_and_Solar_Energy_Capacity[1] + hydropower_energy.Hydropower_Energy_Capacity[1] + other_energy.Other_Energy_Capacity[1] + nuclear_energy.Nuclear_Energy_Capacity[1] + fossil_energy_coal.Primary_Fossil_Energy_FUEL[1] + energy_demand.demand_for_energy[1] + energy_investments.Investments_in_Solar_and_Wind_Energy_Capacity[1] + energy_investments.Investments_in_Renewables[1] + energy_investments.Investments_in_Hydropower_Energy_Capcity[1] + energy_investments.Investments_in_Nuclear_Capacity[1] + energy_investments.Investments_in_Other_Capacity[1] + wind_and_solar_energy.&quot;Installation_Cost_of_S&amp;W_capacity&quot;[1] + energy_investments.share_of_GDP_invested_in_fuel_extraction[1] + energy_investments.&quot;share_of_GDP_invested_in_Energy_w/o_fuel&quot;[1] + fossil_energy_coal.conversion_efficiency_of_fossil_fuels_to_secondary_fossil_energy[1] + Sea_Level.SLR_thermosteric[1] + Sea_Level.SLR_from_mountain_glaciers[1] + Sea_Level.SLR_from_Greenland_Ice_Sheet[1] + Sea_Level.SLR_from_Antarctic_Ice_Sheet[1] + Sea_Level.SLR_from_LWS[1] + Sea_Level.global_SLR[1] + Emissions.HFC134a_emissions[1]</eqn>
 			</isee:placeholder>
 			<isee:placeholder name="Variables for Energy">
 				<dimensions>
@@ -1344,10 +1333,10 @@ Lorem ipsum dolor sit amet</text_box>
 				<connect2 to="Emissions.clearing_forests_for_crops" from="Land_Use.clearing_forests_for_crops"/>
 				<connect to="Emissions.Fossil_Energy_Extraction_1" from="fossil_energy_coal.Fossil_Fuel_Extraction_Carbon"/>
 				<connect2 to="Emissions.Fossil_Energy_Extraction_1" from="fossil_energy_coal.Fossil_Fuel_Extraction_Carbon"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Energy_Extraction_Carbon"/>
-				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
-				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Energy_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_2" from="fossil_energy_oil.Fossil_Fuel_Extraction_Carbon"/>
+				<connect to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
+				<connect2 to="Emissions.Fossil_Energy_Extraction_3" from="fossil_energy_gas.Fossil_Fuel_Extraction_Carbon"/>
 				<connect to="Emissions.GDP_per_person" from="Population.GDP_per_person"/>
 				<connect2 to="Emissions.GDP_per_person" from="Population.GDP_per_person"/>
 				<connect to="Emissions.livestock_production" from="Livestock.livestock_production"/>
@@ -1362,6 +1351,8 @@ Lorem ipsum dolor sit amet</text_box>
 				<connect2 to="Emissions.Recovering_Forest" from="Land_Use.Recovering_Forest"/>
 				<connect to="Emissions.soil_carbon_emissions_GtC" from="Soil.soil_carbon_emissions_GtC"/>
 				<connect2 to="Emissions.soil_carbon_emissions_GtC" from="Soil.soil_carbon_emissions_GtC"/>
+				<connect to="Emissions.SWITCH_couple_energy_and_climate" from="Energy.SWITCH_couple_energy_and_climate"/>
+				<connect2 to="Emissions.SWITCH_couple_energy_and_climate" from="Energy.SWITCH_couple_energy_and_climate"/>
 				<connect to="Emissions.Total_Energy_Output" from="energy_supply_vs_demand.Total_Energy_Output"/>
 				<connect2 to="Emissions.Total_Energy_Output" from="energy_supply_vs_demand.Total_Energy_Output"/>
 				<connect to="Crop.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
@@ -1632,7 +1623,7 @@ Lorem ipsum dolor sit amet</text_box>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="12.51pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
