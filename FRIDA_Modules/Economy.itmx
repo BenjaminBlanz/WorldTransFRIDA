@@ -5,7 +5,7 @@
 		<name>Economy</name>
 		<uuid>fcee5f0e-014c-46f8-aae7-88ab3d659635</uuid>
 		<vendor>isee systems, inc.</vendor>
-		<product version="3.6.1" isee:build_number="3282" isee:saved_by_v1="true" lang="en">Stella Architect</product>
+		<product version="3.7" isee:build_number="3335" isee:saved_by_v1="true" lang="en">Stella_Architect</product>
 	</header>
 	<sim_specs isee:sim_duration="0" isee:run_prefix="Run" isee:simulation_delay="0" isee:restore_on_start="false" isee:save_interval="1" method="Euler" time_units="Year" isee:instantaneous_flows="false" isee:ignore_module_errors="false" isee:strict_units="false" isee:loop_scores="false" isee:loop_exhaustive_allowed="1000">
 		<start>1980</start>
@@ -42,11 +42,6 @@
 	<isee:number_format_extenders/>
 	<default_format scale_by="1"/>
 	<model_units>
-		<unit name="Years">
-			<eqn/>
-			<alias>yr</alias>
-			<alias>year</alias>
-		</unit>
 		<unit name="G$">
 			<eqn>Giga*$</eqn>
 		</unit>
@@ -169,11 +164,6 @@
 			<eqn/>
 			<alias>orders</alias>
 		</unit>
-		<unit name="Dimensionless">
-			<eqn>1</eqn>
-			<alias>dmnl</alias>
-			<alias>unitless</alias>
-		</unit>
 		<unit name="Kelvin">
 			<eqn/>
 			<alias>K</alias>
@@ -194,22 +184,16 @@
 		<unit name="euros per year per person">
 			<eqn>EUR/(person-year)</eqn>
 		</unit>
-		<unit name="G">
-			<eqn>Giga</eqn>
+		<unit name="Dimensionless">
+			<eqn>1</eqn>
+			<alias>dmnl</alias>
+			<alias>unitless</alias>
 		</unit>
-		<unit name="GtCO2">
-			<eqn>Giga*tCO2</eqn>
+		<unit name="MWh">
+			<eqn>MW * hour</eqn>
 		</unit>
-		<unit name="GtCH4">
-			<eqn>Giga*tCH4</eqn>
-		</unit>
-		<unit name="GtN2O">
-			<eqn>Giga*tN2O</eqn>
-		</unit>
-		<unit name="Dollar">
-			<eqn>$</eqn>
-			<alias>Dollars</alias>
-			<alias>$s</alias>
+		<unit name="TW">
+			<eqn>Million*MW</eqn>
 		</unit>
 	</model_units>
 	<model name="Economy">
@@ -345,8 +329,8 @@
 				<connect2 to="Circular_Flow.safe_interest_2" from="Finance.safe_interest"/>
 				<connect to="Circular_Flow.safe_bank_assets_1" from="Finance.safe_bank_assets"/>
 				<connect2 to="Circular_Flow.safe_bank_assets_1" from="Finance.safe_bank_assets"/>
-				<connect to="energy_demand.Surface_Temperature_Anomaly_1" from="Finance.Surface_Temperature_Anomaly_1"/>
-				<connect2 to="energy_demand.Surface_Temperature_Anomaly_1" from="Finance.Surface_Temperature_Anomaly_1"/>
+				<connect to=".SWITCH_couple_energy_and_economy" from="Finance.SWITCH_couple_energy_and_economy"/>
+				<connect2 to=".SWITCH_couple_energy_and_economy" from="Finance.SWITCH_couple_energy_and_economy"/>
 				<connect to="energy_demand.switch_for_all_climate_damage" from="Finance.switch_for_all_climate_damage"/>
 				<connect2 to="energy_demand.switch_for_all_climate_damage" from="Finance.switch_for_all_climate_damage"/>
 				<connect to=".switch_only_economy_energy_damage_1" from="Finance.switch_only_economy_energy_damage_1"/>
@@ -377,6 +361,8 @@
 				<connect2 to="Finance.share_of_GDP_invested_in_Energy_1" from="Energy.share_of_GDP_invested_in_Energy"/>
 				<connect to="Finance.Surface_Temperature_Anomaly_1" from="Temperature.Surface_Temperature_Anomaly"/>
 				<connect2 to="Finance.Surface_Temperature_Anomaly_1" from="Temperature.Surface_Temperature_Anomaly"/>
+				<connect to="Finance.SWITCH_couple_energy_and_economy" from="Energy.SWITCH_couple_energy_and_economy"/>
+				<connect2 to="Finance.SWITCH_couple_energy_and_economy" from="Energy.SWITCH_couple_energy_and_economy"/>
 				<connect to="Finance.switch_for_all_climate_damage" from="Society.switch_for_all_climate_damage"/>
 				<connect2 to="Finance.switch_for_all_climate_damage" from="Society.switch_for_all_climate_damage"/>
 				<connect to="Finance.switch_only_economy_energy_damage_1" from="Society.switch_only_economy_energy_damage"/>
@@ -461,7 +447,7 @@
 				<isee:iframe color="black" border_style="solid" text_align="left" border_width="thin" background="white" vertical_text_align="top" font_size="12pt"/>
 				<isee:financial_table color="black" header_text_decoration="none" header_font_weight="bold" hide_border="false" font_size="12pt" first_column_width="250" background="#E0E0E0" text_align="right" header_text_border_style="none" auto_fit="true" header_text_border_color="black" other_column_width="100" header_font_size="14pt" header_text_border_width="thin" header_font_style="normal" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_text_padding="2"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="2" isee:page_rows="3" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="2" isee:page_rows="3" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="12.51pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1847,7 +1833,7 @@
 					<dim name="Run"/>
 				</dimensions>
 				<eqn>energy_and_food_adjusted_bank_investment_growth_target+(max_change_in_bank_investment_growth_target*effect_of_gdp_growth_on_bank_investment*
-effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth)</eqn>
+switching_historical_vs_dynamic_energy_investment_gdp_stuff)</eqn>
 				<units>dmnl/year</units>
 			</aux>
 			<aux name="max change in\nbank investment\ngrowth target">
@@ -1976,13 +1962,6 @@ effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth)</
 				<eqn>66700
 {73959,043422}</eqn>
 				<units>b$</units>
-			</aux>
-			<aux name="energy and food adjusted\nbank investment\ngrowth target">
-				<dimensions>
-					<dim name="Run"/>
-				</dimensions>
-				<eqn>normal_bank_investment_growth_target*effect_of_energy_supply_demand_balance_on_investment_growth*effect_of_crop_balance_on_investment_growth*effect_of_technological_water_discovery_on_investment_growth</eqn>
-				<units>1/year</units>
 			</aux>
 			<aux name="effect of energy\nsupply demand\nbalance on investment growth">
 				<dimensions>
@@ -2267,6 +2246,51 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 				<range min="-0.1" max="0"/>
 				<units>dmnl</units>
 			</aux>
+			<aux name="SWITCH couple\nenergy and economy" access="output" throughput="true" isee:autocreated="true">
+				<eqn>0</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="historical effect of energy\nsupply demand\nbalance on investment growth">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>1</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="switching historical\nvs dynamic energy investment gdp stuff">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>IF SWITCH_couple_energy_and_economy = 1 THEN
+effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth
+ELSE
+historical_effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="historical effect of share of GDP invested\nin energy vs expectation\non investment growth">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>1</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="energy and food adjusted\nbank investment\ngrowth target">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>normal_bank_investment_growth_target*switching_historical_vs_dynamic*effect_of_crop_balance_on_investment_growth*effect_of_technological_water_discovery_on_investment_growth</eqn>
+				<units>1/Years</units>
+			</aux>
+			<aux name="switching historical vs dynamic">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>IF SWITCH_couple_energy_and_economy = 1 THEN
+effect_of_energy_supply_demand_balance_on_investment_growth
+ELSE
+historical_effect_of_energy_supply_demand_balance_on_investment_growth</eqn>
+				<units>dmnl</units>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -2316,7 +2340,7 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="3" isee:page_rows="3" isee:scroll_x="78" isee:scroll_y="480" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="3" isee:page_rows="3" isee:scroll_x="30" isee:scroll_y="229.286" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -2640,20 +2664,7 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 					<from>initial_recent_GDP_growth_rate</from>
 					<to>recent_GDP_growth_rate</to>
 				</connector>
-				<aux x="488.998" y="1053.08" name="energy and food adjusted\nbank investment\ngrowth target"/>
-				<connector uid="56" angle="356.556">
-					<from>normal_bank_investment_growth_target</from>
-					<to>energy_and_food_adjusted_bank_investment_growth_target</to>
-				</connector>
-				<connector uid="57" angle="80.7459">
-					<from>energy_and_food_adjusted_bank_investment_growth_target</from>
-					<to>indicated_bank_investment_growth_rate</to>
-				</connector>
-				<aux x="573.664" y="1137.57" name="effect of energy\nsupply demand\nbalance on investment growth"/>
-				<connector uid="59" angle="135.06">
-					<from>effect_of_energy_supply_demand_balance_on_investment_growth</from>
-					<to>energy_and_food_adjusted_bank_investment_growth_target</to>
-				</connector>
+				<aux x="570" y="1216" name="effect of energy\nsupply demand\nbalance on investment growth"/>
 				<aux x="816.08" y="1169.71" name="expectation of share of GDP invested in energy"/>
 				<aux x="1126" y="1236.61" name="share of gdp invested in\nenergy expectation\nformation time"/>
 				<connector uid="61" angle="162.999">
@@ -2670,17 +2681,8 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 					<from>sensitivity_of_effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth</from>
 					<to>effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth</to>
 				</connector>
-				<connector uid="65" angle="149.851">
-					<pts>
-						<pt x="685.075" y="1128.05"/>
-						<pt x="561.429" y="1056.14"/>
-						<pt x="509.902" y="962.019"/>
-					</pts>
-					<from>effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth</from>
-					<to>indicated_bank_investment_growth_rate</to>
-				</connector>
-				<aux x="558.286" y="1237.57" name="sensitivity of effect of energy\nsupply demand\nbalance on investment growth"/>
-				<connector uid="66" angle="85.0008">
+				<aux x="600.429" y="1437.57" name="sensitivity of effect of energy\nsupply demand\nbalance on investment growth"/>
+				<connector uid="66" angle="97.8197">
 					<from>sensitivity_of_effect_of_energy_supply_demand_balance_on_investment_growth</from>
 					<to>effect_of_energy_supply_demand_balance_on_investment_growth</to>
 				</connector>
@@ -2689,10 +2691,6 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 				<connector uid="67" angle="46.3453">
 					<from>sensitivity_of_effect_of_crop_balance_on_investment_growth</from>
 					<to>effect_of_crop_balance_on_investment_growth</to>
-				</connector>
-				<connector uid="69" angle="52.055">
-					<from>effect_of_crop_balance_on_investment_growth</from>
-					<to>energy_and_food_adjusted_bank_investment_growth_target</to>
 				</connector>
 				<aux label_side="right" label_angle="315" x="1451.16" y="648.047" name="risky bank assets"/>
 				<aux x="1451.16" y="563.417" name="safe bank assets"/>
@@ -2759,12 +2757,12 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 					<from>crop_balance_1</from>
 					<to>effect_of_crop_balance_on_investment_growth</to>
 				</connector>
-				<aux font_style="italic" font_weight="bold" x="883" y="1327" name="share of GDP invested in Energy 1"/>
-				<connector uid="113" angle="115.017">
+				<aux font_style="italic" font_weight="bold" x="1021.57" y="1320.57" name="share of GDP invested in Energy 1"/>
+				<connector uid="113" angle="143.716">
 					<from>share_of_GDP_invested_in_Energy_1</from>
 					<to>expectation_of_share_of_GDP_invested_in_energy</to>
 				</connector>
-				<connector uid="114" angle="138.013">
+				<connector uid="114" angle="150.233">
 					<from>share_of_GDP_invested_in_Energy_1</from>
 					<to>effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth</to>
 				</connector>
@@ -2774,8 +2772,8 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 					<from>Surface_Temperature_Anomaly_1</from>
 					<to>effect_of_STA_on_failure_rate</to>
 				</connector>
-				<aux font_style="italic" font_weight="bold" x="716" y="1289" name="Energy Balance"/>
-				<connector uid="117" angle="133.227">
+				<aux font_style="italic" font_weight="bold" x="720.286" y="1409.57" name="Energy Balance"/>
+				<connector uid="117" angle="127.825">
 					<from>Energy_Balance</from>
 					<to>effect_of_energy_supply_demand_balance_on_investment_growth</to>
 				</connector>
@@ -2848,10 +2846,74 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 					<from>sensitivity_of_effect_of_technological_water_discovery_on_investment_growth</from>
 					<to>effect_of_technological_water_discovery_on_investment_growth</to>
 				</connector>
+				<aux font_style="italic" font_weight="bold" x="618.429" y="1641.14" name="SWITCH couple\nenergy and economy"/>
+				<aux x="533.711" y="1334.57" name="historical effect of energy\nsupply demand\nbalance on investment growth"/>
+				<aux x="588" y="1061.57" name="switching historical\nvs dynamic energy investment gdp stuff"/>
+				<connector uid="156" angle="121.467">
+					<from>effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth</from>
+					<to>switching_historical_vs_dynamic_energy_investment_gdp_stuff</to>
+				</connector>
+				<connector uid="157" angle="126.853">
+					<from>switching_historical_vs_dynamic_energy_investment_gdp_stuff</from>
+					<to>indicated_bank_investment_growth_rate</to>
+				</connector>
+				<aux x="758.143" y="1285.43" name="historical effect of share of GDP invested\nin energy vs expectation\non investment growth"/>
+				<connector uid="159" angle="127.237">
+					<from>historical_effect_of_share_of_GDP_invested_in_energy_vs_expectation_on_investment_growth</from>
+					<to>switching_historical_vs_dynamic_energy_investment_gdp_stuff</to>
+				</connector>
+				<connector uid="160" angle="58.8426">
+					<from>SWITCH_couple_energy_and_economy</from>
+					<to>switching_historical_vs_dynamic_energy_investment_gdp_stuff</to>
+				</connector>
+				<aux x="488.998" y="1053.08" name="energy and food adjusted\nbank investment\ngrowth target"/>
 				<connector uid="144" angle="23.8222">
 					<from>effect_of_technological_water_discovery_on_investment_growth</from>
 					<to>energy_and_food_adjusted_bank_investment_growth_target</to>
 				</connector>
+				<connector uid="69" angle="52.055">
+					<from>effect_of_crop_balance_on_investment_growth</from>
+					<to>energy_and_food_adjusted_bank_investment_growth_target</to>
+				</connector>
+				<connector uid="56" angle="356.556">
+					<from>normal_bank_investment_growth_target</from>
+					<to>energy_and_food_adjusted_bank_investment_growth_target</to>
+				</connector>
+				<aux x="498.714" y="1128.29" name="switching historical vs dynamic"/>
+				<connector uid="155" angle="139.755">
+					<from>SWITCH_couple_energy_and_economy</from>
+					<to>switching_historical_vs_dynamic</to>
+				</connector>
+				<connector uid="152" angle="120.964">
+					<from>historical_effect_of_energy_supply_demand_balance_on_investment_growth</from>
+					<to>switching_historical_vs_dynamic</to>
+				</connector>
+				<connector uid="161" angle="129.102">
+					<from>effect_of_energy_supply_demand_balance_on_investment_growth</from>
+					<to>switching_historical_vs_dynamic</to>
+				</connector>
+				<connector uid="162" angle="95.3797">
+					<from>switching_historical_vs_dynamic</from>
+					<to>energy_and_food_adjusted_bank_investment_growth_target</to>
+				</connector>
+				<connector uid="163" angle="79.7539">
+					<from>energy_and_food_adjusted_bank_investment_growth_target</from>
+					<to>indicated_bank_investment_growth_rate</to>
+				</connector>
+				<stacked_container uid="168" x="1093.57" y="1563.57">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="switching_historical_vs_dynamic_energy_investment_gdp_stuff[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="169" x="1460.86" y="1563.57">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="switching_historical_vs_dynamic[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
 				<alias uid="32" x="933.417" y="586.88" width="18" height="18">
 					<of>loan_maturation_time</of>
 				</alias>
@@ -3008,7 +3070,7 @@ share_of_gdp_invested_in_energy_expectation_formation_time)</eqn>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="818" page_height="571" isee:scroll_x="102" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>

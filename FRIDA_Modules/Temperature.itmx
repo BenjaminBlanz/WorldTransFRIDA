@@ -307,6 +307,8 @@
 				<connect2 to="Crop.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
 				<connect to="Emissions.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
 				<connect2 to="Emissions.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
+				<connect to="energy_demand.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
+				<connect2 to="energy_demand.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
 				<connect to="Sea_Level.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
 				<connect2 to="Sea_Level.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
 				<connect to="Temperature.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
@@ -708,7 +710,7 @@
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="3" isee:page_rows="5" zoom="260" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="3" isee:page_rows="5" isee:scroll_y="213.462" zoom="260" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -986,7 +988,7 @@
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1048,7 +1050,9 @@
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>N2O_emissions_from_Other + N2O_emissions_from_Energy + N2O_Emissions_from_Food_and_Land_Use</eqn>
+				<eqn>N2O_emissions_from_Other + 
+switched_N2O_emissions_from_energy
+ + N2O_Emissions_from_Food_and_Land_Use</eqn>
 				<units>ktN2O/yr</units>
 			</aux>
 			<aux name="SO2 Baseline Emissions" access="output">
@@ -1061,7 +1065,7 @@
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>CH4_emissions_from_Energy + CH4_emissions_from_Other + CH4_Emissions_from_Food_and_Land_Use</eqn>
+				<eqn>switched_CH4_emissions_from_energy + CH4_emissions_from_Other + CH4_Emissions_from_Food_and_Land_Use</eqn>
 				<units>MtCH4/Year</units>
 			</aux>
 			<aux name="Total CO2 Emissions" access="output">
@@ -1070,7 +1074,7 @@
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>CO2_emissions_from_Energy + CO2_Emissions_from_Other + CO2_emissions_from_Food_and_Land_Use</eqn>
+				<eqn>switched_CO2_emissions_from_energy + CO2_Emissions_from_Other + CO2_emissions_from_Food_and_Land_Use</eqn>
 				<units>MtCO2/Year</units>
 			</aux>
 			<aux name="CH4 Baseline Emissions" access="output">
@@ -1083,7 +1087,7 @@
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>SO2_Emissions_from_Food_and_Land_Use + SO2_emissions_from_Energy</eqn>
+				<eqn>SO2_Emissions_from_Food_and_Land_Use + (IF SWITCH_couple_energy_and_climate = 1 THEN SO2_emissions_from_Energy ELSE historical_SO2_emissions_from_energy)</eqn>
 				<units>MtSO2/Year</units>
 			</aux>
 			<stock name="Mature Forest" isee:display_name="Mature_Forest" access="input">
@@ -1518,7 +1522,8 @@ Calibration Parameter: CO2 from energy and industry</doc>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>Total_Energy_Output/Population</eqn>
+				<eqn>switched_total_energy_output
+/Population</eqn>
 				<units>MWh/(p*year)</units>
 			</aux>
 			<aux name="baseline energy\nconsumption per capita">
@@ -1534,10 +1539,7 @@ Calibration Parameter: CO2 from energy and industry</doc>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>IF SWITCH_couple_energy_and_climate =1 THEN
-N2O_emissions_by_fuel_type[Run,Coal]+N2O_emissions_by_fuel_type[Run,Oil]+N2O_emissions_by_fuel_type[Run,Gas]
-ELSE
-0</eqn>
+				<eqn>N2O_emissions_by_fuel_type[Run,Coal]+N2O_emissions_by_fuel_type[Run,Oil]+N2O_emissions_by_fuel_type[Run,Gas]</eqn>
 				<units>ktN2O/year</units>
 			</aux>
 			<aux name="CO2 emissions from Energy">
@@ -1546,9 +1548,7 @@ Calibration from FRIDA 0.1 , but in principle should be equal to extracted carbo
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>IF SWITCH_couple_energy_and_climate =1 THEN (Fossil_Energy_Extraction_1+Fossil_Energy_Extraction_2+Fossil_Energy_Extraction_3)*GtC_to_MtCO2
-ELSE
-0</eqn>
+				<eqn> (Fossil_Energy_Extraction_1+Fossil_Energy_Extraction_2+Fossil_Energy_Extraction_3)*GtC_to_MtCO2</eqn>
 				<units>MtCO2/Year</units>
 			</aux>
 			<aux name="SO2 emissions from Energy">
@@ -1558,10 +1558,7 @@ Calibration from FRIDA 0.1 or from MIND</doc>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>IF SWITCH_couple_energy_and_climate =1 THEN
-SO2_emissions_by_fuel_type[Run,Coal]+SO2_emissions_by_fuel_type[Run,Oil]+SO2_emissions_by_fuel_type[Run,Gas]
-ELSE
-0</eqn>
+				<eqn>SO2_emissions_by_fuel_type[Run,Coal]+SO2_emissions_by_fuel_type[Run,Oil]+SO2_emissions_by_fuel_type[Run,Gas]</eqn>
 				<units>MtSO2/Year</units>
 			</aux>
 			<aux name="SO2 emissions by fuel type">
@@ -1792,15 +1789,75 @@ coupling_factor_of_fossil_fuels_and_N2O_emissions[Gas]</eqn>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>IF SWITCH_couple_energy_and_climate =1 THEN
-CH4_emissions_by_fuel_type[Run,Coal]+CH4_emissions_by_fuel_type[Run,Oil]+CH4_emissions_by_fuel_type[Run,Gas]
-ELSE
-0</eqn>
+				<eqn>CH4_emissions_by_fuel_type[Run,Coal]+CH4_emissions_by_fuel_type[Run,Oil]+CH4_emissions_by_fuel_type[Run,Gas]</eqn>
 				<units>MtCH4/year</units>
 			</aux>
-			<aux name="SWITCH couple energy and climate" access="input">
+			<aux name="historical CO2\nemissions from energy">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>0</eqn>
+				<units>MtCO2/Year</units>
+			</aux>
+			<aux name="historical CH4\nemissions from Energy">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>0</eqn>
+				<units>MtCH4/Year</units>
+			</aux>
+			<aux name="historical N2O\nemissions from energy">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>0</eqn>
+				<units>ktN2O/yr</units>
+			</aux>
+			<aux name="historical SO2\nemissions from energy">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>0</eqn>
+				<units>MtSO2/Year</units>
+			</aux>
+			<aux name="SWITCH couple\nenergy and climate" access="input">
 				<eqn>0</eqn>
 				<units>dmnl</units>
+			</aux>
+			<aux name="historical total energy output">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>1</eqn>
+				<units>TWh/Year</units>
+			</aux>
+			<aux name="switched CO2 emissions from energy">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>(IF SWITCH_couple_energy_and_climate = 1 THEN CO2_emissions_from_Energy ELSE historical_CO2_emissions_from_energy)</eqn>
+				<units>MtCO2/Year</units>
+			</aux>
+			<aux name="switched N2O emissions from energy">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>(IF SWITCH_couple_energy_and_climate = 1 THEN N2O_emissions_from_Energy ELSE historical_N2O_emissions_from_energy)</eqn>
+				<units>ktN2O/yr</units>
+			</aux>
+			<aux name="switched CH4 emissions from energy">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>(IF SWITCH_couple_energy_and_climate = 1 THEN CH4_emissions_from_Energy ELSE historical_CH4_emissions_from_Energy)</eqn>
+				<units>MtCH4/Year</units>
+			</aux>
+			<aux name="switched total energy output">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>(IF SWITCH_couple_energy_and_climate THEN  Total_Energy_Output ELSE historical_total_energy_output)</eqn>
+				<units>TWh/Year</units>
 			</aux>
 		</variables>
 		<views>
@@ -1851,7 +1908,7 @@ ELSE
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1091" page_height="761" isee:page_cols="2" isee:page_rows="5" isee:scroll_y="1652.86" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="2" isee:page_rows="5" isee:scroll_y="2027.14" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1898,29 +1955,11 @@ ELSE
 				<aux x="191.667" y="309.625" name="CH4 Baseline Emissions"/>
 				<aux x="591.503" y="90.1667" name="Total SO2 Emissions"/>
 				<text_box uid="14" x="257.426" y="441.778" width="260" height="74.714">emissions connected to extraction comes from the assumption that everything extracted is burnt and ends up as emissions. Alternatively from a process persp. it should be linked to secondary fossil energy creation</text_box>
-				<connector uid="31" angle="345.964">
-					<from>
-						<alias uid="30"/>
-					</from>
-					<to>Total_CO2_Emissions</to>
-				</connector>
-				<connector uid="32" angle="200.41">
+				<connector uid="32" angle="197.765">
 					<from>
 						<alias uid="33"/>
 					</from>
 					<to>Total_SO2_Emissions</to>
-				</connector>
-				<connector uid="34" angle="272.963">
-					<from>
-						<alias uid="35"/>
-					</from>
-					<to>Total_N2O_Emissions</to>
-				</connector>
-				<connector uid="36" angle="335.653">
-					<from>
-						<alias uid="37"/>
-					</from>
-					<to>Total_CH4_Emissions</to>
 				</connector>
 				<aux x="458.83" y="1751.33" name="soil carbon emissions"/>
 				<aux background="white" label_side="right" x="735.83" y="1699.5" name="CO2 absorption\nper mha of recovering forests"/>
@@ -2090,7 +2129,7 @@ ELSE
 					<from>SO2_Emissions_from_Food_and_Land_Use</from>
 					<to>Total_SO2_Emissions</to>
 				</connector>
-				<connector uid="78" angle="200.095">
+				<connector uid="78" angle="191.027">
 					<from>
 						<alias uid="79"/>
 					</from>
@@ -2207,7 +2246,7 @@ ELSE
 					</from>
 					<to>Total_CH4_Emissions</to>
 				</connector>
-				<connector uid="112" angle="340.017">
+				<connector uid="112" angle="339.812">
 					<from>
 						<alias uid="113"/>
 					</from>
@@ -2265,10 +2304,6 @@ ELSE
 				<aux x="1304.17" y="360.833" name="energy consumption per\ncapita"/>
 				<connector uid="136" angle="77.7639">
 					<from>Population</from>
-					<to>energy_consumption_per_capita</to>
-				</connector>
-				<connector uid="137" angle="238.627">
-					<from>Total_Energy_Output</from>
 					<to>energy_consumption_per_capita</to>
 				</connector>
 				<aux x="1292.62" y="231.667" name="baseline energy\nconsumption per capita"/>
@@ -2412,22 +2447,118 @@ ELSE
 					<from>CO2_emissions_from_Energy</from>
 					<to>Accumulating_CO2_Emissions</to>
 				</connector>
-				<aux font_style="italic" font_weight="bold" x="1066.43" y="2205.71" name="SWITCH couple energy and climate"/>
-				<connector uid="167" angle="184.764">
+				<aux x="59.6667" y="115.959" name="historical CO2\nemissions from energy"/>
+				<aux x="68.3333" y="257.333" name="historical CH4\nemissions from Energy"/>
+				<aux x="681.143" y="163.667" name="historical N2O\nemissions from energy"/>
+				<aux x="802" y="37.5" name="historical SO2\nemissions from energy"/>
+				<aux font_style="italic" font_weight="bold" x="371.167" y="319.71" name="SWITCH couple\nenergy and climate"/>
+				<connector uid="177" angle="67.4433">
 					<from>SWITCH_couple_energy_and_climate</from>
-					<to>CO2_emissions_from_Energy</to>
+					<to>Total_SO2_Emissions</to>
 				</connector>
-				<connector uid="168" angle="210.018">
-					<from>SWITCH_couple_energy_and_climate</from>
-					<to>CH4_emissions_from_Energy</to>
+				<connector uid="181" angle="194.047">
+					<from>historical_SO2_emissions_from_energy</from>
+					<to>Total_SO2_Emissions</to>
 				</connector>
-				<connector uid="169" angle="223.668">
+				<stacked_container uid="183" x="423.69" y="552.143" width="350" height="382.143">
+					<graph width="350" height="382.143" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="N2O_emissions_from_Energy[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="184" x="205.167" y="668.047">
+					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="historical_N2O_emissions_from_energy[1]"/>
+						</plot>
+						<plot color="red" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="N2O_emissions_from_Energy[1]"/>
+							<isee:data name="upstream"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="185" x="50.6667" y="836.429" width="886.429" height="382.571">
+					<graph width="886.429" height="382.571" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Total_N2O_Emissions[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<aux x="1470" y="360.833" name="historical total energy output"/>
+				<aux x="125" y="108.167" name="switched CO2 emissions from energy"/>
+				<connector uid="188" angle="164.326">
 					<from>SWITCH_couple_energy_and_climate</from>
-					<to>N2O_emissions_from_Energy</to>
+					<to>switched_CO2_emissions_from_energy</to>
 				</connector>
-				<connector uid="170" angle="238.861">
+				<connector uid="189" angle="349.322">
+					<from>
+						<alias uid="30"/>
+					</from>
+					<to>switched_CO2_emissions_from_energy</to>
+				</connector>
+				<connector uid="190" angle="16.4425">
+					<from>switched_CO2_emissions_from_energy</from>
+					<to>Total_CO2_Emissions</to>
+				</connector>
+				<connector uid="191" angle="31.8015">
+					<from>historical_CO2_emissions_from_energy</from>
+					<to>switched_CO2_emissions_from_energy</to>
+				</connector>
+				<aux x="681.143" y="275.333" name="switched N2O emissions from energy"/>
+				<connector uid="192" angle="33.1473">
 					<from>SWITCH_couple_energy_and_climate</from>
-					<to>SO2_emissions_from_Energy</to>
+					<to>switched_N2O_emissions_from_energy</to>
+				</connector>
+				<connector uid="193" angle="345.574">
+					<from>
+						<alias uid="35"/>
+					</from>
+					<to>switched_N2O_emissions_from_energy</to>
+				</connector>
+				<connector uid="194" angle="295">
+					<from>historical_N2O_emissions_from_energy</from>
+					<to>switched_N2O_emissions_from_energy</to>
+				</connector>
+				<connector uid="195" angle="201.234">
+					<from>switched_N2O_emissions_from_energy</from>
+					<to>Total_N2O_Emissions</to>
+				</connector>
+				<aux x="81.4286" y="319.71" name="switched CH4 emissions from energy"/>
+				<connector uid="196" angle="205">
+					<from>SWITCH_couple_energy_and_climate</from>
+					<to>switched_CH4_emissions_from_energy</to>
+				</connector>
+				<connector uid="197" angle="301.42">
+					<from>
+						<alias uid="37"/>
+					</from>
+					<to>switched_CH4_emissions_from_energy</to>
+				</connector>
+				<connector uid="198" angle="306.856">
+					<from>historical_CH4_emissions_from_Energy</from>
+					<to>switched_CH4_emissions_from_energy</to>
+				</connector>
+				<connector uid="199" angle="55.419">
+					<from>switched_CH4_emissions_from_energy</from>
+					<to>Total_CH4_Emissions</to>
+				</connector>
+				<aux x="1377.86" y="412.857" name="switched total energy output"/>
+				<connector uid="200" angle="19.7136">
+					<from>SWITCH_couple_energy_and_climate</from>
+					<to>switched_total_energy_output</to>
+				</connector>
+				<connector uid="201" angle="308.726">
+					<from>Total_Energy_Output</from>
+					<to>switched_total_energy_output</to>
+				</connector>
+				<connector uid="202" angle="234.449">
+					<from>historical_total_energy_output</from>
+					<to>switched_total_energy_output</to>
+				</connector>
+				<connector uid="203" angle="169.777">
+					<from>switched_total_energy_output</from>
+					<to>energy_consumption_per_capita</to>
 				</connector>
 				<alias color="blue" background="#FFAA00" font_style="italic" uid="30" x="32.6667" y="39.3333" width="18" height="18">
 					<of>CO2_emissions_from_Energy</of>
@@ -3042,7 +3173,7 @@ kappa3 in Cummins et al 2020 https://doi.org/10.1175/JCLI-D-19-0589.1</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="2" isee:scroll_x="214" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:page_cols="2" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -4354,7 +4485,7 @@ Smith et al 2021 https://doi.org/10.1029/2020JD033622</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1120" page_height="784" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
