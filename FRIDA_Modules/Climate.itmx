@@ -11,6 +11,7 @@
 		<start>1980</start>
 		<stop>2100</stop>
 		<dt reciprocal="true">8</dt>
+		<run by="module" out_of_sector="true"/>
 	</sim_specs>
 	<dimensions>
 		<dim name="ClimateCase" size="11"/>

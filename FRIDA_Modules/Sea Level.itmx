@@ -5,12 +5,13 @@
 		<name>Sea Level</name>
 		<uuid>643eb335-6f33-4fad-86db-c00593fce9f9</uuid>
 		<vendor>isee systems, inc.</vendor>
-		<product version="3.6" isee:build_number="3247" isee:saved_by_v1="true" lang="en">Stella Architect</product>
+		<product version="3.7" isee:build_number="3335" isee:saved_by_v1="true" lang="en">Stella Architect</product>
 	</header>
 	<sim_specs isee:sim_duration="0" isee:run_prefix="Run" isee:simulation_delay="0" isee:restore_on_start="false" isee:save_interval="1" method="RK4" time_units="Year" isee:instantaneous_flows="false" isee:ignore_module_errors="false" isee:strict_units="false" isee:loop_scores="false" isee:loop_exhaustive_allowed="1000">
 		<start>1980</start>
 		<stop>2100</stop>
 		<dt reciprocal="true">8</dt>
+		<run by="module" out_of_sector="true"/>
 	</sim_specs>
 	<dimensions>
 		<dim name="ClimateCase" size="11"/>
@@ -43,31 +44,6 @@
 	<isee:number_format_extenders/>
 	<default_format scale_by="1"/>
 	<model_units>
-		<unit name="Kilograms">
-			<eqn/>
-			<alias>kg</alias>
-			<alias>kilogram</alias>
-		</unit>
-		<unit name="Years">
-			<eqn/>
-			<alias>yr</alias>
-			<alias>year</alias>
-		</unit>
-		<unit name="Joules">
-			<eqn/>
-			<alias>j</alias>
-			<alias>joule</alias>
-		</unit>
-		<unit name="Watts">
-			<eqn/>
-			<alias>w</alias>
-			<alias>watt</alias>
-		</unit>
-		<unit name="Seconds">
-			<eqn/>
-			<alias>s</alias>
-			<alias>second</alias>
-		</unit>
 		<unit name="G$">
 			<eqn>Giga*$</eqn>
 		</unit>
@@ -150,11 +126,6 @@
 			<eqn>kW</eqn>
 			<alias>kilowatt</alias>
 		</unit>
-		<unit name="Dollar">
-			<eqn>$</eqn>
-			<alias>Dollars</alias>
-			<alias>$s</alias>
-		</unit>
 		<unit name="Hour">
 			<eqn/>
 			<alias>Hours</alias>
@@ -195,26 +166,9 @@
 			<eqn/>
 			<alias>orders</alias>
 		</unit>
-		<unit name="Dimensionless">
-			<eqn>1</eqn>
-			<alias>dmnl</alias>
-			<alias>unitless</alias>
-		</unit>
 		<unit name="Kelvin">
 			<eqn/>
 			<alias>K</alias>
-		</unit>
-		<unit name="G">
-			<eqn>Giga</eqn>
-		</unit>
-		<unit name="GtCO2">
-			<eqn>Giga*tCO2</eqn>
-		</unit>
-		<unit name="GtCH4">
-			<eqn>Giga*tCH4</eqn>
-		</unit>
-		<unit name="GtN2O">
-			<eqn>Giga*tN2O</eqn>
 		</unit>
 		<unit name="Day">
 			<eqn/>
@@ -231,6 +185,17 @@
 		</unit>
 		<unit name="euros per year per person">
 			<eqn>EUR/(person-year)</eqn>
+		</unit>
+		<unit name="Dimensionless">
+			<eqn>1</eqn>
+			<alias>dmnl</alias>
+			<alias>unitless</alias>
+		</unit>
+		<unit name="MWh">
+			<eqn>MW * hour</eqn>
+		</unit>
+		<unit name="TW">
+			<eqn>Million*MW</eqn>
 		</unit>
 	</model_units>
 	<model name="Sea_Level">
@@ -825,7 +790,7 @@ ELSE
 			<aux name="AntIS initial volume">
 				<doc>${Assumption}
 </doc>
-				<eqn>2.4791721932922064e+16</eqn>
+				<eqn>24791721932922100</eqn>
 				<units>metre^3</units>
 			</aux>
 			<aux name="AntIS max\ncontribution to SLR">
@@ -838,7 +803,7 @@ ELSE
 				<eqn>1</eqn>
 				<units>1/metre</units>
 			</aux>
-			<aux name="Surface Temperature Anomaly" access="input">
+			<aux name="Surface Temperature Anomaly" access="output" throughput="true">
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
@@ -907,7 +872,7 @@ ELSE
 				<units>metre</units>
 			</aux>
 			<aux name="inital SLR from AntIS">
-				<eqn>0.0</eqn>
+				<eqn>0</eqn>
 				<units>metre</units>
 			</aux>
 			<aux name="initial SLR from MG">
@@ -941,7 +906,7 @@ This is a calibration parameter that leads to changes in rho, nu and GIS_outlet_
 			<aux name="AntOcean calibration\nconversion">
 				<doc>${Assumption}
 </doc>
-				<eqn>3.0</eqn>
+				<eqn>3</eqn>
 				<units>1/K</units>
 			</aux>
 			<aux name="Include MICI behaviour">
@@ -964,7 +929,7 @@ Include_MICI_behaviour * AntIS_MICI_disintegration_rate * AntIS_initial_volume /
 			<aux name="AntIS MICI critical Tant">
 				<doc>${Calibration Parameter}
 </doc>
-				<eqn>-15.0</eqn>
+				<eqn>-15</eqn>
 				<range min="-16" max="-14.6"/>
 				<units>Celsius</units>
 			</aux>
