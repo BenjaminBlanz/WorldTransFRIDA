@@ -5,7 +5,7 @@
 		<name>FRIDA</name>
 		<uuid>fe807591-4e3d-4e2c-b464-70ec4fb12094</uuid>
 		<vendor>isee systems, inc.</vendor>
-		<product version="3.7.3" isee:build_number="3465" isee:saved_by_v1="true" lang="en">Stella Architect</product>
+		<product version="3.7.3" isee:build_number="3457" isee:saved_by_v1="true" lang="en">Stella_Architect</product>
 	</header>
 	<sim_specs isee:sim_duration="0" isee:run_prefix="Run" isee:simulation_delay="0" isee:restore_on_start="false" isee:save_interval="1" method="RK4" time_units="Year" isee:instantaneous_flows="false" isee:ignore_module_errors="false" isee:strict_units="false" isee:loop_scores="false" isee:loop_exhaustive_allowed="1000">
 		<start>1980</start>
@@ -2301,18 +2301,6 @@
 			<alias>dmnl</alias>
 			<alias>unitless</alias>
 		</unit>
-		<unit name="G">
-			<eqn>Giga</eqn>
-		</unit>
-		<unit name="GtCO2">
-			<eqn>Giga*tCO2</eqn>
-		</unit>
-		<unit name="GtCH4">
-			<eqn>Giga*tCH4</eqn>
-		</unit>
-		<unit name="GtN2O">
-			<eqn>Giga*tN2O</eqn>
-		</unit>
 	</model_units>
 	<model>
 		<variables>
@@ -2926,6 +2914,10 @@
 				<connect2 to="Crop.Absolute_Surface_Temperature" from="Energy_Balance_Model.Absolute_Surface_Temperature"/>
 				<connect to="Crop.Atmospheric_CO2_Concentration_1" from="CO2_Forcing.Atmospheric_CO2_Concentration"/>
 				<connect2 to="Crop.Atmospheric_CO2_Concentration_1" from="CO2_Forcing.Atmospheric_CO2_Concentration"/>
+				<connect to="Crop.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect2 to="Crop.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect to="Crop.SWITCH_drought_affecting_crop_yield" from="Draught_Experiment.SWITCH_drought_affecting_crop_yield"/>
+				<connect2 to="Crop.SWITCH_drought_affecting_crop_yield" from="Draught_Experiment.SWITCH_drought_affecting_crop_yield"/>
 				<connect to="Crop.switch_landuse_damage" from="Climate.switch_landuse_damage"/>
 				<connect2 to="Crop.switch_landuse_damage" from="Climate.switch_landuse_damage"/>
 				<connect to="Crop.today" from="Climate.today"/>
@@ -2980,6 +2972,8 @@
 				<connect2 to="Land_Use_Forcing.agricultural_water_withdrawal" from="Freshwater.agricultural_water_withdrawal"/>
 				<connect to="Sea_Level.total_groundwater_anomaly" from="Freshwater.total_groundwater_anomaly"/>
 				<connect2 to="Sea_Level.total_groundwater_anomaly" from="Freshwater.total_groundwater_anomaly"/>
+				<connect to="Freshwater.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect2 to="Freshwater.drought_effect" from="Draught_Experiment.drought_effect"/>
 				<connect to="Freshwater.irrigation_efficiency_multiplier" from="Government_Regulations.irrigation_efficiency_multiplier"/>
 				<connect2 to="Freshwater.irrigation_efficiency_multiplier" from="Government_Regulations.irrigation_efficiency_multiplier"/>
 				<connect to="Freshwater.irrigation_fraction_policy" from="Government_Regulations.irrigation_fraction_policy"/>
@@ -2998,6 +2992,8 @@
 				<connect2 to="Freshwater.start_year" from="Government_Regulations.start_year"/>
 				<connect to="Freshwater.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
 				<connect2 to="Freshwater.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
+				<connect to="Freshwater.SWITCH_drought_affecting_water_regeneration" from="Draught_Experiment.SWITCH_drought_affecting_water_regeneration"/>
+				<connect2 to="Freshwater.SWITCH_drought_affecting_water_regeneration" from="Draught_Experiment.SWITCH_drought_affecting_water_regeneration"/>
 				<connect to="Freshwater.switch_irrigation_fraction_policy" from="Government_Regulations.switch_irrigation_fraction_policy"/>
 				<connect2 to="Freshwater.switch_irrigation_fraction_policy" from="Government_Regulations.switch_irrigation_fraction_policy"/>
 				<connect to="Freshwater.switch_landuse_damage" from="Climate.switch_landuse_damage"/>
@@ -3585,6 +3581,17 @@
 				</dimensions>
 				<eqn>Energy_Balance_Model.Surface_Temperature_Anomaly[Run] + Demographics.real_GDP_per_person[Run] + Demographics.nominal_GDP_per_person[Run] + GDP.&quot;Real_GDP_in_2021c$&quot;[Run] + GDP.Nominal_GDP[Run] + Government.government_consumption[Run] + Government.public_expenditure[Run] + Government.total_public_tax_income[Run] + Finance.total_investment[Run] + Circular_Flow.private_consumption[Run] + Employment.Wage_Rate[Run] + Employment.Employed[Run] + Employment.Unemployed[Run] + Employment.unemployment_rate[Run] + Inflation.Inflation_Rate[Run] + Inflation.Inflation_Index[Run] + Employment.Productivity[Run] + Circular_Flow.income_inequality[Run] + Government.debt_to_GDP_ratio[Run] + Employment.share_of_employment_in_agriculture[Run] + Employment.share_of_employment_in_industry[Run] + Employment.share_of_employment_in_services[Run] + Inflation.agriculture_percentage_of_GDP[Run] + Employment.share_of_employment_in_agriculture[Run] + Employment.share_of_employment_in_industry[Run] + Employment.share_of_employment_in_services[Run] + Demographics.Aged_0_years[Run] + Demographics.Aged_1_to_20_years[Run] + Demographics.Aged_20_to_40_years[Run] + Demographics.Aged_40_to_60_years[Run] + Demographics.Aged_60_to_65_years[Run] + Demographics.Aged_65_to_75_years[Run] + Demographics.Aged_Over_75_years[Run] + Demographics.deaths_0_years[Run] + Demographics.deaths_1_to_20_years[Run] + Demographics.deaths_20_to_40_years[Run] + Demographics.deaths_40_to_60_years[Run] + Demographics.deaths_60_to_65_years[Run] + Demographics.deaths_65_to_75_years[Run] + Demographics.deaths_Over_75_years[Run] + Demographics.Population[Run] + Demographics.fertility[Run] + Demographics.Births[Run] + Demographics.total_deaths[Run] + Demographics.female_population_literacy_percentage[Run] + CO2_Forcing.CO2_Effective_Radiative_Forcing[Run] + CH4_Forcing.CH4_Effective_Radiative_Forcing[Run] + N2O_Forcing.N2O_Effective_Radiative_Forcing[Run] + CO2_Forcing.Atmospheric_CO2_Concentration[Run] + N2O_Forcing.Atmospheric_N2O_Concentration[Run] + CH4_Forcing.Atmospheric_CH4_Concentration[Run] + Emissions.Total_CH4_Emissions[Run] + Emissions.Total_CO2_Emissions[Run] + Emissions.Total_SO2_Emissions[Run] + Emissions.Total_N2O_Emissions[Run] + Emissions.N2O_Emissions_from_Food_and_Land_Use[Run] + Emissions.CO2_Emissions_from_Food_and_Land_Use[Run] + Emissions.CH4_Emissions_from_Food_and_Land_Use[Run] + Emissions.SO2_Emissions_from_Food_and_Land_Use[Run] + Emissions.CO2_emissions_from_Energy[Run] + Emissions.CH4_Emissions_from_Energy[Run] + Emissions.N2O_Emissions_from_Energy[Run] + Emissions.SO2_Emissions_from_Energy[Run] + Emissions.N2O_Emissions_from_Other[Run] + Emissions.CH4_Emissions_from_Other[Run] + Emissions.NOx_AFOLU_Emissions[Run] + Emissions.NOx_non_AFOLU_Emissions[Run] + Emissions.Total_NOx_Emissions[Run] + Emissions.VOC_Emissions[Run] + Emissions.CO_Emissions[Run] + Emissions.HFC134a_eq_Emissions[Run] + Land_Use.Forest_Land[Run] + Crop.crop_production[Run] + Food_Demand.feed_production[Run] + Land_Use.Cropland[Run] + Freshwater.total_water_withdrawal[Run] + Animal_Products.animal_products_production[Run] + Freshwater.fraction_of_water_withdrawal_for_agriculture[Run] + Freshwater.available_water_supply[Run] + Freshwater.irrigated_cropland[Run] + Animal_Products.aquatic_animal_product_share[Run] + Land_Nutrients.man_made_fertilizer_use[Run] + Land_Nutrients.manure_fertilizer_use[Run] + Land_Nutrients.fertilizer_use[Run] + fossil_energy.Secondary_Fossil_Energy_Output[Run] + fossil_energy_coal.Secondary_Fossil_Energy_Output[Run] + fossil_energy_oil.Secondary_Fossil_Energy_Output[Run] + fossil_energy_gas.Secondary_Fossil_Energy_Output[Run] + renewable_energy.Renewable_Energy_Output[Run] + wind_and_solar_energy.Wind_and_Solar_Energy_Output[Run] + hydropower_energy.Hydropower_Energy_Output[Run] + nuclear_energy.Nuclear_Energy_Output[Run] + other_energy.Other_Energy_Output[Run] + bio_fuel_energy.bio_fuel_primary_energy[Run] + bio_fuel_energy.bio_fuel_secondary_energy_output[Run] + energy_supply.Total_Energy_Output[Run] + renewable_energy.Total_Renewable_Energy_Capacity[Run] + wind_and_solar_energy.Wind_and_Solar_Energy_Capacity[Run] + hydropower_energy.Hydropower_Energy_Capacity[Run] + other_energy.Other_Energy_Capacity[Run] + bio_fuel_energy.bio_fuel_production[Run] + nuclear_energy.Nuclear_Energy_Capacity[Run] + fossil_energy.Primary_Fossil_Energy_FUEL[Run] + fossil_energy_coal.Primary_Fossil_Energy_FUEL[Run] + fossil_energy_oil.Primary_Fossil_Energy_FUEL[Run] + fossil_energy_gas.Primary_Fossil_Energy_FUEL[Run] + energy_demand.demand_for_energy[Run] + energy_investments.Gross_Investments_in_Fossil_Fuel_Extraction_Capital[Run] + energy_investments.Coal_Gross_Investments_in_Fossil_Fuel_Extraction_Capital[Run] + energy_investments.Oil_Gross_Investments_in_Fossil_Fuel_Extraction_Capital[Run] + energy_investments.Gas_Gross_Investments_in_Fossil_Fuel_Extraction_Capital[Run] + energy_investments.Gross_Investments_in_Fossil_Energy_Capital[Run] + energy_investments.Coal_Gross_Investments_in_Fossil_Energy_Capital[Run] + energy_investments.Gross_Investments_in_Fossil_Energy_Capital_oil_and_gas[Run] + energy_investments.Gross_Investments_in_Renewables[Run] + energy_investments.Gross_Investments_in_Hydropower_Energy_capacity[Run] + energy_investments.Investments_in_Nuclear_Capacity[Run] + energy_investments.Gross_Investments_in_Solar_and_Wind_Energy_Capacity[Run] + energy_investments.Gross_Investments_in_Other_Capacity[Run] + energy_investments.Gross_Investments_in_Biofuel_Capacity[Run] + wind_and_solar_energy.Installation_Cost_of_Solar_and_Wind_capacity[Run] + hydropower_energy.Hydropower_Installation_Costs[Run] + nuclear_energy.Nuclear_Installation_Costs[Run] + energy_investments.share_of_GDP_invested_in_fuel_extraction[Run] + energy_investments.share_of_GDP_invested_in_Energy_without_fuel[Run] + fossil_energy_coal.Fossil_Fuel_Extraction_Carbon[Run] + fossil_energy_oil.Fossil_Fuel_Extraction_Carbon[Run] + fossil_energy_gas.Fossil_Fuel_Extraction_Carbon[Run] + fossil_energy.conversion_efficiency_of_fossil_fuels_to_secondary_fossil_energy[Run] + fossil_energy_coal.conversion_efficiency_of_fossil_fuels_to_secondary_fossil_energy[Run] + fossil_energy_oil.conversion_efficiency_of_fossil_fuels_to_secondary_fossil_energy[Run] + fossil_energy_gas.conversion_efficiency_of_fossil_fuels_to_secondary_fossil_energy[Run] + energy_supply.Renewable_Energy_Output_Share[Run] + Sea_Level.SLR_thermosteric[Run] + Sea_Level.SLR_from_mountain_glaciers[Run] + Sea_Level.SLR_from_Greenland_Ice_Sheet[Run] + Sea_Level.SLR_from_Antarctic_Ice_Sheet[Run] + Sea_Level.SLR_from_LWS[Run] + Sea_Level.Total_global_SLR[Run] + Sea_Level.Land_water_storage_from_water_impoundment[Run] + Employment.share_of_employment_in_agriculture[Run] + Employment.share_of_employment_in_industry[Run] + Employment.share_of_employment_in_services[Run] + Animal_Products_Demand.Desired_Average_Daily_Demand_Per_Capita[Run] + Crop.crop_balance[Run] + Animal_Products.animal_products_balance[Run] + Ocean.Air_sea_co2_flux[Run] + Terrestrial_carbon_balance.Terrestrial_carbon_balance[Run] + Emissions.land_carbon_sink[Run] + Terrestrial_carbon_balance.deforestation_carbon_loss[Run] + Terrestrial_carbon_balance.forest_regrowth_carbon_uptake[Run] + Concrete.total_yearly_concrete_use[Run] + Concrete.residential_concrete_stock_in_use[Run] + Concrete.Infrastructure_concrete_stock_in_use[Run] + Concrete.In_use_concrete_stock[Run] + Concrete.concrete_waste_generation[Run] + Concrete.new_RS_construction[Run] + Concrete.CO2_emissions[Run]</eqn>
 			</isee:placeholder>
+			<module name="Draught Experiment" isee:label="">
+				<format scale_by="auto"/>
+				<connect to="Crop.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect2 to="Crop.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect to="Freshwater.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect2 to="Freshwater.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect to="Crop.SWITCH_drought_affecting_crop_yield" from="Draught_Experiment.SWITCH_drought_affecting_crop_yield"/>
+				<connect2 to="Crop.SWITCH_drought_affecting_crop_yield" from="Draught_Experiment.SWITCH_drought_affecting_crop_yield"/>
+				<connect to="Freshwater.SWITCH_drought_affecting_water_regeneration" from="Draught_Experiment.SWITCH_drought_affecting_water_regeneration"/>
+				<connect2 to="Freshwater.SWITCH_drought_affecting_water_regeneration" from="Draught_Experiment.SWITCH_drought_affecting_water_regeneration"/>
+			</module>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -3634,7 +3641,7 @@
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="5" isee:page_rows="8" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="5" isee:page_rows="8" isee:scroll_y="360" zoom="200" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -4067,58 +4074,58 @@
 					<from>Economy</from>
 					<to>Resources</to>
 				</connector>
-				<stacked_container uid="156" x="1154.71" y="372.339" width="570" height="470" visible_index="15">
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="8" num_x_labels="13" num_y_labels="8" title="Atmospheric CO2 Concentration" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+				<stacked_container uid="156" x="1295.71" y="372.339" width="429" height="354" visible_index="15">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="8" num_x_labels="13" num_y_labels="8" title="Atmospheric CO2 Concentration" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="CO2_Forcing.Atmospheric_CO2_Concentration[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Surface Temperature Anomaly" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Surface Temperature Anomaly" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Energy_Balance_Model.Surface_Temperature_Anomaly[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Global Sea Level Anomaly" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Global Sea Level Anomaly" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Sea_Level.Total_global_SLR[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Heating Degree Days Per Person Per Year" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Heating Degree Days Per Person Per Year" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="energy_demand.HDD[1]"/>
 							<scale max="1500"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Cooling Degree Days Per Person Per Year" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Cooling Degree Days Per Person Per Year" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
 							<entity name="energy_demand.CDD[1]"/>
 							<scale min="500"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Number of record breaking events experienced per person per year" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Number of record breaking events experienced per person per year" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Energy_Balance_Model.Climate_indices_with_record_breaking_exposure_per_person_per_year[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="8" num_x_labels="13" num_y_labels="8" title="Global Economic Output (GDP)" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_title="Giga$(Constant 2021)/Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="8" num_x_labels="13" num_y_labels="8" title="Global Economic Output (GDP)" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_title="Giga$(Constant 2021)/Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<format scale_by="1" delimit_000s="true"/>
 							<entity name='GDP."Real_GDP_in_2021c$"[1]'/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Inflation Rate" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_title="% per Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Inflation Rate" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_title="% per Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<format scale_by="1" display_as="percent"/>
 							<entity name="Inflation.Inflation_Rate_as_Percent[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Unemployment Rate" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Unemployment Rate" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<format scale_by="1" display_as="percent"/>
 							<entity name="Employment.unemployment_percentage[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Income" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Income" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Circular_Flow.net_worker_income[1]"/>
 						</plot>
@@ -4129,7 +4136,7 @@
 							<entity name="Government.total_public_tax_income[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="false" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="8" num_x_labels="13" num_y_labels="8" title="Real GDP" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_title="Giga$(2021) per Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="false" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="8" num_x_labels="13" num_y_labels="8" title="Real GDP" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_title="Giga$(2021) per Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="#00008F" title="Owner Consumption" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<format scale_by="1" delimit_000s="true" display_as="currency"/>
 							<entity name='GDP."owner_consumption_in_2021c$"[1]'/>
@@ -4157,25 +4164,25 @@
 							<entity name='GDP."private_investment_in_in_2021c$"[1]'/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="11" num_x_labels="13" num_y_labels="11" title="Productivity (All Production Factors)" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="11" num_x_labels="13" num_y_labels="11" title="Productivity (All Production Factors)" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Employment.realised_productivity[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="11" num_x_labels="13" num_y_labels="11" title="Worker Share of Net Income" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="11" num_x_labels="13" num_y_labels="11" title="Worker Share of Net Income" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<format scale_by="1" display_as="percent"/>
 							<entity name="Circular_Flow.worker_share_of_net_income[1]"/>
 							<scale max="100"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="8" num_x_labels="13" num_y_labels="8" title="Transfer Payments per Recipient" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="8" num_x_labels="13" num_y_labels="8" title="Transfer Payments per Recipient" isee:fill_intensity="0.1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<format scale_by="1" delimit_000s="true" display_as="currency"/>
 							<entity name="Government.transfer_payments_per_recipient[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Net Primary Production" isee:fill_intensity="1" isee:stacked_area_max="150" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Net Primary Production" isee:fill_intensity="1" isee:stacked_area_max="150" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="#307739" title="Mature Forest" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Forest.mature_forest_net_primary_production[1]"/>
 						</plot>
@@ -4192,7 +4199,7 @@
 							<entity name="degraded_land_soil_carbon.degraded_land_litter[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Human Food Production" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_title="PCal/Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Human Food Production" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_title="PCal/Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" title="Vegetal Products" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Food_Demand.crop_demand_for_food[1]"/>
 						</plot>
@@ -4200,7 +4207,7 @@
 							<entity name="Animal_Products.animal_products_production[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Crop Demand" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="7" num_x_labels="13" num_y_labels="7" title="Crop Demand" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" title="Vegetal Products" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Food_Demand.crop_demand_for_food[1]"/>
 						</plot>
@@ -4211,7 +4218,7 @@
 							<entity name="bio_fuel_energy.crops_demanded_for_bio_fuel[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Crop Production" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Crop Production" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" title="Vegetal Products" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Food_Demand.crop_demand_for_food[1]"/>
 						</plot>
@@ -4219,7 +4226,7 @@
 							<entity name="Food_Demand.crops_for_energy[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Crop Production by Use" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_title="PCal/Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Crop Production by Use" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_title="PCal/Year" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" title="Vegetal Products" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Food_Demand.crop_demand_for_food[1]"/>
 						</plot>
@@ -4233,7 +4240,7 @@
 							<entity name="Food_Demand.crops_for_energy[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Water Use" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Water Use" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" title="Agricultural" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Freshwater.agricultural_water_withdrawal[1]"/>
 						</plot>
@@ -4241,7 +4248,7 @@
 							<entity name="Freshwater.non_agricultural_water_withdrawl[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Water Sustainability (to be combined with Water Use)" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Water Sustainability (to be combined with Water Use)" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" title="Total Water Use" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Freshwater.total_water_withdrawal[1]"/>
 						</plot>
@@ -4249,7 +4256,7 @@
 							<entity name="Freshwater.unsustainable_groundwater_withdrawal[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Fertilizer by Type" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" title="Fertilizer by Type" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" title="Man Made" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Land_Nutrients.man_made_fertilizer_use[1]"/>
 						</plot>
@@ -4257,33 +4264,33 @@
 							<entity name="Land_Nutrients.manure_fertilizer_use[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Emissions.CO2_Emissions_from_Food_and_Land_Use[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Emissions.CH4_Emissions_from_Food_and_Land_Use[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Emissions.N2O_Emissions_from_Food_and_Land_Use[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="9" num_x_labels="13" num_y_labels="9" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Emissions.SO2_Emissions_from_Food_and_Land_Use[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="Energy Balance" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" comparative="true" type="time_series" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="Energy Balance" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
 							<entity name="energy_supply_vs_demand.Energy_Balance[1]"/>
 							<scale min="0.99" max="1.01"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="CO2 Emissions from Energy" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="CO2 Emissions from Energy" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Emissions.CO2_emissions_from_coal[1]"/>
 						</plot>
@@ -4297,7 +4304,7 @@
 							<entity name="Emissions.CO2_emissions_from_biofuels[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="CH4 Emissions from Energy" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="CH4 Emissions from Energy" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Emissions.CH4_emissions_from_coal[1]"/>
 						</plot>
@@ -4308,7 +4315,7 @@
 							<entity name="Emissions.CH4_emissions_by_gas[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="N2O Emissions from Energy" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="N2O Emissions from Energy" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Emissions.N2O_emissions_by_coal[1]"/>
 						</plot>
@@ -4319,7 +4326,7 @@
 							<entity name="Emissions.N2O_emissions_by_gas[1]"/>
 						</plot>
 					</graph>
-					<graph width="570" height="470" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="SO2 Emissions from Energy" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+					<graph width="429" height="354" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="true" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="13" num_y_grid_lines="5" num_x_labels="13" num_y_labels="5" title="SO2 Emissions from Energy" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Emissions.SO2_emissions_by_coal[1]"/>
 						</plot>
@@ -4475,8 +4482,8 @@
 						</plot>
 					</graph>
 				</stacked_container>
-				<stacked_container uid="162" x="2341.14" y="370.857" width="465" height="498.5">
-					<graph width="465" height="498.5" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="13" num_y_labels="10" title="Habitable Land Area (to be converted to SqKM)" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+				<stacked_container uid="162" x="2341.14" y="370.857" width="376" height="356.964">
+					<graph width="376" height="356.964" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="13" num_y_labels="10" title="Habitable Land Area (to be converted to SqKM)" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
 						<plot color="#1F6C34" title="Mature Forest" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
 							<entity name="Land_Use.Mature_Forest[1]"/>
 						</plot>
@@ -4493,7 +4500,7 @@
 							<entity name="Land_Use.Degraded_Land[1]"/>
 						</plot>
 					</graph>
-					<graph width="465" height="498.5" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="13" num_y_labels="10" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
+					<graph width="376" height="356.964" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="13" num_y_labels="10" isee:fill_intensity="1" to="2100" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
 				</stacked_container>
 				<module label_side="center" x="58.7143" y="63.1429" name="Planetary\nBoundaries"/>
 				<connector uid="163" color="#717171" font_color="#717171" isee:thickness="2" angle="180.89">
@@ -4502,6 +4509,32 @@
 				</connector>
 				<isee:placeholder x="973" y="978.583" name="Dashboard Left Placeholder"/>
 				<isee:placeholder x="1135.5" y="978.583" name="Dashboard Right Placeholder"/>
+				<module color="#916033" font_color="#916033" x="779" y="302" name="Draught Experiment"/>
+				<connector uid="164" color="#916033" font_color="#916033" isee:thickness="2" angle="171.782" isee:autocreated="true">
+					<from>Draught_Experiment</from>
+					<to>Land_Use_and_Agriculture</to>
+				</connector>
+				<stacked_container uid="165" x="2373.5" y="907.5" width="428.5" height="334.5">
+					<graph width="428.5" height="334.5" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Land_Use.Cropland[1]"/>
+							<scale min="1500"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="166" x="2737.5" y="538" width="428.5" height="334.5">
+					<graph width="428.5" height="334.5" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Land_Use.Grassland[1]"/>
+							<scale min="3000"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="167" x="3010.5" y="1163">
+					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true"/>
+					</graph>
+				</stacked_container>
 			</view>
 			<view isee:template_view="template:1" isee:name="Landing Page without image" isee:original_design="Deluxe Prev-Next Blue Green Pastel" background="white" page_width="1066" page_height="600" home_view="true" type="interface">
 				<style>
@@ -4525,80 +4558,174 @@ Lorem ipsum dolor sit amet</text_box>
 					</style>
 					<isee:shape background="#F7F7F7" border_width="thin" border_style="none" transparent_background="false" x="0" y="0" width="1066" height="600" kind="rectangle"/>
 					<graphics_frame z_index="2" fill="none" x="12.4806" y="16.9825" width="166" height="34">
-						<image width="121" height="20" size_to_parent="false" isee:transparency="0" isee:fixed_aspect_ratio="true">/Applications/Stella Architect.app/Contents/Resources/designs/Deluxe Prev-Next Blue Green Pastel_Graphics/Your logo dark.png</image>
+						<image width="121" height="20" size_to_parent="false" isee:transparency="0" isee:fixed_aspect_ratio="true">/home/benjamin/software/UHH/Stella_Architect/.app/designs/Deluxe Prev-Next Blue Green Pastel_Graphics/Your logo dark.png</image>
 					</graphics_frame>
 				</view>
 			</isee:templates>
 			<isee:stories/>
 		</views>
 	</model>
+	<model name="Draught_Experiment">
+		<variables>
+			<aux name="SWITCH draught experiment">
+				<eqn>1</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="drought year start">
+				<eqn>2040</eqn>
+				<units>Year</units>
+			</aux>
+			<aux name="drought intensity" access="output" isee:autocreated="true">
+				<eqn>0.5</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="drought effect" access="output" isee:autocreated="true">
+				<eqn>IF SWITCH_draught_experiment = 1 THEN
+IF TIME&gt;=drought_year_start AND TIME &lt;= draught_year_end THEN
+1-drought_intensity
+ELSE
+1
+ELSE
+1</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="draught year end">
+				<eqn>2042</eqn>
+				<units>Year</units>
+			</aux>
+			<aux name="SWITCH drought affecting\nwater regeneration" access="output" isee:autocreated="true">
+				<eqn>1</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="SWITCH drought affecting\ncrop yield" access="output" isee:autocreated="true">
+				<eqn>1</eqn>
+				<units>dmnl</units>
+			</aux>
+		</variables>
+		<views>
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#66CC66" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<isee:dropdown_input color="black" background="white" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" zoom="200" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
+						<shape type="rectangle" width="45" height="35"/>
+					</stock>
+					<flow color="blue" background="white" font_color="blue" font_size="11pt" label_side="bottom">
+						<shape type="circle" radius="18"/>
+					</flow>
+					<isee:placeholder color="#228B22" background="white" font_color="#228B22" font_size="11pt" label_side="bottom"/>
+					<module color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
+						<shape type="rectangle" width="67" height="55"/>
+					</module>
+					<aux color="blue" background="white" font_color="blue" font_size="11pt" label_side="bottom">
+						<shape type="circle" radius="18"/>
+					</aux>
+					<group color="red" background="white" font_color="red" font_size="11pt"/>
+					<connector color="#FF007F" background="white" font_color="#FF007F" font_size="9pt" isee:thickness="1"/>
+					<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+					<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+					<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+					<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+						<isee:series_styles>
+							<isee:series_style color="blue" thickness="1"/>
+							<isee:series_style color="red" thickness="1"/>
+							<isee:series_style color="fuchsia" thickness="1"/>
+							<isee:series_style color="#008F44" thickness="1"/>
+							<isee:series_style color="#FF7F00" thickness="1"/>
+							<isee:series_style color="#7F00FF" thickness="1"/>
+							<isee:series_style color="#0CA0FF" thickness="1"/>
+							<isee:series_style color="lime" thickness="1"/>
+							<isee:series_style color="#FF007F" thickness="1"/>
+							<isee:series_style color="aqua" thickness="1"/>
+							<isee:series_style color="#F586FF" thickness="1"/>
+							<isee:series_style color="black" thickness="1"/>
+							<isee:series_style color="#C8C8C8" thickness="1"/>
+						</isee:series_styles>
+					</graph>
+					<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				</style>
+				<aux x="315.5" y="39" name="SWITCH draught experiment"/>
+				<aux x="140" y="105.5" name="drought year start"/>
+				<aux x="372" y="105.5" name="drought intensity"/>
+				<aux x="322.5" y="233" name="drought effect"/>
+				<connector uid="1" angle="325.061">
+					<from>drought_year_start</from>
+					<to>drought_effect</to>
+				</connector>
+				<connector uid="2" angle="272.066">
+					<from>SWITCH_draught_experiment</from>
+					<to>drought_effect</to>
+				</connector>
+				<connector uid="3" angle="248.782">
+					<from>drought_intensity</from>
+					<to>drought_effect</to>
+				</connector>
+				<aux x="242" y="105.5" name="draught year end"/>
+				<connector uid="4" angle="302.267">
+					<from>draught_year_end</from>
+					<to>drought_effect</to>
+				</connector>
+				<stacked_container uid="5" x="603.5" y="146.5">
+					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="drought_effect"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<aux x="267.5" y="357.5" name="SWITCH drought affecting\nwater regeneration"/>
+				<aux x="419.5" y="357.5" name="SWITCH drought affecting\ncrop yield"/>
+			</view>
+		</views>
+	</model>
 	<isee:user_controlled>
-		<ent name="Government Regulations.calibration period government debt to GDP ratio target"/>
-		<ent name="Finance.elasticity of desired bank growth rate to changes in lending standards"/>
-		<ent name="Finance.initial bank investment growth rate"/>
-		<ent name="Employment.max change in fractional wage growth"/>
-		<ent name="Circular Flow.desired savings as multiple of profits"/>
-		<ent name="Circular Flow.desired savings as multiple of wages"/>
-		<ent name="Circular Flow.initial firms checking accounts"/>
-		<ent name="Circular Flow.initial owner savings"/>
-		<ent name="Circular Flow.initial worker savings"/>
-		<ent name="Circular Flow.profit tax rate"/>
-		<ent name="Circular Flow.time to consider desired savings"/>
-		<ent name="Circular Flow.time to pay out profits"/>
-		<ent name="Circular Flow.time to reach savings goal"/>
-		<ent name="Circular Flow.wage tax rate"/>
-		<ent name="Employment.hiring to investment ratio"/>
-		<ent name="Employment.initial unemployment rate"/>
-		<ent name="Employment.Initial Wage Rate"/>
-		<ent name="Employment.labour force participation fixed"/>
-		<ent name="Employment.max firing percentage"/>
-		<ent name="Employment.sensitivity of hiring to unemployment rate"/>
-		<ent name="Employment.threshold unemployment rate"/>
-		<ent name="Employment.time seeking employees"/>
-		<ent name="Finance.bank expectation formation time"/>
-		<ent name="Finance.elasticity of bankruptcy rate on risk premium"/>
-		<ent name="Finance.exponential effect of interest on defaults"/>
-		<ent name="Finance.initial bad loans"/>
-		<ent name="Finance.initial bank investment"/>
-		<ent name="Finance.initial good loans"/>
-		<ent name="Finance.initial risk premium"/>
-		<ent name="Finance.Initial safe assets"/>
-		<ent name="Finance.loan maturation time"/>
-		<ent name="Finance.max change in failure rate"/>
-		<ent name="Finance.max change in bank investment as fraction of normal"/>
-		<ent name="Finance.max change in lending standards"/>
-		<ent name="Finance.normal failure rate"/>
-		<ent name="Finance.reporting delay"/>
-		<ent name="Finance.sensitivity of defaults to changes in risky interest"/>
-		<ent name="Finance.sensitivity of effect of sta on failure rate[1]"/>
-		<ent name="Finance.sensitivity of failure rate to investment to gdp ratio"/>
-		<ent name="Finance.strength of effect of recent GDP growth on lending standards"/>
-		<ent name="Finance.time for safe loans that will fail to actually fail"/>
-		<ent name="Finance.time to change lending standards"/>
-		<ent name="GDP.initial real GDP growth rate"/>
-		<ent name="Government.averaging time to adjust tax based on income"/>
-		<ent name="Government.GDP perception time"/>
-		<ent name="Government.initial government debt"/>
-		<ent name="Government.initial safe interest"/>
-		<ent name="Government.maximum effect of debt to GDP ratio on government spending"/>
-		<ent name="Government.normal investment share of public expenditure"/>
-		<ent name="Government.normal public consumption to transfers ratio"/>
-		<ent name="Government.sensitivity of STA on public consumption"/>
-		<ent name="Inflation.Agriculture share of GDP intercept"/>
-		<ent name="Inflation.agriculture share of GDP slope"/>
-		<ent name="Inflation.agriculture share of GDP starting point determinant"/>
-		<ent name="Inflation.deflation adjustment time"/>
-		<ent name="Inflation.initial inflation index"/>
-		<ent name="Inflation.initial inflation rate"/>
-		<ent name="Inflation.weight of cropland inflation contribution"/>
-		<ent name="Inflation.weight of fertilizer used per unit of crop production"/>
-		<ent name="Inflation.weight of grazing land inflation contribution"/>
-		<ent name="Inflation.weight of irrigation water used per unit of crop production inflation contribution"/>
-		<ent name="Inflation.weight of marginal energy cost inflation"/>
-		<ent name="Innovation.normal time to decrease innovation orientation"/>
-		<ent name="Innovation.sensitivity of firms innovation orientation to cash deceleration"/>
-		<ent name="Innovation.sensitivity of innovation decrease to cash growth"/>
-		<ent name="Finance.reference formation time"/>
+		<ent name="Draught Experiment.SWITCH draught experiment"/>
+		<ent name="Draught Experiment.SWITCH drought affecting crop yield"/>
+		<ent name="Draught Experiment.SWITCH drought affecting water regeneration"/>
 	</isee:user_controlled>
 	<macro name="INFLATION_IMPACT_GROWTH_RATE">
 		<eqn>trend in input</eqn>

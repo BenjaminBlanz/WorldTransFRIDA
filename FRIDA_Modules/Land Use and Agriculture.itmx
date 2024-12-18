@@ -5,7 +5,7 @@
 		<name>Land Use and Agriculture</name>
 		<uuid>4b1bfdf6-0d8e-44ed-8961-df13293735b9</uuid>
 		<vendor>isee systems, inc.</vendor>
-		<product version="3.7.3" isee:build_number="3465" isee:saved_by_v1="true" lang="en">Stella Architect</product>
+		<product version="3.7.3" isee:build_number="3457" isee:saved_by_v1="true" lang="en">Stella_Architect</product>
 	</header>
 	<sim_specs isee:sim_duration="0" isee:run_prefix="Run" isee:simulation_delay="0" isee:restore_on_start="false" isee:save_interval="1" method="RK4" time_units="Year" isee:instantaneous_flows="false" isee:ignore_module_errors="false" isee:strict_units="false" isee:loop_scores="false" isee:loop_exhaustive_allowed="1000">
 		<start>1980</start>
@@ -200,18 +200,6 @@
 		</unit>
 		<unit name="Mcc$">
 			<eqn>Million*cc$</eqn>
-		</unit>
-		<unit name="G">
-			<eqn>Giga</eqn>
-		</unit>
-		<unit name="GtCO2">
-			<eqn>Giga*tCO2</eqn>
-		</unit>
-		<unit name="GtCH4">
-			<eqn>Giga*tCH4</eqn>
-		</unit>
-		<unit name="GtN2O">
-			<eqn>Giga*tN2O</eqn>
 		</unit>
 		<unit name="Year">
 			<eqn/>
@@ -537,6 +525,8 @@
 				<connect2 to="Sea_Level.total_groundwater_anomaly" from="Freshwater.total_groundwater_anomaly"/>
 				<connect to="Freshwater.Cropland" from="Land_Use.Cropland"/>
 				<connect2 to="Freshwater.Cropland" from="Land_Use.Cropland"/>
+				<connect to="Freshwater.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect2 to="Freshwater.drought_effect" from="Draught_Experiment.drought_effect"/>
 				<connect to="Freshwater.irrigation_efficiency_multiplier" from="Government_Regulations.irrigation_efficiency_multiplier"/>
 				<connect2 to="Freshwater.irrigation_efficiency_multiplier" from="Government_Regulations.irrigation_efficiency_multiplier"/>
 				<connect to="Freshwater.irrigation_fraction_policy" from="Government_Regulations.irrigation_fraction_policy"/>
@@ -555,6 +545,8 @@
 				<connect2 to="Freshwater.start_year" from="Government_Regulations.start_year"/>
 				<connect to="Freshwater.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
 				<connect2 to="Freshwater.Surface_Temperature_Anomaly" from="Energy_Balance_Model.Surface_Temperature_Anomaly"/>
+				<connect to="Freshwater.SWITCH_drought_affecting_water_regeneration" from="Draught_Experiment.SWITCH_drought_affecting_water_regeneration"/>
+				<connect2 to="Freshwater.SWITCH_drought_affecting_water_regeneration" from="Draught_Experiment.SWITCH_drought_affecting_water_regeneration"/>
 				<connect to="Freshwater.switch_irrigation_fraction_policy" from="Government_Regulations.switch_irrigation_fraction_policy"/>
 				<connect2 to="Freshwater.switch_irrigation_fraction_policy" from="Government_Regulations.switch_irrigation_fraction_policy"/>
 				<connect to="Freshwater.switch_landuse_damage" from="Climate.switch_landuse_damage"/>
@@ -799,6 +791,8 @@
 				<connect2 to="Crop.Cropland" from="Land_Use.Cropland"/>
 				<connect to="Crop.crops_for_energy" from="Food_Demand.crops_for_energy"/>
 				<connect2 to="Crop.crops_for_energy" from="Food_Demand.crops_for_energy"/>
+				<connect to="Crop.drought_effect" from="Draught_Experiment.drought_effect"/>
+				<connect2 to="Crop.drought_effect" from="Draught_Experiment.drought_effect"/>
 				<connect to="Crop.feed_production" from="Food_Demand.feed_production"/>
 				<connect2 to="Crop.feed_production" from="Food_Demand.feed_production"/>
 				<connect to="Crop.fertilizer_use" from="Land_Nutrients.fertilizer_use"/>
@@ -807,6 +801,8 @@
 				<connect2 to="Crop.fraction_of_cropland_irrigated" from="Freshwater.fraction_of_cropland_irrigated"/>
 				<connect to="Crop.soil_carbon_cropland_1" from="cropland_soil_carbon.soil_carbon_cropland"/>
 				<connect2 to="Crop.soil_carbon_cropland_1" from="cropland_soil_carbon.soil_carbon_cropland"/>
+				<connect to="Crop.SWITCH_drought_affecting_crop_yield" from="Draught_Experiment.SWITCH_drought_affecting_crop_yield"/>
+				<connect2 to="Crop.SWITCH_drought_affecting_crop_yield" from="Draught_Experiment.SWITCH_drought_affecting_crop_yield"/>
 				<connect to="Crop.switch_landuse_damage" from="Climate.switch_landuse_damage"/>
 				<connect2 to="Crop.switch_landuse_damage" from="Climate.switch_landuse_damage"/>
 				<connect to="Crop.today" from="Climate.today"/>
@@ -1148,7 +1144,7 @@
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="5" isee:page_rows="2" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="5" isee:page_rows="2" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="12.51pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1653,7 +1649,7 @@ average_animal_product_growth_efficiency</eqn>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="410" isee:scroll_y="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="2" isee:page_rows="2" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1970,7 +1966,9 @@ Food and Agriculture Organization of the United Nations (2023)</doc>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>initial_crop_yield + change_in_crop_yield_from_fertilizer_use+change_in_crop_yield_from_soil_carbon+change_in_crop_yield_from_irrigation + change_in_crop_yield_from_climate</eqn>
+				<eqn>drought_effect^SWITCH_drought_affecting_crop_yield * (
+initial_crop_yield + change_in_crop_yield_from_fertilizer_use+change_in_crop_yield_from_soil_carbon+change_in_crop_yield_from_irrigation + change_in_crop_yield_from_climate
+)</eqn>
 				<units>PCal/(Mha*year)</units>
 			</aux>
 			<aux name="soil carbon cropland 1" access="input">
@@ -2296,6 +2294,14 @@ harvest_index_for_energy_crops * Fraction_of_crop_production_for_energy
 harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fraction_of_crop_production_for_feed)</eqn>
 				<units>1</units>
 			</aux>
+			<aux name="drought effect" access="input">
+				<eqn>{Enter equation for use when not hooked up to other models}</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="SWITCH drought affecting\ncrop yield" access="input">
+				<eqn>0</eqn>
+				<units>dmnl</units>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -2345,7 +2351,7 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="5" isee:page_rows="6" isee:scroll_x="1100" isee:scroll_y="838" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="5" isee:page_rows="6" isee:scroll_x="598.75" isee:scroll_y="710.625" zoom="160" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -2386,11 +2392,11 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 				</style>
 				<aux label_side="bottom" x="1507.25" y="1015.88" name="crop balance"/>
 				<aux label_side="bottom" x="1558.33" y="935.167" name="crop balance\nwith reserves"/>
-				<aux x="1725" y="1291.33" name="harvest index for food crops"/>
+				<aux x="1815.63" y="1290.7" name="harvest index for food crops"/>
 				<aux x="1717.25" y="1095.67" name="crop residue production"/>
 				<aux label_side="right" x="1890.67" y="915.667" name="UNIT GtC per PCal crop"/>
-				<aux label_side="bottom" x="1572.33" y="1128.17" name="crop production"/>
-				<connector uid="1" angle="12.639">
+				<aux label_side="bottom" x="1589.83" y="1229.88" name="crop production"/>
+				<connector uid="1" angle="46.4856">
 					<from>crop_production</from>
 					<to>crop_residue_production</to>
 				</connector>
@@ -2402,7 +2408,7 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>crop_balance</from>
 					<to>crop_balance_with_reserves</to>
 				</connector>
-				<connector uid="5" angle="120.095">
+				<connector uid="5" angle="111.101">
 					<from>crop_production</from>
 					<to>crop_balance</to>
 				</connector>
@@ -2427,20 +2433,20 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<to>crop_balance_with_reserves</to>
 				</connector>
 				<stock font_style="italic" font_weight="bold" x="1458.5" y="1107.34" name="Cropland"/>
-				<connector uid="10" angle="349.63">
+				<connector uid="10" angle="316.984">
 					<from>Cropland</from>
 					<to>crop_production</to>
 				</connector>
 				<aux font_style="italic" font_weight="bold" x="1035" y="1773.67" name="fraction of cropland\nirrigated"/>
 				<stock font_style="italic" font_weight="bold" x="1989.33" y="1656.67" name="fertilizer use"/>
 				<aux x="1550.71" y="1365.01" name="crop yield"/>
-				<connector uid="42" angle="94.8925">
+				<connector uid="42" angle="83.9632">
 					<from>crop_yield</from>
 					<to>crop_production</to>
 				</connector>
 				<aux font_style="italic" font_weight="bold" x="1053" y="1474.03" name="soil carbon cropland 1"/>
 				<aux x="1699.25" y="980.667" name="cropland net primary production"/>
-				<connector uid="57" angle="84.6281">
+				<connector uid="57" angle="101.634">
 					<from>crop_production</from>
 					<to>cropland_net_primary_production</to>
 				</connector>
@@ -2461,22 +2467,22 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>crop_residue_on_field_fraction</from>
 					<to>crop_residue_other_use</to>
 				</connector>
-				<aux x="1636.75" y="1216.84" name="normal harvest index for food crops"/>
+				<aux x="1727.38" y="1216.21" name="normal harvest index for food crops"/>
 				<connector uid="62" angle="319.832">
 					<from>normal_harvest_index_for_food_crops</from>
 					<to>harvest_index_for_food_crops</to>
 				</connector>
-				<aux x="1636.75" y="1335.62" name="effect of crop\nyield on harvest index"/>
-				<connector uid="63" angle="18.8554">
+				<aux x="1674.46" y="1330.88" name="effect of crop\nyield on harvest index"/>
+				<connector uid="63" angle="15.4215">
 					<from>crop_yield</from>
 					<to>effect_of_crop_yield_on_harvest_index</to>
 				</connector>
-				<connector uid="64" angle="26.6507">
+				<connector uid="64" angle="15.8837">
 					<from>effect_of_crop_yield_on_harvest_index</from>
 					<to>harvest_index_for_food_crops</to>
 				</connector>
-				<aux x="1636.75" y="1434.67" name="sensitivity of effect of crop\nyield on harvest index"/>
-				<connector uid="65" angle="90">
+				<aux x="1727.38" y="1434.05" name="sensitivity of effect of crop\nyield on harvest index"/>
+				<connector uid="65" angle="117.155">
 					<from>sensitivity_of_effect_of_crop_yield_on_harvest_index</from>
 					<to>effect_of_crop_yield_on_harvest_index</to>
 				</connector>
@@ -2581,19 +2587,19 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>rel_change_in_crop_productivity_intercept</from>
 					<to>rel_change_in_crop_productivity_from_climate</to>
 				</connector>
-				<aux x="1519.97" y="1729.26" name="change in crop yield from climate"/>
-				<connector uid="100" angle="86.5534">
+				<aux x="1532.71" y="1503.83" name="change in crop yield from climate"/>
+				<connector uid="100" angle="86.6718">
 					<from>rel_change_in_crop_productivity_from_climate</from>
 					<to>change_in_crop_yield_from_climate</to>
 				</connector>
-				<aux x="1367" y="1466.7" name="change in crop yield\nfrom soil carbon"/>
+				<aux x="1392.14" y="1401.7" name="change in crop yield\nfrom soil carbon"/>
 				<aux x="1261" y="1456.03" name="effect of soil carbon\non crop yield"/>
 				<aux x="1128.43" y="1361.84" name="soil carbon crop yield parameter"/>
 				<connector uid="108" angle="324.606">
 					<from>soil_carbon_crop_yield_parameter</from>
 					<to>effect_of_soil_carbon_on_crop_yield</to>
 				</connector>
-				<connector uid="109" angle="354.254">
+				<connector uid="109" angle="22.5037">
 					<from>effect_of_soil_carbon_on_crop_yield</from>
 					<to>change_in_crop_yield_from_soil_carbon</to>
 				</connector>
@@ -2603,8 +2609,8 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>irrigation_crop_yield_parameter</from>
 					<to>effect_of_irrigation_on_crop_yield</to>
 				</connector>
-				<aux x="1385" y="1614.83" name="change in\ncrop yield from irrigation"/>
-				<connector uid="113" angle="40.8746">
+				<aux x="1428.88" y="1478.58" name="change in\ncrop yield from irrigation"/>
+				<connector uid="113" angle="52.0467">
 					<from>effect_of_irrigation_on_crop_yield</from>
 					<to>change_in_crop_yield_from_irrigation</to>
 				</connector>
@@ -2631,20 +2637,20 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>fertilizer_use</from>
 					<to>effect_of_fertilizer_use_on_crop_yield</to>
 				</connector>
-				<aux label_side="bottom" x="1417.14" y="1235.84" name="initial crop yield"/>
-				<connector uid="134" angle="56.2218">
+				<aux label_side="bottom" x="1458.5" y="1257.09" name="initial crop yield"/>
+				<connector uid="134" angle="60.3862">
 					<from>
 						<alias uid="133"/>
 					</from>
 					<to>change_in_crop_yield_from_soil_carbon</to>
 				</connector>
-				<connector uid="135" angle="63.1441">
+				<connector uid="135" angle="66.554">
 					<from>
 						<alias uid="136"/>
 					</from>
 					<to>change_in_crop_yield_from_irrigation</to>
 				</connector>
-				<connector uid="137" angle="129.939">
+				<connector uid="137" angle="103.495">
 					<from>
 						<alias uid="138"/>
 					</from>
@@ -2677,7 +2683,7 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>UNIT_pct_conversion</from>
 					<to>rel_change_in_crop_productivity_from_climate</to>
 				</connector>
-				<connector uid="149" angle="315.96">
+				<connector uid="149" angle="310.512">
 					<from>initial_crop_yield</from>
 					<to>crop_yield</to>
 				</connector>
@@ -2685,31 +2691,31 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>change_in_crop_yield_from_fertilizer_use</from>
 					<to>crop_yield</to>
 				</connector>
-				<connector uid="151" angle="53.9669">
+				<connector uid="151" angle="38.0287">
 					<from>change_in_crop_yield_from_soil_carbon</from>
 					<to>crop_yield</to>
 				</connector>
-				<connector uid="152" angle="78.8693">
+				<connector uid="152" angle="65.4167">
 					<from>change_in_crop_yield_from_irrigation</from>
 					<to>crop_yield</to>
 				</connector>
-				<connector uid="154" angle="282.421">
+				<connector uid="154" angle="231.034">
 					<from>
 						<alias uid="155"/>
 					</from>
 					<to>effect_of_crop_yield_on_harvest_index</to>
 				</connector>
-				<aux x="1728" y="1371.12" name="max harvest index for food crops"/>
+				<aux x="1818.63" y="1370.5" name="max harvest index for food crops"/>
 				<connector uid="187" angle="92.1532">
 					<from>max_harvest_index_for_food_crops</from>
 					<to>harvest_index_for_food_crops</to>
 				</connector>
-				<aux x="1840.67" y="1321.83" name="sensitivity threshold"/>
+				<aux x="1931.3" y="1321.21" name="sensitivity threshold"/>
 				<connector uid="188" angle="165.228">
 					<from>sensitivity_threshold</from>
 					<to>harvest_index_for_food_crops</to>
 				</connector>
-				<connector uid="189" angle="34.0822">
+				<connector uid="189" angle="40.5389">
 					<from>sensitivity_threshold</from>
 					<to>crop_residue_on_field_fraction</to>
 				</connector>
@@ -2718,22 +2724,22 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>max_crop_residue_on_field_fraction</from>
 					<to>crop_residue_on_field_fraction</to>
 				</connector>
-				<connector uid="191" angle="102.466">
+				<connector uid="191" angle="99.9019">
 					<from>change_in_crop_yield_from_climate</from>
 					<to>crop_yield</to>
 				</connector>
-				<connector uid="147" angle="37.9667">
+				<connector uid="147" angle="64.2994">
 					<from>switch_landuse_damage</from>
 					<to>change_in_crop_yield_from_climate</to>
 				</connector>
-				<connector uid="148" angle="352.087">
+				<connector uid="148" angle="59.9121">
 					<from>today</from>
 					<to>change_in_crop_yield_from_climate</to>
 				</connector>
-				<aux font_style="italic" font_weight="bold" x="2250.93" y="1401.7" name="feed production"/>
-				<aux font_style="italic" font_weight="bold" x="2001.67" y="1485.83" name="crops for energy"/>
-				<aux x="2114.43" y="1365.01" name="Fraction of crop production for feed"/>
-				<connector uid="194" angle="164.954">
+				<aux font_style="italic" font_weight="bold" x="2322.8" y="1410.45" name="feed production"/>
+				<aux font_style="italic" font_weight="bold" label_side="left" label_angle="135" x="2092.3" y="1485.21" name="crops for energy"/>
+				<aux x="2205.05" y="1364.39" name="Fraction of crop production for feed"/>
+				<connector uid="194" angle="158.634">
 					<from>feed_production</from>
 					<to>Fraction_of_crop_production_for_feed</to>
 				</connector>
@@ -2743,7 +2749,7 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					</from>
 					<to>Fraction_of_crop_production_for_feed</to>
 				</connector>
-				<aux x="2048.17" y="1401.7" name="Fraction of crop\nproduction for energy"/>
+				<aux x="2138.8" y="1401.08" name="Fraction of crop\nproduction for energy"/>
 				<connector uid="196" angle="61.0708">
 					<from>crops_for_energy</from>
 					<to>Fraction_of_crop_production_for_energy</to>
@@ -2754,9 +2760,9 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					</from>
 					<to>Fraction_of_crop_production_for_energy</to>
 				</connector>
-				<aux x="1949.67" y="1377.87" name="harvest index\nfor energy crops"/>
-				<aux x="2152.83" y="1298" name="harvest index for feed crops"/>
-				<aux x="1775.5" y="1212.5" name="Total average harvest index"/>
+				<aux x="2040.3" y="1377.25" name="harvest index\nfor energy crops"/>
+				<aux x="2243.46" y="1297.38" name="harvest index for feed crops"/>
+				<aux x="1866.13" y="1211.88" name="Total average harvest index"/>
 				<connector uid="198" angle="57.3567">
 					<from>harvest_index_for_food_crops</from>
 					<to>Total_average_harvest_index</to>
@@ -2777,9 +2783,26 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<from>Fraction_of_crop_production_for_feed</from>
 					<to>Total_average_harvest_index</to>
 				</connector>
-				<connector uid="203" angle="116.5">
+				<connector uid="203" angle="142.026">
 					<from>Total_average_harvest_index</from>
 					<to>crop_residue_production</to>
+				</connector>
+				<aux color="#A56E00" background="#FFAA00" font_style="italic" font_weight="bold" font_color="#A56E00" x="1382" y="1316" name="drought effect"/>
+				<connector uid="204" angle="343.801">
+					<from>drought_effect</from>
+					<to>crop_yield</to>
+				</connector>
+				<stacked_container uid="205" x="721.75" y="810.167" width="415.875" height="351.25">
+					<graph width="415.875" height="351.25" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="crop_yield[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<aux color="#916033" background="#FFAA00" font_style="italic" font_weight="bold" font_color="#916033" x="1269.38" y="1226.88" name="SWITCH drought affecting\ncrop yield"/>
+				<connector uid="206" angle="337.166">
+					<from>SWITCH_drought_affecting_crop_yield</from>
+					<to>crop_yield</to>
 				</connector>
 				<alias font_style="italic" uid="72" x="2249.19" y="1887.51" width="18" height="18">
 					<of>crop_production</of>
@@ -2806,10 +2829,10 @@ harvest_index_for_food_crops * (1 - Fraction_of_crop_production_for_energy - Fra
 					<shape type="circle" radius="18"/>
 					<of>initial_crop_yield</of>
 				</alias>
-				<alias font_style="italic" uid="155" x="1592.83" y="1271" width="18" height="18">
+				<alias font_style="italic" uid="155" x="1683.46" y="1270.38" width="18" height="18">
 					<of>initial_crop_yield</of>
 				</alias>
-				<alias font_style="italic" uid="193" x="2143.83" y="1458.83" width="18" height="18">
+				<alias font_style="italic" uid="193" x="2234.46" y="1458.21" width="18" height="18">
 					<of>crop_production</of>
 				</alias>
 			</view>
@@ -3219,6 +3242,13 @@ Calibration Parameter: fertilizer use &amp; crop production</doc>
 				<range min="0.9" max="0.98"/>
 				<units>dmnl</units>
 			</aux>
+			<aux name="Supply Gap">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>crop_production-crop_demand</eqn>
+				<units>PCal/year</units>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -3268,7 +3298,7 @@ Calibration Parameter: fertilizer use &amp; crop production</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="2" isee:page_rows="3" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="2" isee:page_rows="3" zoom="140" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -3672,6 +3702,57 @@ Calibration Parameter: fertilizer use &amp; crop production</doc>
 				</connector>
 				<aux font_style="italic" font_weight="bold" x="1263.39" y="485.893" name="animal products balance"/>
 				<aux x="868.5" y="257.5" name="initial crop demand for\nfeed offset"/>
+				<stacked_container uid="109" x="1574.17" y="591.703" width="367.5" height="353.053">
+					<graph width="367.5" height="353.053" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Crop.crop_production[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="110" x="1183.21" y="1058.33" width="526.389" height="420.278">
+					<graph width="526.389" height="420.278" type="area" isee:sum_stacked_legend="true" isee:stacked_show_hover_values="true" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="red" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="crop_demand_for_food[1]"/>
+							<isee:data name="Invalid Run"/>
+						</plot>
+						<plot color="fuchsia" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="Crops_used_for_Seed_or_Lost[1]"/>
+							<isee:data name="Invalid Run"/>
+						</plot>
+						<plot color="#008F44" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name="crop_used_for_non_energy_other[1]"/>
+							<isee:data name="Invalid Run"/>
+						</plot>
+						<plot color="#7F00FF" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name="feed_production[1]"/>
+							<isee:data name="Invalid Run"/>
+						</plot>
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name="crops_for_energy[1]"/>
+							<isee:data name="Invalid Run"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<aux x="1480" y="239.5" name="Supply Gap"/>
+				<connector uid="111" angle="331.294">
+					<from>
+						<alias uid="112"/>
+					</from>
+					<to>Supply_Gap</to>
+				</connector>
+				<connector uid="113" angle="198.435">
+					<from>
+						<alias uid="114"/>
+					</from>
+					<to>Supply_Gap</to>
+				</connector>
+				<stacked_container uid="115" x="1757.92" y="414.096">
+					<graph width="350" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Supply_Gap[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
 				<alias font_style="italic" uid="63" x="230.286" y="821" width="18" height="18">
 					<of>direct_food_demand_per_person_per_day</of>
 				</alias>
@@ -3686,6 +3767,12 @@ Calibration Parameter: fertilizer use &amp; crop production</doc>
 				</alias>
 				<alias font_style="italic" uid="92" x="180.142" y="437.429" width="18" height="18">
 					<of>perceived_GDP_per_person</of>
+				</alias>
+				<alias font_style="italic" uid="114" x="1569.33" y="191.833" width="18" height="18">
+					<of>crop_demand</of>
+				</alias>
+				<alias font_style="italic" font_weight="bold" uid="112" x="1411.83" y="184.333" width="18" height="18">
+					<of>crop_production</of>
 				</alias>
 			</view>
 		</views>
@@ -4837,7 +4924,7 @@ Old value from calibration: 164600402563.243</doc>
 				<dimensions>
 					<dim name="Run"/>
 				</dimensions>
-				<eqn>deep_groundwater_refill + (total_water_withdrawal - unsustainable_groundwater_withdrawal)</eqn>
+				<eqn>drought_effect^SWITCH_drought_affecting_water_regeneration*(deep_groundwater_refill + (total_water_withdrawal - unsustainable_groundwater_withdrawal))</eqn>
 				<units>m^3/year</units>
 			</aux>
 			<aux name="unsustainable fraction of\nwater withdrawal">
@@ -4949,6 +5036,14 @@ ELSE
 				<eqn>1</eqn>
 				<units>dmnl</units>
 			</aux>
+			<aux name="drought effect" access="input">
+				<eqn>{Enter equation for use when not hooked up to other models}</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="SWITCH drought affecting\nwater regeneration" access="input">
+				<eqn>0</eqn>
+				<units>dmnl</units>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -4998,7 +5093,7 @@ ELSE
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="2" isee:page_rows="3" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="2" isee:page_rows="3" zoom="160" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -5064,10 +5159,10 @@ ELSE
 					<from>non_agricultural_water_withdrawl</from>
 					<to>total_water_withdrawal</to>
 				</connector>
-				<flow label_side="bottom" x="429.834" y="653" name="natural water\nrecharge flow">
+				<flow label_side="bottom" x="429.834" y="651.25" name="natural water\nrecharge flow">
 					<pts>
-						<pt x="344.25" y="653"/>
-						<pt x="515.417" y="653"/>
+						<pt x="344.25" y="651.25"/>
+						<pt x="515.417" y="651.25"/>
 					</pts>
 				</flow>
 				<aux x="712" y="499.67" name="agricultural water\nwithdrawal"/>
@@ -5205,7 +5300,7 @@ the less future investment due to crowding out of more profitable forms of inves
 						<pt x="1231.58" y="839.667"/>
 					</pts>
 				</flow>
-				<connector uid="35" angle="140.974">
+				<connector uid="35" angle="150.261">
 					<from>
 						<alias uid="36"/>
 					</from>
@@ -5217,8 +5312,8 @@ the less future investment due to crowding out of more profitable forms of inves
 						<pt x="1254.08" y="685.667"/>
 					</pts>
 				</flow>
-				<aux label_side="top" x="1396.58" y="600.747" name="average deep groundwater\ninfiltration time"/>
-				<connector uid="37" angle="228.079">
+				<aux label_side="top" x="1378.58" y="650" name="average deep groundwater\ninfiltration time"/>
+				<connector uid="37" angle="211.48">
 					<from>average_deep_groundwater_infiltration_time</from>
 					<to>deep_groundwater_refill</to>
 				</connector>
@@ -5231,7 +5326,7 @@ the less future investment due to crowding out of more profitable forms of inves
 					<from>unsustainable_groundwater_withdrawal</from>
 					<to>natural_water_recharge</to>
 				</connector>
-				<connector uid="40" angle="27.7585">
+				<connector uid="40" angle="10.2833">
 					<from>
 						<alias uid="36"/>
 					</from>
@@ -5259,7 +5354,7 @@ the less future investment due to crowding out of more profitable forms of inves
 					<from>unsustainable_fraction_of_water_withdrawal</from>
 					<to>unsustainable_groundwater_withdrawal</to>
 				</connector>
-				<connector uid="46" angle="3.27049">
+				<connector uid="46" angle="3.7882">
 					<from>
 						<alias uid="47"/>
 					</from>
@@ -5362,7 +5457,24 @@ the less future investment due to crowding out of more profitable forms of inves
 					<from>switch_landuse_damage</from>
 					<to>effect_of_surface_temperature_anomaly_on_water_lost_to_evapotranspiration</to>
 				</connector>
-				<alias font_style="italic" uid="36" x="1328.66" y="844.667" width="18" height="18">
+				<aux color="#946300" background="#FFAA00" font_style="italic" font_weight="bold" font_color="#946300" x="1498.15" y="713.697" name="drought effect"/>
+				<connector uid="76" angle="207.533">
+					<from>drought_effect</from>
+					<to>natural_water_recharge</to>
+				</connector>
+				<stacked_container uid="77" x="1339.16" y="923.75" width="369.59" height="250">
+					<graph width="369.59" height="250" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="available_water_supply[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<aux color="#916033" background="#FFAA00" font_style="italic" font_weight="bold" font_color="#916033" x="1492.5" y="818.125" name="SWITCH drought affecting\nwater regeneration"/>
+				<connector uid="79" angle="168.959">
+					<from>SWITCH_drought_affecting_water_regeneration</from>
+					<to>natural_water_recharge</to>
+				</connector>
+				<alias font_style="italic" uid="36" x="1321.16" y="815" width="18" height="18">
 					<of>total_water_withdrawal</of>
 				</alias>
 				<alias font_style="italic" uid="47" x="306" y="548" width="18" height="18">
@@ -5983,7 +6095,7 @@ Includes Manure and Technological</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="272" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="693.824" isee:scroll_y="718.824" zoom="340" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -6122,6 +6234,14 @@ Includes Manure and Technological</doc>
 					<from>maximum_desired_growth_in_fertilizer_use</from>
 					<to>indicated_fertilizer_use</to>
 				</connector>
+				<stacked_container uid="20" x="834" y="804" width="442.941" height="342.353">
+					<graph width="442.941" height="342.353" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
+							<entity name="fertilizer_use[1]"/>
+							<scale min="100" max="200"/>
+						</plot>
+					</graph>
+				</stacked_container>
 			</view>
 		</views>
 	</model>
@@ -6725,7 +6845,7 @@ https://ourworldindata.org/world-lost-one-third-forests</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="3" isee:page_rows="2" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="3" isee:page_rows="2" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -7744,7 +7864,7 @@ https://ourworldindata.org/world-lost-one-third-forests</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="3" isee:page_rows="2" isee:scroll_x="659" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="3" isee:page_rows="2" isee:scroll_x="386" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -8211,7 +8331,7 @@ https://ourworldindata.org/world-lost-one-third-forests</doc>
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="3" isee:page_rows="2" isee:scroll_x="624" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="3" isee:page_rows="2" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
