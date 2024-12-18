@@ -3066,6 +3066,15 @@ ELSE average_yearly_demand_per_capita</eqn>
 				</dimensions>
 				<eqn>crop_production - (crop_demand_for_food + Crops_used_for_Seed_or_Lost + crop_used_for_non_energy_other)</eqn>
 				<units>PCal/Year</units>
+				<event_poster>
+					<threshold direction="decreasing" value="0" repeat="once">
+						<event sim_action="stop" isee:kind="model_only">
+							<text_box>You&apos;ve generated an invalid scenario.  You&apos;ve destroyed so much crop production that people must eat seed crops, livestock gets no feed, all the biomass production is eaten by people, there is no crop loss in production, and yet somehow there is still mass starvation!
+
+If we add a mass starvation loop to the model, then you can run this scenario.  Without one, you cannot interpret the results of the model because the model has no validity here!</text_box>
+						</event>
+					</threshold>
+				</event_poster>
 			</aux>
 			<aux name="crops for energy" access="output">
 				<dimensions>
