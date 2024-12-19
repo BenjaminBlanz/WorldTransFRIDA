@@ -5,7 +5,7 @@
 		<name>Economy</name>
 		<uuid>656dacef-005e-41a3-aedc-d19f6fd6e9f6</uuid>
 		<vendor>isee systems, inc.</vendor>
-		<product version="3.7.3" isee:build_number="3465" isee:saved_by_v1="true" lang="en">Stella Architect</product>
+		<product version="3.7.3" isee:build_number="3457" isee:saved_by_v1="true" lang="en">Stella_Architect</product>
 	</header>
 	<sim_specs isee:sim_duration="0" isee:run_prefix="Run" isee:simulation_delay="0" isee:restore_on_start="false" isee:save_interval="1" method="RK4" time_units="Year" isee:instantaneous_flows="false" isee:ignore_module_errors="false" isee:strict_units="false" isee:loop_scores="false" isee:loop_exhaustive_allowed="1000">
 		<start>1980</start>
@@ -219,18 +219,6 @@
 			<eqn>1</eqn>
 			<alias>dmnl</alias>
 			<alias>unitless</alias>
-		</unit>
-		<unit name="G">
-			<eqn>Giga</eqn>
-		</unit>
-		<unit name="GtCO2">
-			<eqn>Giga*tCO2</eqn>
-		</unit>
-		<unit name="GtCH4">
-			<eqn>Giga*tCH4</eqn>
-		</unit>
-		<unit name="GtN2O">
-			<eqn>Giga*tN2O</eqn>
 		</unit>
 	</model_units>
 	<model name="Economy">
@@ -827,7 +815,7 @@
 			<isee:placeholder name="Economy 2 Outputs">
 				<eqn>GDP.Nominal_GDP[1] + GDP.&quot;Real_GDP_in_2021c$&quot;[1] + Circular_Flow.private_consumption[1] + Government.government_consumption[1] + Finance.total_investment[1] + Employment.Employed[1] + Employment.Unemployed[1] + Employment.Wage_Rate[1] + Employment.unemployment_rate[1] + Government.debt_to_GDP_ratio[1] + GDP.nominal_gdp_growth_rate_deviation_from_average_in_calibration_period_summed[1] + GDP.real_gdp_growth_rate_deviation_from_average_in_calibration_period_summed[1] + Inflation.gdp_difference[1]</eqn>
 			</isee:placeholder>
-			<module name="Sea level rise Impacts\nand Adaptation" isee:label="" url="G:/My Drive/worldTrans_models/WorldTransFRIDA/FRIDA_Modules/Sea level rise Impacts and Adaptation.itmx">
+			<module name="Sea level rise Impacts\nand Adaptation" isee:label="" url="/home/benjamin/Documents/UHH/FNU/FNK/WordTrans/FRIDA/fridaGitWD-MyFork-impactExperiment-Draught/FRIDA_Modules/Sea level rise Impacts and Adaptation.itmx">
 				<format scale_by="auto"/>
 				<connect to="Sea_level_rise_Impacts_and_Adaptation.No_SLR_adaptation_strategy" from="Government_Regulations.No_SLR_adaptation_strategy"/>
 				<connect2 to="Sea_level_rise_Impacts_and_Adaptation.No_SLR_adaptation_strategy" from="Government_Regulations.No_SLR_adaptation_strategy"/>
@@ -937,7 +925,54 @@
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="2" isee:page_rows="2" isee:scroll_y="169" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#66CC66" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<isee:dropdown_input color="black" background="white" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="61.3636" isee:scroll_y="191.364" zoom="220" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="12.51pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -1146,6 +1181,20 @@
 					<from>Employment</from>
 					<to>Finance</to>
 				</connector>
+				<stacked_container uid="58" x="1754.91" y="548.273" width="363.636" height="365">
+					<graph width="363.636" height="365" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name='GDP."Real_GDP_in_2021c$"[1]'/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="59" x="1391.27" y="548.273" width="363.636" height="365">
+					<graph width="363.636" height="365" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="GDP.Nominal_GDP[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
 			</view>
 		</views>
 	</model>
@@ -4563,6 +4612,13 @@ Fractional exposure levels to temperature for service related labour. Assumption
 				<eqn>0.01</eqn>
 				<units>dmnl</units>
 			</aux>
+			<aux name="net employment change">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>employment_growth-employment_decline</eqn>
+				<units>Mp/year</units>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -4612,7 +4668,7 @@ Fractional exposure levels to temperature for service related labour. Assumption
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="6" isee:page_rows="6" isee:scroll_x="1111.67" isee:scroll_y="2080" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="6" isee:page_rows="6" isee:scroll_x="500" isee:scroll_y="1265.83" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -5142,16 +5198,6 @@ Fractional exposure levels to temperature for service related labour. Assumption
 					<from>effect_of_labour_balance_on_fractional_wage_growth_rate</from>
 					<to>desired_fractional_wage_growth_from_supply_and_demand</to>
 				</connector>
-				<stacked_container uid="103" x="3545.5" y="1855.5">
-					<graph width="350" height="250" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
-						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
-							<entity name="desired_additional_hires[*]"/>
-						</plot>
-						<plot color="red" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
-							<entity name="Unemployed[*]"/>
-						</plot>
-					</graph>
-				</stacked_container>
 				<aux x="3254.25" y="624.25" name="fraction of pop that is working age"/>
 				<connector uid="104" angle="355.364">
 					<from>working_age_population</from>
@@ -5376,16 +5422,6 @@ Fractional exposure levels to temperature for service related labour. Assumption
 					<from>share_of_employment_in_industry_slope</from>
 					<to>raw_share_of_employment_in_industry</to>
 				</connector>
-				<stacked_container uid="153" x="2822" y="2018.67" width="520" height="427">
-					<graph width="520" height="427" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
-						<plot color="blue" isee:keep_zero_visible="true" pen_width="2" index="0" show_y_axis="true"/>
-						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true"/>
-						<plot color="blue" isee:keep_zero_visible="true" pen_width="2" index="2" show_y_axis="true"/>
-						<plot color="#FF7F00" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true"/>
-						<plot color="blue" isee:keep_zero_visible="true" pen_width="2" index="4" show_y_axis="true"/>
-						<plot color="#7F00FF" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true"/>
-					</graph>
-				</stacked_container>
 				<aux label_side="top" x="2407.09" y="1833" name="share of\nemployment in services intercept"/>
 				<aux label_side="top" x="2509" y="1833" name="share of\nemployment in\nservices slope"/>
 				<connector uid="154" angle="322.383">
@@ -5435,9 +5471,6 @@ Fractional exposure levels to temperature for service related labour. Assumption
 					<from>raw_share_of_employment_in_services</from>
 					<to>share_of_employment_in_services</to>
 				</connector>
-				<stacked_container uid="165" x="3373" y="2019.67" width="501" height="425">
-					<graph width="501" height="425" type="scatter" x_axis_auto_scale="true" connect_dots="true" single_point="false" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true"/>
-				</stacked_container>
 				<aux label_side="top" x="1553.09" y="2000" name="Employment to\nLabour Supply"/>
 				<aux label_side="left" x="1490.47" y="2063.64" name="Raw Labour Supply"/>
 				<connector uid="166" angle="225.463">
@@ -5498,16 +5531,6 @@ Fractional exposure levels to temperature for service related labour. Assumption
 					<from>Raw_Labour_Supply_services</from>
 					<to>Labour_Supply_services_with_Climate_Impacts</to>
 				</connector>
-				<stacked_container uid="179" x="2823.33" y="2463" width="580" height="394">
-					<graph width="580" height="394" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
-						<plot color="#00AA00" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true"/>
-						<plot color="#FFAA00" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true"/>
-						<plot color="#AA00FF" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true"/>
-						<plot color="#00AA00" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true"/>
-						<plot color="#FFAA00" pen_style="dot_dashed" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true"/>
-						<plot color="#7F00FF" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true"/>
-					</graph>
-				</stacked_container>
 				<aux x="1490.47" y="2653.5" name="Labour Supply with Climate Impacts"/>
 				<connector uid="180" angle="270.881">
 					<from>Labour_Supply_agriculture_with_Climate_Impacts</from>
@@ -5521,14 +5544,6 @@ Fractional exposure levels to temperature for service related labour. Assumption
 					<from>Labour_Supply_services_with_Climate_Impacts</from>
 					<to>Labour_Supply_with_Climate_Impacts</to>
 				</connector>
-				<stacked_container uid="183" x="2820.08" y="2869.92" width="586.5" height="296">
-					<graph width="586.5" height="296" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
-						<plot color="blue" pen_style="dashed" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true"/>
-						<plot color="red" isee:keep_zero_visible="false" pen_width="1" index="1" show_y_axis="true">
-							<scale min="1000"/>
-						</plot>
-					</graph>
-				</stacked_container>
 				<aux label_side="bottom" x="1754.67" y="2330.97" name="labour exposure shares in agriculture"/>
 				<connector uid="184" angle="124.025">
 					<from>labour_exposure_shares_in_agriculture</from>
@@ -5954,6 +5969,39 @@ furthermore. The structure that was previously decided on had the productivity g
 					<from>UNIT_percent</from>
 					<to>effect_of_climate_on_high_exposure_labour</to>
 				</connector>
+				<stacked_container uid="291" x="2681.25" y="1815.92" width="518.75" height="472.5">
+					<graph width="518.75" height="472.5" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
+							<entity name="unemployment_rate[1]"/>
+							<scale min="0.04"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="292" x="3197.92" y="1815.92" width="518.75" height="472.5">
+					<graph width="518.75" height="472.5" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Unemployed[1]"/>
+							<scale min="100"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<aux x="1249.17" y="1226.67" name="net employment change"/>
+				<connector uid="294" angle="303.566">
+					<from>employment_decline</from>
+					<to>net_employment_change</to>
+				</connector>
+				<connector uid="295" angle="143.499">
+					<from>employment_growth</from>
+					<to>net_employment_change</to>
+				</connector>
+				<stacked_container uid="296" x="2680" y="2345.88" width="521.25" height="454.125">
+					<graph width="521.25" height="454.125" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="false" pen_width="1" index="0" show_y_axis="true">
+							<entity name="net_employment_change[1]"/>
+							<scale min="45"/>
+						</plot>
+					</graph>
+				</stacked_container>
 				<alias color="blue" background="white" font_style="italic" label_side="left" uid="12" x="655.25" y="1050.17" width="18" height="18">
 					<shape type="circle" radius="18"/>
 					<of>wage_rate_in_billions_per_million_people</of>
@@ -11895,6 +11943,13 @@ agriculture_share_of_GDP_starting_point_determinant*EXP(agriculture_share_of_GDP
 				<eqn>1</eqn>
 				<units>b$/bc$</units>
 			</aux>
+			<aux name="Inflation contribution from employment and income">
+				<dimensions>
+					<dim name="Run"/>
+				</dimensions>
+				<eqn>indicated_inflation_rate-Inflation_Rate</eqn>
+				<units>1/year</units>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -11944,7 +11999,7 @@ agriculture_share_of_GDP_starting_point_determinant*EXP(agriculture_share_of_GDP
 				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
 				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 			</style>
-			<view isee:show_pages="false" background="white" page_width="768" page_height="588" isee:page_cols="3" isee:page_rows="3" zoom="80" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+			<view isee:show_pages="false" background="white" page_width="1097" page_height="767" isee:page_cols="3" isee:page_rows="3" isee:scroll_y="208.333" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
 				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 					<stock color="blue" background="white" font_color="blue" font_size="11pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
@@ -12427,6 +12482,54 @@ agriculture_share_of_GDP_starting_point_determinant*EXP(agriculture_share_of_GDP
 					<from>unit_fixer</from>
 					<to>gdp_difference</to>
 				</connector>
+				<stacked_container uid="108" x="2098.2" y="85.33" width="478.97" height="509.375">
+					<graph width="478.97" height="509.375" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="fertilizer_used_per_unit_of_crop_production_inflation_contribution[1]"/>
+						</plot>
+						<plot color="red" isee:keep_zero_visible="true" pen_width="1" index="1" show_y_axis="true">
+							<entity name="marginal_energy_cost_inflation_contribution[1]"/>
+						</plot>
+						<plot color="fuchsia" isee:keep_zero_visible="true" pen_width="1" index="2" show_y_axis="true">
+							<entity name="cropland_inflation_contribution[1]"/>
+						</plot>
+						<plot color="#008F44" isee:keep_zero_visible="true" pen_width="1" index="3" show_y_axis="true">
+							<entity name="grazing_land_inflation_contribution[1]"/>
+						</plot>
+						<plot color="#FF7F00" isee:keep_zero_visible="true" pen_width="1" index="4" show_y_axis="true">
+							<entity name="irrigation_water_used_per_unit_of_crop_production_inflation_contribution[1]"/>
+						</plot>
+						<plot color="#7F00FF" isee:keep_zero_visible="true" pen_width="1" index="5" show_y_axis="true">
+							<entity name="agriculture_inflation_contribution[1]"/>
+						</plot>
+						<plot color="lime" isee:keep_zero_visible="true" pen_width="1" index="6" show_y_axis="true">
+							<entity name="Inflation_contribution_from_employment_and_income[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<aux x="785.625" y="396" name="Inflation contribution from employment and income"/>
+				<connector uid="109" angle="60.926">
+					<from>indicated_inflation_rate</from>
+					<to>Inflation_contribution_from_employment_and_income</to>
+				</connector>
+				<connector uid="110" angle="149.339">
+					<from>Inflation_Rate</from>
+					<to>Inflation_contribution_from_employment_and_income</to>
+				</connector>
+				<stacked_container uid="111" x="1965" y="917" width="460" height="374">
+					<graph width="460" height="374" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Inflation_Rate[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="112" x="2425" y="917" width="460" height="374">
+					<graph width="460" height="374" comparative="true" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Inflation_Index[1]"/>
+						</plot>
+					</graph>
+				</stacked_container>
 				<alias color="blue" background="white" font_style="italic" uid="79" x="751" y="993" width="18" height="18">
 					<shape type="circle" radius="18"/>
 					<of>time_to_measure_growth_rate</of>
